@@ -16,7 +16,7 @@ public class SpelerMapper {
 	
 	// tijdelijke een lijst aangemaakt met spelers tot de databank link aanwezig is.
 	public void laadSpelers(){
-		System.out.printf("initialiseer tijdelijk een databank in de mapper te verwijderen ooit\n");
+		System.out.printf("Tijdelijk een databank geïnitialiseerd in de mapper. Te verwijderen na connectie met DB\n");
 		List<Speler> spelerstemp = new ArrayList<Speler>();
 		spelerstemp.add(new Speler("Joost", "test"));
 		spelerstemp.add(new Speler("Bart", "Hogent"));
@@ -25,7 +25,7 @@ public class SpelerMapper {
 		this.spelers = spelerstemp;
 	}
 	
-	public Speler geefSpeler(String gebruikersnaam, String wachtwoord) {
+	public Speler zoekSpeler(String gebruikersnaam, String wachtwoord) {
 		for(Speler s:spelers) {
 			// te wissen enkel voor demo
 			//System.out.printf("test %s afgelopen via spelersmapper voor %s \n",s.getGebruikersnaam(), gebruikersnaam);
