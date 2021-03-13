@@ -30,13 +30,13 @@ public class Application {
 		do {
 			try {System.out.printf("Geef het aantal spelers (min=2, max=4): ");
 				 aantalSpelers = input.nextInt();
-				 System.out.printf("Aantal spelers geregistreerd is: %d\n", aantalSpelers);
+				 System.out.printf("Aantal geregistreerde spelers is: %d\n", aantalSpelers);
 				 aantalNOK = false;
 				 //uitzoeken want volgende regel toegevoegd om een bug op te lossen
 				 input.nextLine();
 			} catch (InputMismatchException inputMismatch) {
 				input.nextLine();
-				System.out.printf("gelieve een GETAL (2, 3 of 4) te kiezen \n");}
+				System.out.printf("ERROR: Gelieve een GETAL (2, 3 of 4) te kiezen \n");}
 			}
 		while (aantalNOK);
 		
@@ -44,9 +44,9 @@ public class Application {
 		
 		for(int i=1; i<=aantalSpelers; i++) {
 				while(!dc.meldAan(spelersnaam,wachtwoord)) {
-					System.out.printf("\nGeef naam speler %d: ",i);
+					System.out.printf("\nGeef naam speler %d:\t",i);
 					spelersnaam = input.nextLine();
-					System.out.printf("Geef paswoord speler %d: ",i);
+					System.out.printf("Geef paswoord speler %d:\t",i);
 					wachtwoord = input.nextLine();
 				};
 		}			
@@ -70,9 +70,9 @@ public class Application {
 	
 	private void toonSpelerslijst() {
 		List<String> spelerslijst = dc.geefSpelersnamen();
-		System.out.printf("De aangemelde spelers zijn: \n");
+		System.out.printf("\n\nDe aangemelde spelers zijn: \n");
 		for(int i=1; i <= spelerslijst.size(); i++){
-            System.out.printf("speler %d: %s \n", i,spelerslijst.get(i-1) );
+            System.out.printf("\t speler %d: %s \n", i,spelerslijst.get(i-1) );
         }
 		
 		
