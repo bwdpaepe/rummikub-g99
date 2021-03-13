@@ -11,10 +11,10 @@ public class Speler {
 	}
 
 	public String getGebruikersnaam() {
-		return spelersnaam;
+		return this.spelersnaam;
 	}
 
-	public void setGebruikersnaam(String gebruikersnaam) {
+	public void setGebruikersnaam(String spelersnaam) {
 		this.spelersnaam = spelersnaam;
 	}
 
