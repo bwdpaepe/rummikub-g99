@@ -10,7 +10,7 @@ public class Speler {
 		setWachtwoord(wachtwoord);
 	}
 
-	public String getGebruikersnaam() {
+	public String getSpelersnaam() {
 		return this.spelersnaam;
 	}
 

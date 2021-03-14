@@ -22,7 +22,7 @@ public class Spel {
 	}
 	
 	public boolean voegSpelerToe(Speler speler)  {
-		if (!reedsAangemeld(speler.getGebruikersnaam())) {
+		if (!reedsAangemeld(speler.getSpelersnaam())) {
 			spelers.add(speler);
 			return true;
 		}
@@ -32,7 +32,7 @@ public class Spel {
 
 	private boolean reedsAangemeld(String spelersnaam) {
 		for(int i=0; i<spelers.size();i++) {
-			if (spelers.get(i).getGebruikersnaam().equals(spelersnaam)) {
+			if (spelers.get(i).getSpelersnaam().equals(spelersnaam)) {
 				return true;
 			} 
 		}
@@ -43,7 +43,7 @@ public class Spel {
 		int i;
 		List<String> spelersnamen = new ArrayList<>();
 		for (i=0; i<spelers.size(); i++) {
-			spelersnamen.add(spelers.get(i).getGebruikersnaam());
+			spelersnamen.add(spelers.get(i).getSpelersnaam());
 		}
 		return spelersnamen;
 	} 

@@ -63,13 +63,18 @@ public class Application {
 //			while(!dc.meldAan(spelersnaam,wachtwoord));
 				
 		toonSpelerslijst();
+		System.out.printf("\nKeuzemenu:");
+		System.out.printf("\n\t1: Speel spel");
+		System.out.printf("\n\t2: Toon overzicht");
+		System.out.printf("\n\tMaak uw keuze (1/2): ");
+		
 	}
 	
 	private void toonSpelerslijst() {
 		List<String> spelerslijst = dc.geefSpelersnamen();
 		System.out.printf("\n\nDe aangemelde spelers zijn: \n");
 		for(int i=1; i <= spelerslijst.size(); i++){
-            System.out.printf("\t speler %d: %s \n", i,spelerslijst.get(i-1) );
+            System.out.printf("\tSpeler %d: %s \n", i,spelerslijst.get(i-1) );
         }
 	}
 	
