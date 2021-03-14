@@ -21,7 +21,7 @@ public class Spel {
 		this.aantalSpelers = aantalSpelers;
 	}
 	
-	public boolean voegSpelerToe (Speler speler)  {
+	public boolean voegSpelerToe(Speler speler)  {
 		if (!reedsAangemeld(speler.getGebruikersnaam())) {
 			spelers.add(speler);
 			return true;
@@ -30,7 +30,7 @@ public class Spel {
 	}
 	
 
-	private boolean reedsAangemeld (String spelersnaam) {
+	private boolean reedsAangemeld(String spelersnaam) {
 		for(int i=0; i<spelers.size();i++) {
 			if (spelers.get(i).getGebruikersnaam().equals(spelersnaam)) {
 				return true;

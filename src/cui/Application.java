@@ -12,7 +12,6 @@ public class Application {
 	
 	public Application(DomeinController dc) {
 		this.dc = dc;
-		
 	}
 
 	public void start() {
@@ -41,7 +40,7 @@ public class Application {
 		while (aantalNOK);
 		
 		dc.initialiseerSpel(aantalSpelers);
-		
+		//aantal spelers zouden we ook kunnen ophalen in spel. te bespreken
 		for(int i=1; i<=aantalSpelers; i++) {
 				while(!dc.meldAan(spelersnaam,wachtwoord)) {
 					System.out.printf("\nGeef naam speler %d:\t",i);
@@ -64,8 +63,6 @@ public class Application {
 //			while(!dc.meldAan(spelersnaam,wachtwoord));
 				
 		toonSpelerslijst();
-
-		//toonspelerslijst
 	}
 	
 	private void toonSpelerslijst() {
@@ -74,19 +71,17 @@ public class Application {
 		for(int i=1; i <= spelerslijst.size(); i++){
             System.out.printf("\t speler %d: %s \n", i,spelerslijst.get(i-1) );
         }
-		
-		
 	}
 	
 	private void banner() {
 		System.out.printf("***************************************************************************\n");
 		System.out.printf("*                                                                         *\n");
-		System.out.printf("*   $$$$$$    $     $  $      $  $      $  $  $$$$$$$  $     $  $$$$$     *\n");
-		System.out.printf("*   $     $   $     $  $ $  $ $  $ $  $ $  $  $        $     $  $    $    *\n");
-		System.out.printf("*   $     $   $     $  $   $  $  $   $  $  $  $        $     $  $    $    *\n");
-		System.out.printf("*   $$$$$$    $     $  $      $  $      $  $  $        $     $  $$$$$$    *\n");
-		System.out.printf("*   $     $   $     $  $      $  $      $  $  $        $     $  $     $   *\n");
-		System.out.printf("*   $      $  $$$$$$$  $      $  $      $  $  $$$$$$$  $$$$$$$  $$$$$$    *\n");
+		System.out.printf("*   $$$$$$    $     $  $      $  $      $  $  $   $    $     $  $$$$$     *\n");
+		System.out.printf("*   $     $   $     $  $ $  $ $  $ $  $ $  $  $  $     $     $  $    $    *\n");
+		System.out.printf("*   $     $   $     $  $   $  $  $   $  $  $  $$$      $     $  $    $    *\n");
+		System.out.printf("*   $$$$$$    $     $  $      $  $      $  $  $  $     $     $  $$$$$$    *\n");
+		System.out.printf("*   $     $   $     $  $      $  $      $  $  $   $    $     $  $     $   *\n");
+		System.out.printf("*   $      $  $$$$$$$  $      $  $      $  $  $    $   $$$$$$$  $$$$$$    *\n");
 		System.out.printf("*                                                                         *\n");
 		System.out.printf("***************************************************************************\n");
 	}

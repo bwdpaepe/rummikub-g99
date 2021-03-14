@@ -5,8 +5,8 @@ public class Speler {
 	private String spelersnaam;
 	private String wachtwoord;
 
-	public Speler(String gebruikersnaam, String wachtwoord) {
-		setGebruikersnaam(gebruikersnaam);
+	public Speler(String spelersnaam, String wachtwoord) {
+		setSpelersnaam(spelersnaam);
 		setWachtwoord(wachtwoord);
 	}
 
@@ -14,7 +14,7 @@ public class Speler {
 		return this.spelersnaam;
 	}
 
-	public void setGebruikersnaam(String spelersnaam) {
+	public void setSpelersnaam(String spelersnaam) {
 		this.spelersnaam = spelersnaam;
 	}
 
@@ -25,6 +25,6 @@ public class Speler {
 	private void setWachtwoord(String wachtwoord) {
 		this.wachtwoord = wachtwoord;
 	}
-		
+	
 }
 
