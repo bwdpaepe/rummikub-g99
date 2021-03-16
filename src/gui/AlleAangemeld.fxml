@@ -10,39 +10,34 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <AnchorPane prefHeight="39.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="39.0" prefWidth="900.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="21.0" layoutY="11.0" text="Rummikub-G99">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" layoutX="795.0" layoutY="4.0" mnemonicParsing="false" text="Stoppen">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
    </top>
    <center>
-      <GridPane alignment="TOP_CENTER">
+      <GridPane alignment="TOP_CENTER" style="-fx-background-color: lightgrey;">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="585.0" minWidth="10.0" prefWidth="585.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="608.0" minWidth="10.0" prefWidth="315.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="585.0" minWidth="10.0" prefWidth="450.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="608.0" minWidth="10.0" prefWidth="450.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane alignment="CENTER">
+            <GridPane>
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
@@ -50,35 +45,53 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button alignment="CENTER" minWidth="180.0" mnemonicParsing="false" text="Toon overzicht" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Label alignment="TOP_LEFT" prefHeight="57.0" prefWidth="374.0" text="De volgende spelers zijn aangemeld:" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ListView maxHeight="200.0" maxWidth="200.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                  <Button alignment="CENTER" layoutX="303.0" layoutY="365.0" minWidth="180.0" mnemonicParsing="false" text="Speel spel" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="57.0" prefWidth="210.0" text="De volgende spelers&#10;zijn aangemeld:" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="lvAlleAangemeld" maxHeight="200.0" maxWidth="200.0" prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <Button fx:id="btnAlleAangemeldSpeel" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="Speel spel">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnAlleAangemeldOverzicht" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="Toon overzicht">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
                <padding>
                   <Insets left="20.0" />
                </padding>
-            </GridPane>
-            <ImageView fitHeight="250.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" translateX="-20.0" GridPane.columnIndex="1">
-               <image>
-                  <Image url="@../images/Rummikub.jpg" />
-               </image>
-               <GridPane.margin>
+               <opaqueInsets>
                   <Insets />
-               </GridPane.margin>
-            </ImageView>
+               </opaqueInsets>
+            </GridPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fitHeight="501.0" fitWidth="339.0" layoutX="118.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Rummikub.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
          <BorderPane.margin>
             <Insets />
@@ -86,4 +99,3 @@
       </GridPane>
    </center>
 </BorderPane>
-

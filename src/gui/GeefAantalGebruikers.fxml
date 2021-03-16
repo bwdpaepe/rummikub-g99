@@ -38,7 +38,7 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Hoeveel spelers wenst u aan te melden?&#10;(min=2, max=4)" textAlignment="CENTER">
+                  <Label fx:id="lblAantalSpelers" text="Hoeveel spelers wenst u aan te melden?&#10;(min=2, max=4)" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -46,12 +46,12 @@
                         <Insets top="100.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField alignment="CENTER" maxWidth="100.0" prefHeight="30.0" prefWidth="100.0">
+                  <TextField fx:id="txfAantalSpelers" alignment="CENTER" maxWidth="100.0" prefHeight="30.0" prefWidth="100.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button minWidth="100.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="OK">
+                  <Button fx:id="btnAantalSpelers" minWidth="100.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="OK">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
