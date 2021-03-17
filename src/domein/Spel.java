@@ -7,6 +7,8 @@ public class Spel {
 
 	private int aantalSpelers;
 	private List<Speler> spelers = new ArrayList<>();
+	public static final int maximumSpelers = 4;
+	public static final int minimumSpelers = 2;
 	
 	public Spel(int aantalSpelers) {
 		setAantalSpelers(aantalSpelers);
@@ -21,6 +23,7 @@ public class Spel {
 		this.aantalSpelers = aantalSpelers;
 	}
 	
+	//UC1
 	public boolean voegSpelerToe(Speler speler)  {
 		if (!reedsAangemeld(speler.getSpelersnaam())) {
 			spelers.add(speler);
@@ -29,21 +32,21 @@ public class Spel {
 		return false;
 	}
 	
-
+	//UC1
 	private boolean reedsAangemeld(String spelersnaam) {
-		for(int i=0; i<spelers.size();i++) {
-			if (spelers.get(i).getSpelersnaam().equals(spelersnaam)) {
+		for(Speler speler:spelers) {
+			if (speler.getSpelersnaam().equals(spelersnaam)) {
 				return true;
 			} 
 		}
 		return false;
 	}
-
+	
+	//UC1
 	public List<String> geefSpelersnamen() {
-		int i;
 		List<String> spelersnamen = new ArrayList<>();
-		for (i=0; i<spelers.size(); i++) {
-			spelersnamen.add(spelers.get(i).getSpelersnaam());
+		for (Speler speler: spelers) {
+			spelersnamen.add(speler.getSpelersnaam());
 		}
 		return spelersnamen;
 	} 
