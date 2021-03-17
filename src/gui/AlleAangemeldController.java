@@ -1,7 +1,10 @@
 package gui;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import javafx.fxml.Initializable;
 import domein.DomeinController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 
-public class AlleAangemeldController extends BorderPane {
+public class AlleAangemeldController extends BorderPane implements Initializable {
 	@FXML
 	private ListView<String> lvAlleAangemeld;
 	@FXML
@@ -39,7 +42,9 @@ public class AlleAangemeldController extends BorderPane {
 		}
 	}
 	
-	public void initialize() {
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
 		ObservableList<String> spelersnamen = FXCollections.observableArrayList(this.dc.geefSpelersnamen());
 		this.lvAlleAangemeld.setItems(spelersnamen);
 		
