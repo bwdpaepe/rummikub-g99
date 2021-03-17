@@ -14,7 +14,7 @@ import javafx.scene.layout.BorderPane;
 
 public class AlleAangemeldController extends BorderPane {
 	@FXML
-	private ListView lvAlleAangemeld;
+	private ListView<String> lvAlleAangemeld;
 	@FXML
 	private Button btnAlleAangemeldSpeel;
 	@FXML
