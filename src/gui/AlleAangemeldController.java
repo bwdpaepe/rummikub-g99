@@ -25,8 +25,7 @@ public class AlleAangemeldController extends BorderPane {
 	public AlleAangemeldController(DomeinController dc) {
 		super();
 		this.dc = dc;
-		ObservableList<String> spelersnamen = FXCollections.observableArrayList(dc.geefSpelersnamen());
-		this.lvAlleAangemeld.setItems(spelersnamen);
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("AlleAangemeld.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
@@ -38,6 +37,12 @@ public class AlleAangemeldController extends BorderPane {
 		{
 			throw new RuntimeException(ex);
 		}
+	}
+	
+	public void initialize() {
+		ObservableList<String> spelersnamen = FXCollections.observableArrayList(this.dc.geefSpelersnamen());
+		this.lvAlleAangemeld.setItems(spelersnamen);
+		
 	}
 
 }
