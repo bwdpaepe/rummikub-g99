@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane prefHeight="39.0" prefWidth="900.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
@@ -51,7 +51,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button fx:id="btnAantalSpelers" minWidth="100.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="OK">
+                  <Button fx:id="btnAantalSpelers" minWidth="100.0" mnemonicParsing="false" onAction="#btnAantalSpelersOnAction" style="-fx-background-color: silver;" text="OK">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -70,4 +70,4 @@
          </children>
       </GridPane>
    </center>
-</BorderPane>
+</fx:root>

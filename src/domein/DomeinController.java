@@ -24,4 +24,8 @@ public class DomeinController {
 	public List<String> geefSpelersnamen() {
 		return spel.geefSpelersnamen();
 	}
+	
+	public boolean bepaalAlleSpelersAangemeld() {
+		return this.spel.bepaalAlleSpelersAangemeld();
+	}
 }
