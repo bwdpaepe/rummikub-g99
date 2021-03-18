@@ -32,4 +32,9 @@ public class DomeinController {
 	public int geefAantalSpelers () {
 		return spel.getAantalSpelers();
 	} 
+	
+	//UC1
+	public boolean bepaalAlleSpelersAangemeld() {
+		return this.spel.bepaalAlleSpelersAangemeld();
+	}
 }

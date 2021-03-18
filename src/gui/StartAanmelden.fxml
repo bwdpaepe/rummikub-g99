@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane prefHeight="39.0" prefWidth="900.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
          <children>
@@ -33,7 +33,7 @@
                   <Insets top="50.0" />
                </VBox.margin>
             </ImageView>
-            <Button fx:id="btnStartAanmelden" mnemonicParsing="false" style="-fx-background-color: silver;" text="Start aanmelden" textAlignment="CENTER">
+            <Button fx:id="btnStartAanmelden" mnemonicParsing="false" onAction="#btnStartAanmeldenOnAction" style="-fx-background-color: silver;" text="Start aanmelden" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -44,4 +44,4 @@
          </children>
       </VBox>
    </center>
-</BorderPane>
+</fx:root>

@@ -51,4 +51,11 @@ public class Spel {
 		return spelersnamen;
 	} 
 	
+	public boolean bepaalAlleSpelersAangemeld() {
+		if(spelers.size() == this.aantalSpelers) {
+			return true;
+		}
+		return false;
+	}
+	
 }
