@@ -41,7 +41,7 @@ public class Spel {
     }
 	
 	//public void stelAantalSpelersIn(int aantalSpelers){
-	//	setAantalSpelers(aantalSpelers);
+	//setAantalSpelers(aantalSpelers);
 	//}
 	
 	//UC1
