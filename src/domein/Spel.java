@@ -66,7 +66,7 @@ public class Spel {
 		for(Speler speler:spelers) {
 			if (speler.getSpelersnaam().equals(spelersnaam)) {
 				throw new SpelerReedsAangemeldException(
-							String.format("De Speler/paswoord combinatie is reeds in aangemeld in het spel!"));			
+							String.format("De Speler/paswoord combinatie is reeds aangemeld in het spel!"));			
 				} 	
 		}
 	}

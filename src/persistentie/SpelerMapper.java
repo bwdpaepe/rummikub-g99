@@ -34,7 +34,7 @@ public class SpelerMapper {
 						String ww = rs.getString(2);
 						return new Speler(naam, ww);
 					}
-					throw new SpelerNietInDBException("De Speler/paswoord combinatie is niet aanwezig in database!");
+					throw new SpelerNietInDBException("De Speler/paswoord combinatie is niet aanwezig in de database!");
 //					rs.next();
 //					int count = rs.getInt(1);
 //					if(count == 1)
