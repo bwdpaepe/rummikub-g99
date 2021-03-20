@@ -2,6 +2,9 @@ package domein;
 
 import java.util.List;
 
+import exceptions.SpelerNietInDBException;
+import exceptions.SpelerReedsAangemeldException;
+
 public class DomeinController {
 
 	private Spel spel;
@@ -13,14 +16,14 @@ public class DomeinController {
 	
 	//UC1
 	public void initialiseerSpel(int aantalSpelers) {
+		
 		this.spel = new Spel(aantalSpelers);
 	}
 	
 	//UC1
-	public boolean meldAan( String spelersnaam, String wachtwoord) {
+	public void meldAan( String spelersnaam, String wachtwoord) throws SpelerNietInDBException, SpelerReedsAangemeldException {
 		Speler nieuweSpeler = spelerRepo.zoekSpeler(spelersnaam, wachtwoord); 
-		if (nieuweSpeler == null) return false;
-		else return (spel.voegSpelerToe(nieuweSpeler));
+		spel.voegSpelerToe(nieuweSpeler);
 	} 
 	
 	//UC1
@@ -37,4 +40,13 @@ public class DomeinController {
 	public boolean bepaalAlleSpelersAangemeld() {
 		return this.spel.bepaalAlleSpelersAangemeld();
 	}
+	//UC1
+	//public void BepaalAantalSpelers (int aantalSpelers) {
+	//	spel.stelAantalSpelersIn(aantalSpelers);
+	//} 
+	
+	public void ResetWachtwoord () {
+		spel.resetWachtwoord();
+	}
+	
 }

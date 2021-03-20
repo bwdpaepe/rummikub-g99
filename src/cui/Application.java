@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 import domein.DomeinController;
 import domein.Spel;
+import exceptions.BuitenBereikAantalSpelersException;
+import exceptions.SpelerNietInDBException;
+import exceptions.SpelerReedsAangemeldException;
 
 public class Application {
 	private DomeinController dc;
@@ -19,7 +22,8 @@ public class Application {
 		banner();
 		aanmelden();
 		//Console.clear();
-		//banner();
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
+		banner();
 		toonSpelerslijst();
 		toonKeuzemenu();
 	}
@@ -29,15 +33,33 @@ public class Application {
 		System.out.printf("\n\n");
 		String spelersnaam ="";
 		String wachtwoord = "";
-		dc.initialiseerSpel(bepaalAantalSpelers());
+		Boolean iniOK = false;
+		do {
+			try {
+				dc.initialiseerSpel(bepaalAantalSpelers());
+				iniOK=true;
+			} 
+			catch (BuitenBereikAantalSpelersException e){ 
+				  System.out.println(e.getMessage());
+				}
+			}
+		while (!iniOK);
+		
+		System.out.printf("Aantal geregistreerde spelers is: %d\n", dc.geefAantalSpelers());
+		
 		for(int i=1; i<=dc.geefAantalSpelers(); i++) {
-				while(!dc.meldAan(spelersnaam,wachtwoord)) {
-					System.out.printf("\nGeef naam speler %d:\t",i);
-					spelersnaam = input.nextLine();
-					System.out.printf("Geef paswoord speler %d:\t",i);
-					wachtwoord = input.nextLine();
-				};
-		}				
+				try {
+						System.out.printf("\nGeef naam speler %d:\t",i);
+						spelersnaam = input.nextLine();
+						System.out.printf("Geef paswoord speler %d:\t",i);
+						wachtwoord = input.nextLine();
+						dc.meldAan(spelersnaam, wachtwoord);
+				} catch (SpelerNietInDBException|SpelerReedsAangemeldException e) {
+					System.out.printf("\n%s\n", e.getMessage());
+					i--;
+				}	
+		}	
+		dc.ResetWachtwoord();
 	}
 	
 	//UC1
@@ -71,13 +93,15 @@ public class Application {
 		do {
 			try {System.out.printf("Geef het aantal spelers (min=%d, max=%d): ",Spel.maximumSpelers, Spel.minimumSpelers);
 				 aantalSpelers = input.nextInt();
-				 System.out.printf("Aantal geregistreerde spelers is: %d\n", aantalSpelers);
 				 aantalNOK = false;
 				 //uitzoeken want volgende regel toegevoegd om een bug op te lossen
 				 input.nextLine();
 			} catch (InputMismatchException inputMismatch) {
 				input.nextLine();
-				System.out.printf("ERROR: Gelieve een GETAL (min=%d max=%d) te kiezen \n",Spel.minimumSpelers,Spel.maximumSpelers);}
+				System.out.printf("Gelieve een GETAL in te geven! \n",Spel.minimumSpelers,Spel.maximumSpelers);}
+			  //catch (BuitenBereikAantalSpelersException e){ 
+				//  System.out.println(e.getMessage());
+				//}
 			}
 		while (aantalNOK);
 		return aantalSpelers;

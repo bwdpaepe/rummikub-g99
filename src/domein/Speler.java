@@ -26,5 +26,9 @@ public class Speler {
 		this.wachtwoord = wachtwoord;
 	}
 	
+	public void resetWachtwoord() {
+		this.wachtwoord = "";
+	}
+	
 }
 
