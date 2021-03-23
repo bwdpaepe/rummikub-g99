@@ -97,7 +97,7 @@ public class GeefAantalGebruikersController extends BorderPane implements Initia
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		this.lblAantalSpelers.setText(String.format("Hoeveel spelers wenst u aan te melden?\n(min=%d, max=%d)",Spel.minimumSpelers, Spel.maximumSpelers));
+		this.lblAantalSpelers.setText(String.format("Hoeveel spelers wenst u aan te melden?\n(min=%d, max=%d)",Spel.MINIMUM_SPELERS, Spel.MAXIMUM_SPELERS));
 		
 	}
 	

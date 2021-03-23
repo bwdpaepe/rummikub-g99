@@ -101,7 +101,8 @@ public class MeldAanController extends BorderPane implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		this.lblMeldAan.setText(String.format("Geef spelersnaam en wachtwoord van speler %d:", 2));
+		int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
+		this.lblMeldAan.setText(String.format("Geef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
 		
 	}
 	
