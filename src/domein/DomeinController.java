@@ -45,8 +45,5 @@ public class DomeinController {
 	//	spel.stelAantalSpelersIn(aantalSpelers);
 	//} 
 	
-	public void ResetWachtwoord () {
-		spel.resetWachtwoord();
-	}
 	
 }

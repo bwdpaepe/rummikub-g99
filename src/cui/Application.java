@@ -59,7 +59,7 @@ public class Application {
 					i--;
 				}	
 		}	
-		dc.ResetWachtwoord();
+		
 	}
 	
 	//UC1
@@ -91,14 +91,14 @@ public class Application {
 		boolean aantalNOK = true;
 		int aantalSpelers = 0;
 		do {
-			try {System.out.printf("Geef het aantal spelers (min=%d, max=%d): ",Spel.maximumSpelers, Spel.minimumSpelers);
+			try {System.out.printf("Geef het aantal spelers (min=%d, max=%d): ",Spel.MAXIMUM_SPELERS, Spel.MINIMUM_SPELERS);
 				 aantalSpelers = input.nextInt();
 				 aantalNOK = false;
 				 //uitzoeken want volgende regel toegevoegd om een bug op te lossen
 				 input.nextLine();
 			} catch (InputMismatchException inputMismatch) {
 				input.nextLine();
-				System.out.printf("Gelieve een GETAL in te geven! \n",Spel.minimumSpelers,Spel.maximumSpelers);}
+				System.out.printf("Gelieve een GETAL in te geven! \n",Spel.MINIMUM_SPELERS,Spel.MAXIMUM_SPELERS);}
 			  //catch (BuitenBereikAantalSpelersException e){ 
 				//  System.out.println(e.getMessage());
 				//}
