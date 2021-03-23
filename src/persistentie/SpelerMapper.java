@@ -17,7 +17,7 @@ public class SpelerMapper {
 	
 	public Speler zoekSpeler(String spelersnaam, String wachtwoord) throws SpelerNietInDBException {
 		
-		if(!(spelersnaam==null) && !spelersnaam.trim().isEmpty() && !(wachtwoord==null) && !wachtwoord.trim().isEmpty())
+		if(!(spelersnaam==null) && !spelersnaam.isBlank() && !(wachtwoord==null) && !wachtwoord.isBlank())
 		{
 		
 			try(Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);

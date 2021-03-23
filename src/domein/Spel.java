@@ -11,8 +11,8 @@ public class Spel {
 
 	private int aantalSpelers;
 	private List<Speler> spelers = new ArrayList<>();
-	public static final int maximumSpelers = 4;
-	public static final int minimumSpelers = 2;
+	public static final int MAXIMUM_SPELERS = 4;
+	public static final int MINIMUM_SPELERS = 2;
 	
 	public Spel() {
 		
@@ -33,10 +33,10 @@ public class Spel {
 	}
 */
 	private void setAantalSpelers(int aantalSpelers){
-        if (aantalSpelers < minimumSpelers || aantalSpelers > maximumSpelers)
+        if (aantalSpelers < MINIMUM_SPELERS || aantalSpelers > MAXIMUM_SPELERS)
             throw new BuitenBereikAantalSpelersException
                 (String.format("Het aantal spelers moet in het "
-                + "interval [%d,%d] liggen!", minimumSpelers, maximumSpelers));
+                + "interval [%d,%d] liggen!", MINIMUM_SPELERS, MAXIMUM_SPELERS));
         this.aantalSpelers = aantalSpelers;
     }
 	
@@ -47,6 +47,7 @@ public class Spel {
 	//UC1
 	public void voegSpelerToe(Speler speler) throws SpelerReedsAangemeldException   {
 		checkReedsAangemeld(speler.getSpelersnaam());
+		speler.resetWachtwoord();
 		spelers.add(speler);
 	}
 	
@@ -79,19 +80,13 @@ public class Spel {
 		}
 		return spelersnamen;
 	} 
-	
+	//hier exception toevoegen indien alle spelers reeds aangemeld
 	public boolean bepaalAlleSpelersAangemeld() {
 		if(spelers.size() == this.aantalSpelers) {
 			return true;
 		}
 		return false;
 	}
-	//UC1
 	
-	public void resetWachtwoord(){
-		for (Speler speler: spelers) {
-			speler.resetWachtwoord();
-		}
-	}
 	
 }
