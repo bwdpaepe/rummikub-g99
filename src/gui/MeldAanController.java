@@ -69,6 +69,8 @@ public class MeldAanController extends BorderPane implements Initializable {
 			dc.meldAan(spelersnaam,wachtwoord);
 			
 			if(!dc.bepaalAlleSpelersAangemeld()) {
+				int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
+				this.lblMeldAan.setText(String.format("Geef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
 				txfMeldAanSpelersnaam.clear();
 				txfMeldAanWachtwoord.clear();
 			}
