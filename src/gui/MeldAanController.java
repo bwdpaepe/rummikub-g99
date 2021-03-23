@@ -61,7 +61,7 @@ public class MeldAanController extends BorderPane implements Initializable {
 		String wachtwoord = txfMeldAanWachtwoord.getText();
 		
 		try {
-			if(!(spelersnaam == null || spelersnaam.isBlank()) && !(wachtwoord == null || wachtwoord.isBlank())) 
+			if(spelersnaam == null || spelersnaam.isBlank() || wachtwoord == null || wachtwoord.isBlank()) 
 			{
 				throw new InputMismatchException("Spelersnaam en wachtwoord mogen niet leeg zijn!");
 			}
