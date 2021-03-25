@@ -73,7 +73,7 @@ public class GeefAantalGebruikersController extends BorderPane implements Initia
 			errorAlert.setContentText(e.getMessage());
 			errorAlert.showAndWait();
 			
-		} catch (InputMismatchException e) {
+		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			Alert errorAlert = new Alert(AlertType.ERROR);
 			errorAlert.setHeaderText("Formaat invoer ongeldig!");
