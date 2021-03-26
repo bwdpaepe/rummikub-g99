@@ -1,6 +1,7 @@
 package domein;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import exceptions.BuitenBereikAantalSpelersException;
@@ -13,6 +14,8 @@ public class Spel {
 	private List<Speler> spelers = new ArrayList<>();
 	public static final int MAXIMUM_SPELERS = 4;
 	public static final int MINIMUM_SPELERS = 2;
+	private Pot pot;
+	private int spelerAanZet;
 	
 	public Spel() {
 		
@@ -86,6 +89,39 @@ public class Spel {
 			return true;
 		}
 		return false;
+	}
+	
+	//UC2
+	/** Iemand heeft op de knop 'start spel' gedrukt, we beginnen het spel. */
+	public String startSpel() {
+		// maak de pot
+		// geef iedere speler 14 willekeurige stenen
+		// bepaal de volgorde van de spelers
+		// initialiseer de speler aan zet
+		// retourneer de naam van de speler
+		return "toto";
+	}
+	
+	private void bepaalStartStenen() {
+		
+	}
+	
+	private void randomizeVolgorderSpelers() {
+		
+	}
+	
+	public void speelBeurt() {
+		
+	}
+	
+	private boolean bepaalIsEindeSpel() {
+		return false;
+	}
+	
+	public List<int[]> berekenScores() {
+		int[] scores = {1,2,3};
+		return Arrays.asList(scores);
+		
 	}
 	
 	
