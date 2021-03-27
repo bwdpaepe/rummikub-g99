@@ -55,6 +55,8 @@ public class Pot {
 	}
 	
 	//UC2
+	//We geven altijd de eerste steen uit de pot (performant voor LinkedList
+	//We zullen de pot eerst moeten schudden alvorens de eerste steen te geven, zodat dit een willekeurig steen is
 	/** Als het spel dat vriendelijk vraagt, dan geven we een steen uit de pot. Deze steen wordt dan ook verwijderd uit de pot. */
 	public Steen geefSteen() {
 		return this.stenen.remove(0);

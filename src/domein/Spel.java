@@ -2,7 +2,10 @@ package domein;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
 import exceptions.AlleSpelersReedsAangemeldException;
 import exceptions.BuitenBereikAantalSpelersException;
@@ -14,7 +17,10 @@ public class Spel {
 	private List<Speler> spelers = new ArrayList<>();
 	public static final int MAXIMUM_SPELERS = 4;
 	public static final int MINIMUM_SPELERS = 2;
+	private final int AANTAL_STENEN_PER_SPELER_BIJ_AANVANG = 14;
+	//UC2
 	private Pot pot;
+	//UC2
 	private int spelerAanZet;
 
 	
@@ -90,32 +96,78 @@ public class Spel {
 	/** Iemand heeft op de knop 'start spel' gedrukt, we beginnen het spel. */
 	public String startSpel() {
 		// maak de pot
+		this.pot = new Pot();
 		// geef iedere speler 14 willekeurige stenen
+		// we gaan de pot eerst schudden
+		this.bepaalStartStenen();
 		// bepaal de volgorde van de spelers
+		this.randomizeVolgorderSpelers();
 		// initialiseer de speler aan zet
+		this.spelerAanZet = 0;
 		// retourneer de naam van de speler
-		return "toto";
+		return this.spelers.get(this.spelerAanZet).getSpelersnaam();
 	}
 	
+	//UC2
 	private void bepaalStartStenen() {
+		this.pot.randomizePot();
+		for(Speler spelerDieStenenKrijgt: this.spelers) {
+			IntStream.rangeClosed(1, this.AANTAL_STENEN_PER_SPELER_BIJ_AANVANG)
+			         .forEach(x->spelerDieStenenKrijgt.voegSteenToe(this.pot.geefSteen()));//ter info: x gaat van 1 tem 14, maar we hebben dat niet nodig
+		}
 		
 	}
 	
+	//UC2
+	private void bepaalVolgendeSpelerAanZet() {
+		if(this.spelerAanZet == this.aantalSpelers - 1) {
+			this.spelerAanZet = 0;
+		}
+		else {
+			++this.spelerAanZet;
+		}
+	}
+	
+	//UC2
 	private void randomizeVolgorderSpelers() {
+		Collections.shuffle(this.spelers);
+	}
+	
+	//UC2
+	public String speelBeurt() {
+		//het spel weet wie aan de beurt is
+		//die speelt
+		//bepaalIsEindeSpel
+		if(this.bepaalIsEindeSpel()) {
+			//yes
+			//berekenScores
+			List<Integer> scores = this.berekenScores();
+			//retourneer scores
+			
+		}
+		//no
+		//aan het einde van de beurt: bepaalVolgendeSpelerAanZet
+		this.bepaalVolgendeSpelerAanZet();
+		//retourneer naam van volgende speler
+		return this.spelers.get(this.spelerAanZet).getSpelersnaam();
 		
 	}
 	
-	public void speelBeurt() {
-		
-	}
-	
+	//UC2
 	private boolean bepaalIsEindeSpel() {
-		return false;
+		Predicate<Speler> winnaar = 
+				s -> (s.hoeveelStenenHeeftDeSpeler() == 0);
+		return this.spelers.stream()
+		            .anyMatch(winnaar);
+		
 	}
 	
-	public List<int[]> berekenScores() {
-		int[] scores = {1,2,3};
-		return Arrays.asList(scores);
+	//UC2
+	public List<Integer> berekenScores() {
+		List<Integer> scores = new ArrayList<>();
+		this.spelers.stream()
+					.forEach(speler->scores.add(speler.berekenScore()));
+		return scores;
 		
 	}
 	

@@ -46,5 +46,9 @@ public class Speler {
 		return 1;
 	}
 	
+	public int hoeveelStenenHeeftDeSpeler() {
+		return this.stenen.size();
+	}
+	
 }
 
