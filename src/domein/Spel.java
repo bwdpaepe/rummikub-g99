@@ -16,10 +16,7 @@ public class Spel {
 	public static final int MINIMUM_SPELERS = 2;
 	private Pot pot;
 	private int spelerAanZet;
-	
-	public Spel() {
-		
-	}
+
 	
 	public Spel(int aantalSpelers) {
 		setAantalSpelers(aantalSpelers);
