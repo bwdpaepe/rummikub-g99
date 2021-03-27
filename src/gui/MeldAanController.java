@@ -18,6 +18,7 @@ import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 import domein.DomeinController;
+import exceptions.AlleSpelersReedsAangemeldException;
 import exceptions.SpelerNietInDBException;
 import exceptions.SpelerReedsAangemeldException;
 import javafx.event.ActionEvent;
@@ -95,6 +96,11 @@ public class MeldAanController extends BorderPane implements Initializable {
 		} catch (InputMismatchException e) {
 			Alert errorAlert = new Alert(AlertType.ERROR);
 			errorAlert.setHeaderText("Invoer ongeldig!");
+			errorAlert.setContentText(e.getMessage());
+			errorAlert.showAndWait();
+		} catch (AlleSpelersReedsAangemeldException e) {
+			Alert errorAlert = new Alert(AlertType.ERROR);
+			errorAlert.setHeaderText("Alle spelers reeds aangemeld!");
 			errorAlert.setContentText(e.getMessage());
 			errorAlert.showAndWait();
 		}
