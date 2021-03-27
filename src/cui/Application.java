@@ -3,16 +3,16 @@ package cui;
 import java.text.MessageFormat;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import domein.DomeinController;
 import domein.Spel;
+import exceptions.AlleSpelersReedsAangemeldException;
 import exceptions.BuitenBereikAantalSpelersException;
 import exceptions.SpelerNietInDBException;
 import exceptions.SpelerReedsAangemeldException;
-
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class Application {
 	private DomeinController dc;
@@ -81,10 +81,10 @@ public class Application {
 		while (!iniOK);
 		
 		System.out.printf(bundle.getString("geregistreerdeSpelers") + "%d\n", dc.geefAantalSpelers());
-		
-		for(int i=1; i<=dc.geefAantalSpelers(); i++) {
+		//i nog terug naar 1 initialiseren!!enkel voor exceptionTEsting
+		for(int i=0; i<=dc.geefAantalSpelers(); i++) {
 				try {
-						System.out.printf(bundle.getString("geefGebruikersnaam") + " %d:\t",i);
+						System.out.printf(bundle.getString("geefGebruikersnaam") + " %d:\t\t",i);
 						spelersnaam = input.nextLine();
 						System.out.printf(bundle.getString("geefWachtwoord") + " %d:\t",i);
 						wachtwoord = input.nextLine();
@@ -93,6 +93,9 @@ public class Application {
 					System.out.printf("\n%s\n", e.getMessage());
 					i--;
 				}	
+				catch (AlleSpelersReedsAangemeldException e) {
+					System.out.printf("\n%s\n", e.getMessage());
+				}
 		}	
 		
 	}

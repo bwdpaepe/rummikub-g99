@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import exceptions.AlleSpelersReedsAangemeldException;
 import exceptions.BuitenBereikAantalSpelersException;
-import exceptions.SpelerNietInDBException;
 import exceptions.SpelerReedsAangemeldException;
 
 public class Spel {
@@ -48,7 +48,8 @@ public class Spel {
 	//}
 	
 	//UC1
-	public void voegSpelerToe(Speler speler) throws SpelerReedsAangemeldException   {
+	public void voegSpelerToe(Speler speler) throws SpelerReedsAangemeldException, AlleSpelersReedsAangemeldException   {
+		if (spelers.size() == aantalSpelers) throw new AlleSpelersReedsAangemeldException(String.format("Het aantal deelnemers was reeds aangemeld!"));
 		checkReedsAangemeld(speler.getSpelersnaam());
 		speler.resetWachtwoord();
 		spelers.add(speler);
@@ -83,12 +84,9 @@ public class Spel {
 		}
 		return spelersnamen;
 	} 
-	//hier exception toevoegen indien alle spelers reeds aangemeld
+	//feedbcak was om hier exception toevoegen indien alle spelers reeds aangemeld maar gedaan in voegspelertoe
 	public boolean bepaalAlleSpelersAangemeld() {
-		if(spelers.size() == this.aantalSpelers) {
-			return true;
-		}
-		return false;
+		return (spelers.size() == this.aantalSpelers);
 	}
 	
 	//UC2

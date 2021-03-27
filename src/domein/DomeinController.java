@@ -2,6 +2,7 @@ package domein;
 
 import java.util.List;
 
+import exceptions.AlleSpelersReedsAangemeldException;
 import exceptions.SpelerNietInDBException;
 import exceptions.SpelerReedsAangemeldException;
 
@@ -21,7 +22,7 @@ public class DomeinController {
 	}
 	
 	//UC1
-	public void meldAan( String spelersnaam, String wachtwoord) throws SpelerNietInDBException, SpelerReedsAangemeldException {
+	public void meldAan( String spelersnaam, String wachtwoord) throws SpelerNietInDBException, SpelerReedsAangemeldException, AlleSpelersReedsAangemeldException {
 		Speler nieuweSpeler = spelerRepo.zoekSpeler(spelersnaam, wachtwoord); 
 		spel.voegSpelerToe(nieuweSpeler);
 	} 
