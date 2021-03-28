@@ -153,6 +153,15 @@ public class Application {
 		System.out.printf("\n\t" + bundle.getString("toonOverzicht"));
 		System.out.printf("\n\t" + bundle.getString("keuze"));
 		
+		//voer 1 in om het spel te spelen
+		int keuze = 0;
+		do {
+			keuze = input.nextInt();
+			System.out.println(this.dc.startSpel());
+		}while(keuze != 1);
+		
+		System.out.println(this.dc.speelBeurt());
+		
 	}
 	
 }

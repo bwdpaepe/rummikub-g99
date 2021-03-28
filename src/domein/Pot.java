@@ -21,12 +21,16 @@ public class Pot {
 	/** LinkedList bij voorkeur te gebruiken bij veel invoegen/verwijderen van elementen. */
 	public Pot() {
 		this.stenen = new LinkedList<>();
+		//klassieke implementatie
 		/*for(Kleur steenKleur: this.KLEUREN) {
-			for(int steenWaarde = this.MINIMUMNUMMERSTEEN; steenWaarde <= this.MAXIMUMNUMMERSTEEN; steenWaarde ++) {
-				//IntStream
+			for(int steenWaarde = this.MINIMUMNUMMERSTEEN; steenWaarde <= this.MAXIMUMNUMMERSTEEN; steenWaarde++) {
+				for(int steenReeksnummer = 1; steenReeksnummer < this.AANTALREEKSEN; steenReeksnummer++) {
+				
+				}
 			}
 		}*/
 		
+		//streams implementatie
 		/* we vullen onze pot met 4 kleuren
 		                        x 13 waarden
 		                        x 2 reeksen
@@ -37,14 +41,12 @@ public class Pot {
 		    		                        		.forEach(steenReeksnummer->this.stenen.add(new Steen(steenWaarde, steenKleur, steenReeksnummer)))));
 		
 		/* tenslotte voegen we de 2 jokers toe aan onze pot
-		 
+		   joker krijgt waarde 25
 		*/
 		IntStream.rangeClosed(1, this.AANTALJOKERS)
 		         .forEach(steenReeksnummer->this.stenen.add(new Steen(25,Kleur.JOKER,steenReeksnummer)));
 		
-		//ToDo: test of er 106 stenen in de pot zitten
-		
-		      
+		//ToDo: test of er 106 stenen in de pot zitten      
 	}
 	
 	

@@ -46,5 +46,18 @@ public class DomeinController {
 	//	spel.stelAantalSpelersIn(aantalSpelers);
 	//} 
 	
+	//UC2
+	/** Iemand heeft op de knop 'start spel' gedrukt, we vragen de klasse spel om een spel te starten.
+	 * We krijgen naam van de volgende speler terug, of alle spelers met hun score als het spel gedaan is. */
+	public String startSpel() {
+		return this.spel.startSpel();
+	}
+	
+	//UC2
+	/** De speler aan zet heeft via de UI laten weten dat hij een beurt wil spelen */
+	public String speelBeurt() {
+		return this.spel.speelBeurt();
+	}
+	
 	
 }

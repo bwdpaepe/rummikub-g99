@@ -93,23 +93,25 @@ public class Spel {
 	}
 	
 	//UC2
-	/** Iemand heeft op de knop 'start spel' gedrukt, we beginnen het spel. */
+	/** Iemand heeft op de knop 'start spel' gedrukt, we beginnen het spel.
+	 * We geven naam van de volgende speler terug, of alle spelers met hun score als het spel gedaan is. */
 	public String startSpel() {
 		// maak de pot
 		this.pot = new Pot();
 		// geef iedere speler 14 willekeurige stenen
-		// we gaan de pot eerst schudden
 		this.bepaalStartStenen();
 		// bepaal de volgorde van de spelers
 		this.randomizeVolgorderSpelers();
 		// initialiseer de speler aan zet
 		this.spelerAanZet = 0;
-		// retourneer de naam van de speler
+		// retourneer de naam van de speler aan zet
 		return this.spelers.get(this.spelerAanZet).getSpelersnaam();
 	}
 	
 	//UC2
+	/** Geef iedere speler 14 willekeurige stenen */
 	private void bepaalStartStenen() {
+		// we gaan de pot eerst schudden
 		this.pot.randomizePot();
 		for(Speler spelerDieStenenKrijgt: this.spelers) {
 			IntStream.rangeClosed(1, this.AANTAL_STENEN_PER_SPELER_BIJ_AANVANG)
@@ -119,6 +121,13 @@ public class Spel {
 	}
 	
 	//UC2
+	/** We schudden éénmalig de spelers door elkaar zodat ze in een willekeurige volgorde staan en in die volgorde hun beurt spelen */
+	private void randomizeVolgorderSpelers() {
+		Collections.shuffle(this.spelers);
+	}
+	
+	//UC2
+	/** Aan het einde van een beurt, indien er geen winnaar is, bepalen we hier de volgende speler aan zet */
 	private void bepaalVolgendeSpelerAanZet() {
 		if(this.spelerAanZet == this.aantalSpelers - 1) {
 			this.spelerAanZet = 0;
@@ -126,26 +135,30 @@ public class Spel {
 		else {
 			++this.spelerAanZet;
 		}
-	}
+	}	
 	
 	//UC2
-	private void randomizeVolgorderSpelers() {
-		Collections.shuffle(this.spelers);
-	}
-	
-	//UC2
+	/** De speler aan zet speelt een beurt, het systeem kijkt of er een winnaar is, en retourneert de scores of de naam van de volgende speler aan zet al naargelang  */
 	public String speelBeurt() {
-		//het spel weet wie aan de beurt is
-		//die speelt
+		//het spel weet wie aan de beurt is, namelijk this.spelerAanZet
+		
+		//die speelt => UC3
+		
 		//bepaalIsEindeSpel
+		//na elke speelbeurt moeten we evalueren of het einde van het spel bereikt is
 		if(this.bepaalIsEindeSpel()) {
-			//yes
+			//ja: einde spel bereikt
 			//berekenScores
-			List<Integer> scores = this.berekenScores();
+			this.berekenScores();
 			//retourneer scores
+			String output = "";
+			for(Speler spelerMetScore: this.spelers) {
+				output += String.format("Speler %s heeft als score %d%n", spelerMetScore.getSpelersnaam(), spelerMetScore.getScore());
+			}
+			return output;
 			
 		}
-		//no
+		//nee: einde spel niet bereikt, we spelen verder
 		//aan het einde van de beurt: bepaalVolgendeSpelerAanZet
 		this.bepaalVolgendeSpelerAanZet();
 		//retourneer naam van volgende speler
@@ -154,6 +167,7 @@ public class Spel {
 	}
 	
 	//UC2
+	/** controleer of er een speler is die geen stenen meer heeft. Ja: dan is er een winnaar en eindigt het spel (return true) */
 	private boolean bepaalIsEindeSpel() {
 		Predicate<Speler> winnaar = 
 				s -> (s.hoeveelStenenHeeftDeSpeler() == 0);
@@ -163,12 +177,27 @@ public class Spel {
 	}
 	
 	//UC2
-	public List<Integer> berekenScores() {
-		List<Integer> scores = new ArrayList<>();
-		this.spelers.stream()
-					.forEach(speler->scores.add(speler.berekenScore()));
-		return scores;
+	/** het spel is ten einde, bereken de scores van alle spelers */
+	public void berekenScores() {
+		//we sorteren de spelers van meeste naar minste (0) stenen
+		//zo kunnen we de strafpunten bijhouden en meegeven aan de laatste speler (de winnaar)
+		//we zetten de list om naar een array (voor de sort)
+		Speler[] arraySpelers = new Speler[this.aantalSpelers];
+		arraySpelers = this.spelers.toArray(arraySpelers);
+		//sorteren, reverse, want we willen de grootste eerst => descending
+		Arrays.sort(arraySpelers, Collections.reverseOrder());
 		
+		int strafpunten = 0;
+		//we itereren over alle geordende spelers, behalve de laatste (de winaar) 
+		for(int i = 0; i < arraySpelers.length - 1; i++) {
+			arraySpelers[i].berekenScore(0);
+			//we houden alle strafpunten bij en tellen ze op
+			strafpunten += Math.abs(arraySpelers[i].getScore());
+		}
+		//we geven alle strafpunten mee aan de winnaar
+		arraySpelers[arraySpelers.length - 1].berekenScore(strafpunten);
+		
+		//todo: schrijf test voor bereken scores
 	}
 	
 	
