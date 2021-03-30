@@ -1,6 +1,7 @@
 package cui;
 
 import java.text.MessageFormat;
+import java.util.IllegalFormatException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Locale;
@@ -35,6 +36,7 @@ public class Application {
 		banner();
 		toonSpelerslijst();
 		toonKeuzemenu();
+		
 	}
 	
 
@@ -154,14 +156,72 @@ public class Application {
 		System.out.printf("\n\t" + bundle.getString("keuze"));
 		
 		//voer 1 in om het spel te spelen
+		//voer 2 in om het overzicht te zien
 		int keuze = 0;
 		do {
-			keuze = input.nextInt();
-			System.out.println(this.dc.startSpel());
-		}while(keuze != 1);
-		
-		System.out.println(this.dc.speelBeurt());
+			try {
+				System.out.print("Voer uw keuze in: ");
+				keuze = input.nextInt();
+				switch(keuze) {
+				case 1: 
+					this.startSpel();
+					break;
+				case 2: 
+					// ToDo
+					break;
+				default:
+					// do nothing
+				}
+			}
+			catch(IllegalFormatException e) {
+				System.err.println(e.getMessage());
+			}
+		}while(keuze != 1 || keuze != 2);
 		
 	}
 	
+	//UC2
+	private void startSpel() {
+		System.out.println(this.dc.startSpel());
+		int keuze = 0;
+		do {
+			try {
+				System.out.print("Voer 1 in om een beurt te spelen: ");
+				keuze = input.nextInt();
+				if(keuze == 1) {
+					this.speelBeurt();
+				}
+			}
+			catch(IllegalFormatException e) {
+				System.err.println(e.getMessage());
+			}
+		}while(keuze != 1);
+		
+	}
+	
+	//UC2
+	private void speelBeurt() {
+		String output = this.dc.speelBeurt();
+		if(this.dc.geefSpelersnamen().contains(output)) {
+			// we spelen nog een beurt
+			System.out.println(output);
+			int keuze = 0;
+			do {
+				try {
+					System.out.print("Voer 1 in om een beurt te spelen: ");
+					keuze = input.nextInt();
+					if(keuze == 1) {
+						this.speelBeurt();
+					}
+				}
+				catch(IllegalFormatException e) {
+					System.err.println(e.getMessage());
+				}
+			}while(keuze != 1);
+		}
+		else {
+			// we tonen de score
+			System.out.println(output);
+		}
+	}
 }
