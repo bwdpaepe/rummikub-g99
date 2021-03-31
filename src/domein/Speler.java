@@ -77,26 +77,6 @@ public class Speler implements Comparable<Speler>{
 	}
 
 	//UC2
-	@Override
-	public int hashCode() {
-		return Objects.hash(stenen);
-	}
-
-	//UC2
-	//2 spelers zijn gelijk indien het aantal stenen dat ze bezitten dezelfde is
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Speler other = (Speler) obj;
-		return stenen.size() == other.stenen.size();
-	}
-	
-	//UC2
 	//laat toe om spelers te sorteren op basis van het aantal stenen dat ze bezitten
 	@Override
 	public int compareTo(Speler o) {

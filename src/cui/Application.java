@@ -170,7 +170,11 @@ public class Application {
 					// ToDo
 					break;
 				default:
-					// do nothing
+					// toon keuzemenu nog eens
+					System.out.printf("\n" + bundle.getString("keuzemenu"));
+					System.out.printf("\n\t" +bundle.getString("speelSpel"));
+					System.out.printf("\n\t" + bundle.getString("toonOverzicht"));
+					System.out.printf("\n\t" + bundle.getString("keuze"));
 				}
 			}
 			catch(IllegalFormatException e) {
