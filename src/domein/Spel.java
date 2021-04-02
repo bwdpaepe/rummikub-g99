@@ -1,9 +1,11 @@
 package domein;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
@@ -18,26 +20,23 @@ public class Spel {
 	public static final int MAXIMUM_SPELERS = 4;
 	public static final int MINIMUM_SPELERS = 2;
 	private final int AANTAL_STENEN_PER_SPELER_BIJ_AANVANG = 14;
+	//private ResourceBundle bundle;
+	//MessageFormat messageForm = new MessageFormat("");
 	//UC2
 	private Pot pot;
 	//UC2
 	private int spelerAanZet;
 
-	
+	//UC1
 	public Spel(int aantalSpelers) {
 		setAantalSpelers(aantalSpelers);
-		// te wissen enkel om te testen zonder repo
 	}
 
 	public int getAantalSpelers() {
 		return aantalSpelers;
 	}
 
-/* vorige versie setter Aantalspelers
-	private void setAantalSpelers(int aantalSpelers) {
-		this.aantalSpelers = aantalSpelers;
-	}
-*/
+	//UC1
 	private void setAantalSpelers(int aantalSpelers){
         if (aantalSpelers < MINIMUM_SPELERS || aantalSpelers > MAXIMUM_SPELERS)
             throw new BuitenBereikAantalSpelersException
@@ -45,10 +44,6 @@ public class Spel {
                 + "interval [%d,%d] liggen!", MINIMUM_SPELERS, MAXIMUM_SPELERS));
         this.aantalSpelers = aantalSpelers;
     }
-	
-	//public void stelAantalSpelersIn(int aantalSpelers){
-	//setAantalSpelers(aantalSpelers);
-	//}
 	
 	//UC1
 	public void voegSpelerToe(Speler speler) throws SpelerReedsAangemeldException, AlleSpelersReedsAangemeldException   {
@@ -69,12 +64,17 @@ public class Spel {
 	}
 	*/
 	
+	
+	
+	
 	//UC1
 	private void checkReedsAangemeld(String spelersnaam) throws SpelerReedsAangemeldException {
 		for(Speler speler:spelers) {
 			if (speler.getSpelersnaam().equals(spelersnaam)) {
 				throw new SpelerReedsAangemeldException(
-							String.format("De Speler/paswoord combinatie is reeds aangemeld in het spel!"));			
+							String.format("De Speler/paswoord combinatie is reeds aangemeld in het spel!")
+						//String.format(bundle.getString("spelerReedsAanwezig"))
+						);			
 				} 	
 		}
 	}
@@ -87,7 +87,7 @@ public class Spel {
 		}
 		return spelersnamen;
 	} 
-	//feedbcak was om hier exception toevoegen indien alle spelers reeds aangemeld maar gedaan in voegspelertoe
+	//feedback docent was om hier exception toe te voegen indien alle spelers reeds aangemeld maar exception werd gedaan in voegspelertoe()
 	public boolean bepaalAlleSpelersAangemeld() {
 		return (spelers.size() == this.aantalSpelers);
 	}

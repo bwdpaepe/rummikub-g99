@@ -19,7 +19,8 @@ public class Application {
 	private DomeinController dc;
 	private Scanner input = new Scanner(System.in);
 	private Locale l;
-	private ResourceBundle bundle;
+	//even public gemaakt
+	public ResourceBundle bundle;
 	MessageFormat messageForm = new MessageFormat("");
 	Object[] argSpelers = {Spel.MINIMUM_SPELERS, Spel.MAXIMUM_SPELERS}; // bij dynamische getallen nieuw object aanmaken
 
@@ -83,8 +84,7 @@ public class Application {
 		while (!iniOK);
 		
 		System.out.printf(bundle.getString("geregistreerdeSpelers") + "%d\n", dc.geefAantalSpelers());
-		//i nog terug naar 1 initialiseren!!enkel voor exceptionTEsting
-		for(int i=0; i<=dc.geefAantalSpelers(); i++) {
+		for(int i=1; i<=dc.geefAantalSpelers(); i++) {
 				try {
 						System.out.printf(bundle.getString("geefGebruikersnaam") + " %d:\t\t",i);
 						spelersnaam = input.nextLine();
