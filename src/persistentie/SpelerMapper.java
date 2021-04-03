@@ -8,8 +8,11 @@ import java.sql.SQLException;
 
 import domein.Speler;
 import exceptions.SpelerNietInDBException;
+import talen.Language;
 	
 public class SpelerMapper {
+	
+	private Language language = Language.getInstance();
 	
 	public SpelerMapper() {
 		
@@ -34,7 +37,9 @@ public class SpelerMapper {
 						String ww = rs.getString(2);
 						return new Speler(naam, ww);
 					}
-					throw new SpelerNietInDBException("De Speler/paswoord combinatie is niet aanwezig in de database!");
+					throw new SpelerNietInDBException(String.format(language.getString("spelerNietInDB")));
+					//throw new SpelerNietInDBException("De Speler/paswoord combinatie is niet aanwezig in de database!");
+					
 //					rs.next();
 //					int count = rs.getInt(1);
 //					if(count == 1)

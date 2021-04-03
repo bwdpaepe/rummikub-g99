@@ -19,11 +19,9 @@ import talen.Language;
 public class Application {
 	private DomeinController dc;
 	private Scanner input = new Scanner(System.in);
-	private Locale l;
-	//even public gemaakt
-	public ResourceBundle bundle;
-	MessageFormat messageForm = new MessageFormat("");
-	Object[] argSpelers = {Spel.MINIMUM_SPELERS, Spel.MAXIMUM_SPELERS}; // bij dynamische getallen nieuw object aanmaken
+	private Language language = Language.getInstance();
+	private MessageFormat messageForm = new MessageFormat("");
+	private Object[] argSpelers = {Spel.MINIMUM_SPELERS, Spel.MAXIMUM_SPELERS}; // bij dynamische getallen nieuw object aanmaken
 
 	public Application(DomeinController dc) {
 		this.dc = dc;
@@ -50,11 +48,11 @@ public class Application {
 		boolean lang_nok = true;
 		while(lang_nok) {
 			String taal = input.next();
-			if (taal.equals("ENG")) { 
+			if (taal.toUpperCase().equals("ENG")) { 
 				lang = "en"; 
 				country = "US";
 				lang_nok = false;
-			} else if (taal.equals("NL")) { 
+			} else if (taal.toUpperCase().equals("NL")) { 
 				lang = "nl"; 
 				country = "BE";
 				lang_nok = false;
@@ -63,9 +61,8 @@ public class Application {
 			}
 		}
 		
-		this.l = new Locale(lang, country);
-		this.bundle = ResourceBundle.getBundle("talen.ApplicationMessage", l);
-		Language language = Language.getInstance();
+		Locale l = new Locale(lang, country);
+		ResourceBundle bundle = ResourceBundle.getBundle("talen.ApplicationMessage", l);
 		language.setBundle(bundle);
 	}
 	
@@ -86,12 +83,12 @@ public class Application {
 			}
 		while (!iniOK);
 		
-		System.out.printf(bundle.getString("geregistreerdeSpelers") + "%d\n", dc.geefAantalSpelers());
-		for(int i=1; i<=dc.geefAantalSpelers(); i++) {
+		System.out.printf(language.getString("geregistreerdeSpelers") + "%d\n", dc.geefAantalSpelers());
+		for(int i=0; i<=dc.geefAantalSpelers(); i++) {
 				try {
-						System.out.printf(bundle.getString("geefGebruikersnaam") + " %d:\t\t",i);
+						System.out.printf(language.getString("geefGebruikersnaam") + " %d:\t\t",i);
 						spelersnaam = input.nextLine();
-						System.out.printf(bundle.getString("geefWachtwoord") + " %d:\t",i);
+						System.out.printf(language.getString("geefWachtwoord") + " %d:\t",i);
 						wachtwoord = input.nextLine();
 						dc.meldAan(spelersnaam, wachtwoord);
 				} catch (SpelerNietInDBException|SpelerReedsAangemeldException e) {
@@ -108,10 +105,10 @@ public class Application {
 	//UC1
 	private void toonSpelerslijst() {
 		List<String> spelerslijst = dc.geefSpelersnamen(); 
-		System.out.printf("\n\n" + bundle.getString("aangemeldeSpelers") + "\n");
+		System.out.printf("\n\n" + language.getString("aangemeldeSpelers") + "\n");
 		int teller=1;
 		for(String naam:spelerslijst){
-            System.out.printf("\t"+ bundle.getString("speler") + "%d: %s \n",teller++, naam);
+            System.out.printf("\t"+ language.getString("speler") + "%d: %s \n",teller++, naam);
         }
 	}
 	
@@ -134,7 +131,7 @@ public class Application {
 		boolean aantalNOK = true;
 		int aantalSpelers = 0;
 		do {
-			try {messageForm.applyPattern(bundle.getString("vragenAantalSpelers"));
+			try {messageForm.applyPattern(language.getString("vragenAantalSpelers"));
 				System.out.printf(messageForm.format(argSpelers));
 				 aantalSpelers = input.nextInt();
 				 aantalNOK = false;
@@ -142,7 +139,7 @@ public class Application {
 				 input.nextLine();
 			} catch (InputMismatchException inputMismatch) {
 				input.nextLine();
-				System.out.printf(bundle.getString("verkeerdeInputAantalSpelers"),Spel.MINIMUM_SPELERS,Spel.MAXIMUM_SPELERS);}
+				System.out.printf(language.getString("verkeerdeInputAantalSpelers"),Spel.MINIMUM_SPELERS,Spel.MAXIMUM_SPELERS);}
 			  //catch (BuitenBereikAantalSpelersException e){ 
 				//  System.out.println(e.getMessage());
 				//}
@@ -153,10 +150,7 @@ public class Application {
 	
 	//UC1
 	private void toonKeuzemenu(){
-		System.out.printf("\n" + bundle.getString("keuzemenu"));
-		System.out.printf("\n\t" +bundle.getString("speelSpel"));
-		System.out.printf("\n\t" + bundle.getString("toonOverzicht"));
-		System.out.printf("\n\t" + bundle.getString("keuze"));
+		printKeuzemenu();
 		
 		//voer 1 in om het spel te spelen
 		//voer 2 in om het overzicht te zien
@@ -174,10 +168,7 @@ public class Application {
 					break;
 				default:
 					// toon keuzemenu nog eens
-					System.out.printf("\n" + bundle.getString("keuzemenu"));
-					System.out.printf("\n\t" +bundle.getString("speelSpel"));
-					System.out.printf("\n\t" + bundle.getString("toonOverzicht"));
-					System.out.printf("\n\t" + bundle.getString("keuze"));
+					printKeuzemenu();
 				}
 			}
 			catch(IllegalFormatException e) {
@@ -185,6 +176,13 @@ public class Application {
 			}
 		}while(keuze != 1 || keuze != 2);
 		
+	}
+	
+	private void printKeuzemenu() {
+		System.out.printf("\n" + language.getString("keuzemenu"));
+		System.out.printf("\n\t" +language.getString("speelSpel"));
+		System.out.printf("\n\t" + language.getString("toonOverzicht"));
+		System.out.printf("\n\t" + language.getString("keuze"));
 	}
 	
 	//UC2

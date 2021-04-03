@@ -1,4 +1,4 @@
-module rummikub_g99 {
+open module rummikub_g99 {
 	exports persistentie;
 	exports cui;
 	exports talen;
@@ -12,4 +12,5 @@ module rummikub_g99 {
 	requires javafx.fxml;
 	requires javafx.graphics;
 	requires javafx.base;
+	requires org.junit.jupiter.api;
 }
