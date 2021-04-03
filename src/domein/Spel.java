@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
 import exceptions.AlleSpelersReedsAangemeldException;
 import exceptions.BuitenBereikAantalSpelersException;
 import exceptions.SpelerReedsAangemeldException;
+import talen.Language;
 
 public class Spel {
 
