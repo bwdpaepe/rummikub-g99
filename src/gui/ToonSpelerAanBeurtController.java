@@ -27,6 +27,8 @@ import javafx.scene.control.Label;
 public class ToonSpelerAanBeurtController extends BorderPane implements Initializable {
 	@FXML
 	private Label lblSpelerAanZet;
+	@FXML
+	private Button btnSpeelBeurt;
 
 	private DomeinController dc;
 	

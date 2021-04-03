@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import domein.DomeinController;
@@ -28,6 +29,19 @@ import javafx.scene.control.ListView;
 
 public class ToonScoreSpelersController extends BorderPane implements Initializable {
 
+	@FXML
+	private ListView<String> lvSpelers;
+	@FXML
+	private ListView<String> lvStenen;
+	@FXML
+	private ListView<String> lvScore;
+	@FXML
+	private Label lblSpelers;
+	@FXML
+	private Label lblStenen;
+	@FXML
+	private Label lblScore;
+	
 	private DomeinController dc;
 
 	public ToonScoreSpelersController(DomeinController dc) {
@@ -46,11 +60,18 @@ public class ToonScoreSpelersController extends BorderPane implements Initializa
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// Lijst van spelers met =listView
-		ListView.getItems();
+		// Lijst van spelers met =listView  //geefSpelersnamen
+		/*List<String> spelers = this.dc.geefSpelersnamen(); 
+		lvSpelers.getItems(spelers);*/
 		
-		// Score van spelers
+		// Score van spelers //berekenScores
+		/*int scores = this.dc.berekenScore();
+		lvScore.getItems(scores);*/
 		
+		
+		// Waarde stenen
+		/*int waardeStenen = this.dc.huidigeStenen();
+		lvStenen.getItems(waardeStenen);*/
 	}
 	
 }

@@ -1,18 +1,26 @@
 package gui;
 
 import java.io.IOException;
+import java.net.URL;
+
 import domein.DomeinController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import talen.Language;
+import java.util.ResourceBundle;
 
 public class StartAanmeldenController extends BorderPane {
 	@FXML
 	private Button btnStartAanmelden;
+	@FXML
+	private MenuButton mbtnTextByController;
+	private ResourceBundle bundle;
 	
 	private DomeinController dc;
 
@@ -40,5 +48,10 @@ public class StartAanmeldenController extends BorderPane {
 		Stage stage = (Stage) this.getScene().getWindow();
         stage.setScene(newScene);
         stage.show();
+	}
+	
+	public void initialize(URL location, ResourceBundle resources) {
+		bundle = resources;
+		mbtnTextByController.setText(bundle.getString("taalknop"));
 	}
 }

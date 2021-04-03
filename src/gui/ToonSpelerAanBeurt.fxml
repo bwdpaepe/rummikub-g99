@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
@@ -45,11 +46,15 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Button fx:id="btnSpeelBeurt" mnemonicParsing="false" onAction="#btnSpeelBeurtOnAction" style="-fx-background-color: silver;" text="Speel beurt" textAlignment="CENTER" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <Button fx:id="btnSpeelBeurt" mnemonicParsing="false" onAction="#btnSpeelBeurtOnAction" style="-fx-background-color: silver;" text="Speel beurt" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </StackPane>
                </children>
             </GridPane>
             <ImageView fitHeight="246.0" fitWidth="442.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
