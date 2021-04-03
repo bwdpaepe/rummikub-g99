@@ -14,6 +14,7 @@ import exceptions.AlleSpelersReedsAangemeldException;
 import exceptions.BuitenBereikAantalSpelersException;
 import exceptions.SpelerNietInDBException;
 import exceptions.SpelerReedsAangemeldException;
+import talen.Language;
 
 public class Application {
 	private DomeinController dc;
@@ -64,6 +65,8 @@ public class Application {
 		
 		this.l = new Locale(lang, country);
 		this.bundle = ResourceBundle.getBundle("talen.ApplicationMessage", l);
+		Language language = Language.getInstance();
+		language.setBundle(bundle);
 	}
 	
 	//UC1

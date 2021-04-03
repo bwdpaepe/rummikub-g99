@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
 import exceptions.AlleSpelersReedsAangemeldException;
 import exceptions.BuitenBereikAantalSpelersException;
 import exceptions.SpelerReedsAangemeldException;
+import talen.Language;
 
 public class Spel {
 
@@ -20,8 +21,8 @@ public class Spel {
 	public static final int MAXIMUM_SPELERS = 4;
 	public static final int MINIMUM_SPELERS = 2;
 	private final int AANTAL_STENEN_PER_SPELER_BIJ_AANVANG = 14;
-	//private ResourceBundle bundle;
-	//MessageFormat messageForm = new MessageFormat("");
+	private Language bundle = Language.getInstance();
+	MessageFormat messageForm = new MessageFormat("");
 	//UC2
 	private Pot pot;
 	//UC2
@@ -72,8 +73,8 @@ public class Spel {
 		for(Speler speler:spelers) {
 			if (speler.getSpelersnaam().equals(spelersnaam)) {
 				throw new SpelerReedsAangemeldException(
-							String.format("De Speler/paswoord combinatie is reeds aangemeld in het spel!")
-						//String.format(bundle.getString("spelerReedsAanwezig"))
+							//String.format("De Speler/paswoord combinatie is reeds aangemeld in het spel!")
+						String.format(bundle.getString("spelerReedsAanwezig"))
 						);			
 				} 	
 		}
