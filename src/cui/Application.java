@@ -30,6 +30,7 @@ public class Application {
 	public void start() {
 		banner();
 		selecteerTaal();
+		//language.selecteerTaal();
 		aanmelden();
 		//Console.clear();
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -60,10 +61,10 @@ public class Application {
 				System.out.printf("Incorrecte taal ingegeven. \nkies taal/choose language (NL/ENG):");
 			}
 		}
-		
-		Locale l = new Locale(lang, country);
+		language.stelTaalIn(lang, country);
+		/*Locale l = new Locale(lang, country);
 		ResourceBundle bundle = ResourceBundle.getBundle("talen.ApplicationMessage", l);
-		language.setBundle(bundle);
+		language.setBundle(bundle);*/
 	}
 	
 	//UC1
