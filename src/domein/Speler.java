@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Speler implements Comparable<Speler>{
+public class Speler{
 
 	private String spelersnaam;
 	private String wachtwoord;
@@ -61,27 +61,15 @@ public class Speler implements Comparable<Speler>{
 	}
 	
 	//UC2
-	/** Bij het einde van het spel berekenen we de score van iedere speler */
-	public void berekenScore(int strafpunten) {
-		if(strafpunten != 0) {
-			// dit is de winnaar, die krijgt de absolute strafpunten van alle andere spelers
-			this.setScore(strafpunten);
-		}
-		else {
-			// de andere spelers krijgen strafpunten, de som van de waarde van de stenen die ze nog over hebben
-			this.setScore(stenen.stream()
-					            .mapToInt(Steen::getWaarde)
-					            .map(x -> x * (-1))
-					            .sum());
-		}
+	public int somVanStenen() {
+		return (this.stenen.stream()
+	                       .mapToInt(Steen::getWaarde)
+	                       .sum());
 	}
-
+	
 	//UC2
-	//laat toe om spelers te sorteren op basis van het aantal stenen dat ze bezitten
-	@Override
-	public int compareTo(Speler o) {
-		// TODO Auto-generated method stub
-		return this.stenen.size() - o.stenen.size();
+	public void pasScoreAan(int waarde) {
+		this.score += waarde;
 	}
 	
 	

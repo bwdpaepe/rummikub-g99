@@ -188,14 +188,14 @@ public class Application {
 	
 	//UC2
 	private void startSpel() {
-		System.out.println(this.dc.startSpel());
+		//System.out.println(this.dc.startSpel());
 		int keuze = 0;
 		do {
 			try {
 				System.out.print("Voer 1 in om een beurt te spelen: ");
 				keuze = input.nextInt();
 				if(keuze == 1) {
-					this.speelBeurt();
+					//this.speelBeurt();
 				}
 			}
 			catch(IllegalFormatException e) {
@@ -206,28 +206,28 @@ public class Application {
 	}
 	
 	//UC2
-	private void speelBeurt() {
-		String output = this.dc.speelBeurt();
-		if(this.dc.geefSpelersnamen().contains(output)) {
-			// we spelen nog een beurt
-			System.out.println(output);
-			int keuze = 0;
-			do {
-				try {
-					System.out.print("Voer 1 in om een beurt te spelen: ");
-					keuze = input.nextInt();
-					if(keuze == 1) {
-						this.speelBeurt();
-					}
-				}
-				catch(IllegalFormatException e) {
-					System.err.println(e.getMessage());
-				}
-			}while(keuze != 1);
-		}
-		else {
-			// we tonen de score
-			System.out.println(output);
-		}
-	}
+//	private void speelBeurt() {
+//		String output = this.dc.speelBeurt();
+//		if(this.dc.geefSpelersnamen().contains(output)) {
+//			// we spelen nog een beurt
+//			System.out.println(output);
+//			int keuze = 0;
+//			do {
+//				try {
+//					System.out.print("Voer 1 in om een beurt te spelen: ");
+//					keuze = input.nextInt();
+//					if(keuze == 1) {
+//						this.speelBeurt();
+//					}
+//				}
+//				catch(IllegalFormatException e) {
+//					System.err.println(e.getMessage());
+//				}
+//			}while(keuze != 1);
+//		}
+//		else {
+//			// we tonen de score
+//			System.out.println(output);
+//		}
+//	}
 }

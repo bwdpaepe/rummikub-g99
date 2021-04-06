@@ -4,8 +4,10 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import exceptions.AlleSpelersReedsAangemeldException;
@@ -21,7 +23,7 @@ public class Spel {
 	public static final int MINIMUM_SPELERS = 2;
 	private final int AANTAL_STENEN_PER_SPELER_BIJ_AANVANG = 14;
 	private Language language = Language.getInstance();
-	MessageFormat messageForm = new MessageFormat("");
+	private MessageFormat messageForm = new MessageFormat("");
 	// UC2
 	private Pot pot;
 	// UC2
@@ -48,7 +50,8 @@ public class Spel {
 
 	// UC1
 	public void voegSpelerToe(Speler speler) throws SpelerReedsAangemeldException, AlleSpelersReedsAangemeldException {
-		if (spelers.size() == aantalSpelers)
+		//if (spelers.size() == aantalSpelers)
+		if(this.bepaalAlleSpelersAangemeld())
 			throw new AlleSpelersReedsAangemeldException(String.format(language.getString("spelersReedsAangemeld")));
 		checkReedsAangemeld(speler.getSpelersnaam());
 		speler.resetWachtwoord();
@@ -91,23 +94,29 @@ public class Spel {
 
 	// UC2
 	/**
-	 * Iemand heeft op de knop 'start spel' gedrukt, we beginnen het spel. We geven
-	 * naam van de volgende speler terug, of alle spelers met hun score als het spel
-	 * gedaan is.
+	 * Iemand heeft op de knop 'start spel' gedrukt, we beginnen het spel. 
 	 */
-	public String startSpel() {
+	public void startSpel() {
 		// maak de pot
 		this.pot = new Pot();
+		// bepaal de volgorde van de spelers
+		this.randomizeVolgordeSpelers();
 		// geef iedere speler 14 willekeurige stenen
 		this.bepaalStartStenen();
-		// bepaal de volgorde van de spelers
-		this.randomizeVolgorderSpelers();
 		// initialiseer de speler aan zet
 		this.spelerAanZet = 0;
-		// retourneer de naam van de speler aan zet
-		return this.spelers.get(this.spelerAanZet).getSpelersnaam();
+		
 	}
 
+	// UC2
+	/**
+	 * We schudden éénmalig de spelers door elkaar zodat ze in een willekeurige
+	 * volgorde staan en in die volgorde hun beurt spelen
+	 */
+	private void randomizeVolgordeSpelers() {
+		Collections.shuffle(this.spelers);
+	}
+	
 	// UC2
 	/** Geef iedere speler 14 willekeurige stenen */
 	private void bepaalStartStenen() {
@@ -122,96 +131,83 @@ public class Spel {
 
 	}
 
-	// UC2
-	/**
-	 * We schudden éénmalig de spelers door elkaar zodat ze in een willekeurige
-	 * volgorde staan en in die volgorde hun beurt spelen
-	 */
-	private void randomizeVolgorderSpelers() {
-		Collections.shuffle(this.spelers);
+	//UC2
+	/** Het systeem toont de gebruikersnaam van de speler aan de beurt */
+	public String geefNaamSpelerAanBeurt() {
+		// retourneer de naam van de speler aan zet
+		return this.spelers.get(this.spelerAanZet).getSpelersnaam();
 	}
-
+			
 	// UC2
 	/**
 	 * Aan het einde van een beurt, indien er geen winnaar is, bepalen we hier de
 	 * volgende speler aan zet
 	 */
 	private void bepaalVolgendeSpelerAanZet() {
-		if (this.spelerAanZet == this.aantalSpelers - 1) {
-			this.spelerAanZet = 0;
-		} else {
-			++this.spelerAanZet;
-		}
+		this.spelerAanZet = (this.spelerAanZet + 1) % this.aantalSpelers;
 	}
 
 	// UC2
 	/**
-	 * De speler aan zet speelt een beurt, het systeem kijkt of er een winnaar is,
-	 * en retourneert de scores of de naam van de volgende speler aan zet al
+	 * aan het einde van een beurt, het systeem kijkt of er een winnaar is,
+	 * en berekent de scores of bepaalt de naam van de volgende speler aan zet al
 	 * naargelang
 	 */
-	public String speelBeurt() {
-		// het spel weet wie aan de beurt is, namelijk this.spelerAanZet
-
-		// die speelt => UC3
-
+	private void eindeBeurt() {
 		// bepaalIsEindeSpel
 		// na elke speelbeurt moeten we evalueren of het einde van het spel bereikt is
 		if (this.bepaalIsEindeSpel()) {
 			// ja: einde spel bereikt
 			// berekenScores
 			this.berekenScores();
-			// retourneer scores
-			String output = "";
-			for (Speler spelerMetScore : this.spelers) {
-				output += String.format("Speler %s heeft als score %d%n", spelerMetScore.getSpelersnaam(),
-						spelerMetScore.getScore());
-			}
-			return output;
 
 		}
 		// nee: einde spel niet bereikt, we spelen verder
 		// aan het einde van de beurt: bepaalVolgendeSpelerAanZet
-		this.bepaalVolgendeSpelerAanZet();
-		// retourneer naam van volgende speler
-		return this.spelers.get(this.spelerAanZet).getSpelersnaam();
-
+		else {
+			this.bepaalVolgendeSpelerAanZet();	
+		}
 	}
 
 	// UC2
 	/**
-	 * controleer of er een speler is die geen stenen meer heeft. Ja: dan is er een
+	 * controleer of de speler aan zet geen stenen meer heeft. Ja: dan is er een
 	 * winnaar en eindigt het spel (return true)
 	 */
 	private boolean bepaalIsEindeSpel() {
-		Predicate<Speler> winnaar = s -> (s.hoeveelStenenHeeftDeSpeler() == 0);
-		return this.spelers.stream().anyMatch(winnaar);
-
+		return (this.spelers.get(this.spelerAanZet).hoeveelStenenHeeftDeSpeler() == 0);
 	}
 
 	// UC2
 	/** het spel is ten einde, bereken de scores van alle spelers */
-	public void berekenScores() {
-		// we sorteren de spelers van meeste naar minste (0) stenen
-		// zo kunnen we de strafpunten bijhouden en meegeven aan de laatste speler (de
-		// winnaar)
-		// we zetten de list om naar een array (voor de sort)
-		Speler[] arraySpelers = new Speler[this.aantalSpelers];
-		arraySpelers = this.spelers.toArray(arraySpelers);
-		// sorteren, reverse, want we willen de grootste eerst => descending
-		Arrays.sort(arraySpelers, Collections.reverseOrder());
-
-		int strafpunten = 0;
-		// we itereren over alle geordende spelers, behalve de laatste (de winaar)
-		for (int i = 0; i < arraySpelers.length - 1; i++) {
-			arraySpelers[i].berekenScore(0);
-			// we houden alle strafpunten bij en tellen ze op
-			strafpunten += Math.abs(arraySpelers[i].getScore());
+	private void berekenScores() {
+		List<Speler> spelersGesorteerd = this.spelers.stream()
+				                                     .sorted(Comparator.comparing(Speler::hoeveelStenenHeeftDeSpeler))
+				                                     .collect(Collectors.toList());
+		// de winnaar staat nu op de eerste plaats
+		
+		int somVanStenen = 0;
+		int pluspunten = 0;
+		
+		for(Speler gesorteerdeSpeler: spelersGesorteerd) {
+			somVanStenen = gesorteerdeSpeler.somVanStenen();
+			pluspunten += somVanStenen;
+			gesorteerdeSpeler.pasScoreAan(somVanStenen * (-1));
 		}
-		// we geven alle strafpunten mee aan de winnaar
-		arraySpelers[arraySpelers.length - 1].berekenScore(strafpunten);
-
-		// todo: schrijf test voor bereken scores
+		
+		spelersGesorteerd.get(0).pasScoreAan(pluspunten);
+		
 	}
+	
+	public String geefScores() {
+		// retourneer scores
+		String output = "";
+		for (Speler spelerMetScore : this.spelers) {
+			output += String.format("Speler %s heeft als score %d%n", spelerMetScore.getSpelersnaam(),
+					spelerMetScore.getScore());
+		}
+		return output;
+	}
+	
 
 }
