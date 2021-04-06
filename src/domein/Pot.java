@@ -2,6 +2,7 @@ package domein;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -10,16 +11,22 @@ import java.util.stream.IntStream;
 public class Pot {
 	
 	private final int AANTALJOKERS = 2;
-	private final Kleur[] KLEUREN = {Kleur.ZWART,Kleur.ROOD,Kleur.BLAUW,Kleur.GEEL};
 	private final int MAXIMUMNUMMERSTEEN = 13;
 	private final int MINIMUMNUMMERSTEEN = 1;
 	private final int AANTALREEKSEN = 2;
+	private final int WAARDEJOKER = 25;
 	
 	private List<Steen> stenen;
 
 	//UC2
 	/** LinkedList bij voorkeur te gebruiken bij veel invoegen/verwijderen van elementen. */
 	public Pot() {
+		     this.genereerStenen();
+		     this.randomizePot();
+	}
+	
+	//UC2
+	private void genereerStenen() {
 		this.stenen = new LinkedList<>();
 		//klassieke implementatie
 		/*for(Kleur steenKleur: this.KLEUREN) {
@@ -35,18 +42,17 @@ public class Pot {
 		                        x 13 waarden
 		                        x 2 reeksen
 		*/
-		Arrays.stream(this.KLEUREN)
+		EnumSet.range(Kleur.ZWART,Kleur.GEEL)
 		      .forEach(steenKleur->IntStream.rangeClosed(this.MINIMUMNUMMERSTEEN, this.MAXIMUMNUMMERSTEEN)
 		    		                        .forEach(steenWaarde->IntStream.rangeClosed(1,this.AANTALREEKSEN)
-		    		                        		.forEach(steenReeksnummer->this.stenen.add(new Steen(steenWaarde, steenKleur, steenReeksnummer)))));
+		    		                        		.forEach(steenReeksnummer->this.stenen.add(new Steen(steenWaarde, steenKleur)))));
 		
 		/* tenslotte voegen we de 2 jokers toe aan onze pot
 		   joker krijgt waarde 25
 		*/
 		IntStream.rangeClosed(1, this.AANTALJOKERS)
-		         .forEach(steenReeksnummer->this.stenen.add(new Steen(25,Kleur.JOKER,steenReeksnummer)));
+		         .forEach(steenReeksnummer->this.stenen.add(new Steen(this.WAARDEJOKER,Kleur.JOKER)));
 		
-		//ToDo: test of er 106 stenen in de pot zitten      
 	}
 	
 	

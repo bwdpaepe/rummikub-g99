@@ -4,14 +4,12 @@ package domein;
 public class Steen {
 	private int waarde;
 	private Kleur kleur;
-	private int reeksnummer;
 	
 	//UC2
 	/** Constructor van Steen: argumenten waarde, kleur en reeksnummer */
-	public Steen(int waarde, Kleur kleur, int reeksnummer) {
+	public Steen(int waarde, Kleur kleur) {
 		this.setWaarde(waarde);
 		this.setKleur(kleur);
-		this.setReeksnummer(reeksnummer);
 	}
 
 	//UC2
@@ -32,16 +30,6 @@ public class Steen {
 	//UC2
 	private void setKleur(Kleur kleur) {
 		this.kleur = kleur;
-	}
-
-	//UC2
-	public int getReeksnummer() {
-		return reeksnummer;
-	}
-
-	//UC2
-	private void setReeksnummer(int reeksnummer) {
-		this.reeksnummer = reeksnummer;
 	}
 	
 }
