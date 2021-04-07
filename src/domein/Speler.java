@@ -48,19 +48,19 @@ public class Speler{
 		this.wachtwoord = "";
 	}
 	
-	//UC2
+	// UC2
 	/** bij de start van het spel krijgt iedere speler 14 stenen, 1 per keer, via deze methode */
 	public void voegSteenToe(Steen steen) {
 		this.stenen.add(steen);
 	}
 	
-	//UC2
+	// UC2
 	/** om te bepalen of het spel beëindigd is moeten we kunnen opvragen hoeveel stenen elke speler nog heeft */
 	public int hoeveelStenenHeeftDeSpeler() {
 		return this.stenen.size();
 	}
 	
-	//UC2
+	// UC2
 	public int somVanStenen() {
 		return (this.stenen.stream()
 	                       .mapToInt(Steen::getWaarde)

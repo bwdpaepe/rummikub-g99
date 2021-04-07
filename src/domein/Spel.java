@@ -27,6 +27,8 @@ public class Spel {
 	// UC2
 	private Pot pot;
 	// UC2
+	private GemeenschappelijkeVeld gemeenschappelijkeVeld;
+	// UC2
 	private int spelerAanZet;
 
 	// UC1
@@ -99,6 +101,8 @@ public class Spel {
 	public void startSpel() {
 		// maak de pot
 		this.pot = new Pot();
+		// maak het gemeenschappelijke veld
+		this.gemeenschappelijkeVeld = new GemeenschappelijkeVeld();
 		// bepaal de volgorde van de spelers
 		this.randomizeVolgordeSpelers();
 		// geef iedere speler 14 willekeurige stenen
@@ -128,13 +132,12 @@ public class Spel {
 																							// tem 14, maar we hebben
 																							// dat niet nodig
 		}
-
 	}
 
-	//UC2
+	// UC2
 	/** Het systeem toont de gebruikersnaam van de speler aan de beurt */
 	public String geefNaamSpelerAanBeurt() {
-		// retourneer de naam van de speler aan zet
+		// retourneer string met de naam van de speler aan zet
 		return this.spelers.get(this.spelerAanZet).getSpelersnaam();
 	}
 			
@@ -158,12 +161,10 @@ public class Spel {
 		// na elke speelbeurt moeten we evalueren of het einde van het spel bereikt is
 		if (this.bepaalIsEindeSpel()) {
 			// ja: einde spel bereikt
-			// berekenScores
 			this.berekenScores();
-
 		}
-		// nee: einde spel niet bereikt, we spelen verder
-		// aan het einde van de beurt: bepaalVolgendeSpelerAanZet
+		// nee: einde spel niet bereikt, we spelen volgende beurt
+		// met de volgende speler aan de beurt: bepaalVolgendeSpelerAanZet
 		else {
 			this.bepaalVolgendeSpelerAanZet();	
 		}
@@ -195,12 +196,13 @@ public class Spel {
 			gesorteerdeSpeler.pasScoreAan(somVanStenen * (-1));
 		}
 		
+		// we geven de winnaar alle pluspunten
 		spelersGesorteerd.get(0).pasScoreAan(pluspunten);
 		
 	}
 	
 	public String geefScores() {
-		// retourneer scores
+		// retourneer string met scores van alle spelers
 		String output = "";
 		for (Speler spelerMetScore : this.spelers) {
 			output += String.format("Speler %s heeft als score %d%n", spelerMetScore.getSpelersnaam(),
