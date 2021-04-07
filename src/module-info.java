@@ -1,16 +1,17 @@
-open module rummikub_g99 {
+module rummikub_g99 {
 	exports persistentie;
 	exports cui;
 	exports talen;
 	exports gui;
 	exports main;
 	exports domein;
-	
+	exports testen;
+	exports exceptions;
 
 	requires java.sql;
+	requires javafx.base;
 	requires javafx.controls;
 	requires javafx.fxml;
 	requires javafx.graphics;
-	requires javafx.base;
-	//requires org.junit.jupiter.api;
+	requires org.junit.jupiter.api;
 }

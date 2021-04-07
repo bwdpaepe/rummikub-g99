@@ -1,6 +1,6 @@
 package testen;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,47 +27,34 @@ class SpelTest {
 	//UC2
 	@Test
 	void testBerekenScores_3_spelers_retourneert_juiste_scores() {
-		// Arrange
-		Speler testSpeler1 = new Speler("Bart", "wachtwoordbart");
-		testSpeler1.voegSteenToe(new Steen(11, Kleur.BLAUW, 1));
-		testSpeler1.voegSteenToe(new Steen(4, Kleur.ZWART, 2));
-		try {
-			this.testSpel.voegSpelerToe(testSpeler1);
-		} catch (SpelerReedsAangemeldException | AlleSpelersReedsAangemeldException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		Speler testSpeler2 = new Speler("Joost", "wachtwoordjoost");
-		try {
-			this.testSpel.voegSpelerToe(testSpeler2);
-		} catch (SpelerReedsAangemeldException | AlleSpelersReedsAangemeldException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		fail("Er is geen publieke methode meer in klasse Spel om scores te testen");
 		
-		Speler testSpeler3 = new Speler("Lynn", "wachtwoordlynn");
-		testSpeler3.voegSteenToe(new Steen(1, Kleur.ROOD, 2));
-		testSpeler3.voegSteenToe(new Steen(13, Kleur.ZWART, 1));
-		testSpeler3.voegSteenToe(new Steen(2, Kleur.ROOD, 1));
-		testSpeler3.voegSteenToe(new Steen(12, Kleur.GEEL, 1));
-		testSpeler3.voegSteenToe(new Steen(3, Kleur.BLAUW, 2));
-		try {
-			this.testSpel.voegSpelerToe(testSpeler3);
-		} catch (SpelerReedsAangemeldException | AlleSpelersReedsAangemeldException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		// Act
-		this.testSpel.berekenScores();
-		
-		
-		// Assert
-		Assertions.assertEquals(46, testSpeler2.getScore());
-		Assertions.assertEquals(-15, testSpeler1.getScore());
-		Assertions.assertEquals(-31, testSpeler3.getScore());
+//		// Arrange
+//		Speler testSpeler1 = new Speler("Bart", "wachtwoordbart");
+//		testSpeler1.voegSteenToe(new Steen(11, Kleur.BLAUW));
+//		testSpeler1.voegSteenToe(new Steen(4, Kleur.ZWART));
+//		this.testSpel.voegSpelerToe(testSpeler1);
+//				
+//		Speler testSpeler2 = new Speler("Joost", "wachtwoordjoost");
+//		this.testSpel.voegSpelerToe(testSpeler2);
+//				
+//		Speler testSpeler3 = new Speler("Lynn", "wachtwoordlynn");
+//		testSpeler3.voegSteenToe(new Steen(1, Kleur.ROOD));
+//		testSpeler3.voegSteenToe(new Steen(13, Kleur.ZWART));
+//		testSpeler3.voegSteenToe(new Steen(2, Kleur.ROOD));
+//		testSpeler3.voegSteenToe(new Steen(12, Kleur.GEEL));
+//		testSpeler3.voegSteenToe(new Steen(3, Kleur.BLAUW));
+//		this.testSpel.voegSpelerToe(testSpeler3);	
+//		
+//		// Act
+		// Er is geen publieke methode meer in klasse Spel om scores te testen
+//		this.testSpel.berekenScores();
+//		
+//		// Assert
+//		Assertions.assertEquals(46, testSpeler2.getScore());
+//		Assertions.assertEquals(-15, testSpeler1.getScore());
+//		Assertions.assertEquals(-31, testSpeler3.getScore());
 	}
 
 }

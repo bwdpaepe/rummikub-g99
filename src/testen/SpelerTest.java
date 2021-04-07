@@ -23,31 +23,31 @@ class SpelerTest {
 
 	//UC2
 	@Test
-	void testBerekenScore_speler_met_5_stenen_retourneert_strafpunten() {
+	void testSomVanStenen_speler_met_5_stenen_retourneert_som() {
 		// Arrange
-		this.testSpeler.voegSteenToe(new Steen(1, Kleur.ROOD, 2));
-		this.testSpeler.voegSteenToe(new Steen(13, Kleur.ZWART, 1));
-		this.testSpeler.voegSteenToe(new Steen(2, Kleur.ROOD, 1));
-		this.testSpeler.voegSteenToe(new Steen(12, Kleur.GEEL, 1));
-		this.testSpeler.voegSteenToe(new Steen(3, Kleur.BLAUW, 2));
+		this.testSpeler.voegSteenToe(new Steen(1, Kleur.ROOD));
+		this.testSpeler.voegSteenToe(new Steen(13, Kleur.ZWART));
+		this.testSpeler.voegSteenToe(new Steen(2, Kleur.ROOD));
+		this.testSpeler.voegSteenToe(new Steen(12, Kleur.GEEL));
+		this.testSpeler.voegSteenToe(new Steen(3, Kleur.BLAUW));
 		
 		// Act
-		this.testSpeler.berekenScore(0);
+		int somVanStenen = this.testSpeler.somVanStenen();
 		
 		// Assert
-		Assertions.assertEquals(-31, this.testSpeler.getScore());
+		Assertions.assertEquals(31, somVanStenen);
 	}
 	
 	//UC2
 	@Test
-	void testBerekenScore_speler_met_0_stenen_retourneert_winpunten() {
+	void testBerekenScore_speler_met_0_stenen_retourneert_nul() {
 		// Arrange
 		
 		// Act
-		this.testSpeler.berekenScore(31);
+		int somVanStenen = this.testSpeler.somVanStenen();
 		
 		// Assert
-		Assertions.assertEquals(31, this.testSpeler.getScore());
+		Assertions.assertEquals(0, somVanStenen);
 	}
 
 }
