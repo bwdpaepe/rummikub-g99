@@ -158,7 +158,7 @@ public class Application {
 		int keuze = 0;
 		do {
 			try {
-				System.out.print("Voer uw keuze in: ");
+				System.out.print(language.getString("voerUwKeuzeIn"));
 				keuze = input.nextInt();
 				switch(keuze) {
 				case 1: 
@@ -188,11 +188,12 @@ public class Application {
 	
 	//UC2
 	private void startSpel() {
-		//System.out.println(this.dc.startSpel());
+		this.dc.startSpel();
+		System.out.println(String.format(language.getString("spelerAanDeBeurt") + "%s%n", this.dc.geefNaamSpelerAanBeurt()));
 		int keuze = 0;
 		do {
 			try {
-				System.out.print("Voer 1 in om een beurt te spelen: ");
+				System.out.print(language.getString("voer1InOmEenBeurtTeSpelen"));
 				keuze = input.nextInt();
 				if(keuze == 1) {
 					//this.speelBeurt();

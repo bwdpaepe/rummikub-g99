@@ -205,7 +205,7 @@ public class Spel {
 		// retourneer string met scores van alle spelers
 		String output = "";
 		for (Speler spelerMetScore : this.spelers) {
-			output += String.format("Speler %s heeft als score %d%n", spelerMetScore.getSpelersnaam(),
+			output += String.format(language.getString("speler") + " %s " + language.getString("heeftAlsScore") + " %d%n", spelerMetScore.getSpelersnaam(),
 					spelerMetScore.getScore());
 		}
 		return output;
