@@ -83,26 +83,34 @@ public class MeldAanController extends BorderPane implements Initializable {
 			}
 		} catch (SpelerNietInDBException e) {
 			// TODO Auto-generated catch block
-			Alert errorAlert = new Alert(AlertType.ERROR);
-			errorAlert.setHeaderText("Speler bestaat niet!");
-			errorAlert.setContentText(e.getMessage());
-			errorAlert.showAndWait();
+			int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
+			this.lblMeldAan.setText(String.format("Speler bestaat niet!%nGeef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
+			this.lblMeldAan.setStyle("-fx-text-fill: red;");
+			txfMeldAanSpelersnaam.clear();
+			txfMeldAanWachtwoord.clear();
+//			Alert errorAlert = new Alert(AlertType.ERROR);
+//			errorAlert.setHeaderText("Speler bestaat niet!");
+//			errorAlert.setContentText(e.getMessage());
+//			errorAlert.showAndWait();
 		} catch (SpelerReedsAangemeldException e) {
 			// TODO Auto-generated catch block
-			Alert errorAlert = new Alert(AlertType.ERROR);
-			errorAlert.setHeaderText("Speler is reeds aangemeld!");
-			errorAlert.setContentText(e.getMessage());
-			errorAlert.showAndWait();
+			int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
+			this.lblMeldAan.setText(String.format("Speler is reeds aangemeld!%nGeef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
+			this.lblMeldAan.setStyle("-fx-text-fill: red;");
+			txfMeldAanSpelersnaam.clear();
+			txfMeldAanWachtwoord.clear();
 		} catch (InputMismatchException e) {
-			Alert errorAlert = new Alert(AlertType.ERROR);
-			errorAlert.setHeaderText("Invoer ongeldig!");
-			errorAlert.setContentText(e.getMessage());
-			errorAlert.showAndWait();
+			int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
+			this.lblMeldAan.setText(String.format("Invoer ongeldig!%nGeef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
+			this.lblMeldAan.setStyle("-fx-text-fill: red;");
+			txfMeldAanSpelersnaam.clear();
+			txfMeldAanWachtwoord.clear();
 		} catch (AlleSpelersReedsAangemeldException e) {
-			Alert errorAlert = new Alert(AlertType.ERROR);
-			errorAlert.setHeaderText("Alle spelers reeds aangemeld!");
-			errorAlert.setContentText(e.getMessage());
-			errorAlert.showAndWait();
+			int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
+			this.lblMeldAan.setText(String.format("Alle spelers reeds aangemeld!%nGeef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
+			this.lblMeldAan.setStyle("-fx-text-fill: red;");
+			txfMeldAanSpelersnaam.clear();
+			txfMeldAanWachtwoord.clear();
 		}
 	}
 

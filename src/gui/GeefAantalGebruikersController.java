@@ -68,17 +68,21 @@ public class GeefAantalGebruikersController extends BorderPane implements Initia
 	        stage.show();
 	        
 		} catch (BuitenBereikAantalSpelersException e){ 
-			Alert errorAlert = new Alert(AlertType.ERROR);
-			errorAlert.setHeaderText("Ingevoerd aantal ongeldig!");
-			errorAlert.setContentText(e.getMessage());
-			errorAlert.showAndWait();
+			this.lblAantalSpelers.setText(String.format("Ingevoerd aantal ongeldig!%nHoeveel spelers wenst u aan te melden?\n(min=%d, max=%d)",Spel.MINIMUM_SPELERS, Spel.MAXIMUM_SPELERS));
+			this.lblAantalSpelers.setStyle("-fx-text-fill: red;");
+//			Alert errorAlert = new Alert(AlertType.ERROR);
+//			errorAlert.setHeaderText("Ingevoerd aantal ongeldig!");
+//			errorAlert.setContentText(e.getMessage());
+//			errorAlert.showAndWait();
 			
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
-			Alert errorAlert = new Alert(AlertType.ERROR);
-			errorAlert.setHeaderText("Formaat invoer ongeldig!");
-			errorAlert.setContentText(e.getMessage());
-			errorAlert.showAndWait();
+			this.lblAantalSpelers.setText(String.format("Formaat invoer ongeldig!%Hoeveel spelers wenst u aan te melden?\n(min=%d, max=%d)",Spel.MINIMUM_SPELERS, Spel.MAXIMUM_SPELERS));
+			this.lblAantalSpelers.setStyle("-fx-text-fill: red;");
+//			Alert errorAlert = new Alert(AlertType.ERROR);
+//			errorAlert.setHeaderText("Formaat invoer ongeldig!");
+//			errorAlert.setContentText(e.getMessage());
+//			errorAlert.showAndWait();
 		}
 		
 		
