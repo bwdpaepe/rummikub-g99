@@ -1,15 +1,28 @@
 package main;
-
-import cui.Application;
-import domein.DomeinController;
-
-public class StartUp {
-
-	public static void main(String[] args) {
+	
+	import javafx.application.Application;
+	import domein.DomeinController;
+	import gui.StartAanmeldenController;
+	import javafx.scene.Scene;
+	import javafx.stage.Stage;
+	
+	public class StartUp extends Application{
+	
+		@Override
+		public void start(Stage primaryStage) throws Exception 
+		{
+			
+			DomeinController dc = new DomeinController();
+			
+			Scene scene = new Scene(new StartAanmeldenController(dc));
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("Start aanmelden");
+			primaryStage.show();
+		}
 		
-		DomeinController dc = new DomeinController(); 
-		Application app = new Application(dc);
-		app.start();
+		public static void main(String[] args) {
+			
+			launch(args);
+		}
+	
 	}
-
-}
