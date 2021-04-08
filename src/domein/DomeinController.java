@@ -61,7 +61,7 @@ public class DomeinController {
 	
 	//UC2
 	/** Het systeem toont de scores van de spelers */
-	public String geefScores() {
+	public List<String> geefScores() {
 		return this.spel.geefScores();
 	}
 }
