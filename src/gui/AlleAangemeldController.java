@@ -2,6 +2,7 @@ package gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
@@ -23,13 +24,17 @@ public class AlleAangemeldController extends BorderPane implements Initializable
 	@FXML
 	private Button btnAlleAangemeldOverzicht;
 
+	private ResourceBundle bundle ;
+
 	private DomeinController dc;
 
-	public AlleAangemeldController(DomeinController dc) {
+	public AlleAangemeldController(DomeinController dc, Locale l) {
 		super();
 		this.dc = dc;
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("AlleAangemeld.fxml"));
+		ResourceBundle bundle = ResourceBundle.getBundle("talen.ApplicationMessage", l);
+		this.bundle = bundle;
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("AlleAangemeld.fxml"), this.bundle);
 		loader.setRoot(this);
 		loader.setController(this);
 		try

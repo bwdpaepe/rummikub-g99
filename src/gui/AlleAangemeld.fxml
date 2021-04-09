@@ -47,7 +47,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="TOP_LEFT" prefHeight="57.0" prefWidth="210.0" text="De volgende spelers&#10;zijn aangemeld:" wrapText="true">
+                        <Label alignment="TOP_LEFT" prefHeight="57.0" prefWidth="210.0" text="%volgendeSpelers" wrapText="true">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -60,12 +60,12 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btnAlleAangemeldSpeel" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="Speel spel">
+                        <Button fx:id="btnAlleAangemeldSpeel" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="%speelSpel">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnAlleAangemeldOverzicht" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="Toon overzicht">
+                        <Button fx:id="btnAlleAangemeldOverzicht" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="%toonOverzicht">
                            <font>
                               <Font size="18.0" />
                            </font>

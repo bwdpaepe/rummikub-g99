@@ -11,10 +11,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import talen.Language;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import domein.DomeinController;
@@ -35,12 +37,19 @@ public class MeldAanController extends BorderPane implements Initializable {
 	@FXML
 	private TextField txfMeldAanWachtwoord;
 
+	private ResourceBundle bundle ;
+
 	private DomeinController dc;
 
-	public MeldAanController(DomeinController dc) {
+	private Language language = Language.getInstance();
+
+	public MeldAanController(DomeinController dc, Locale l) {
 		super();
 		this.dc = dc;
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("MeldAan.fxml"));
+		ResourceBundle bundle = ResourceBundle.getBundle("talen.ApplicationMessage", l);
+		this.bundle = bundle;
+		language.stelTaalIn(l.getLanguage(), l.getCountry());
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("MeldAan.fxml"), this.bundle);
 		loader.setRoot(this);
 		loader.setController(this);
 		try
@@ -76,7 +85,7 @@ public class MeldAanController extends BorderPane implements Initializable {
 				txfMeldAanWachtwoord.clear();
 			}
 			else {
-				Scene newScene = new Scene(new AlleAangemeldController(this.dc));
+				Scene newScene = new Scene(new AlleAangemeldController(this.dc, this.bundle.getLocale()));
 				Stage stage = (Stage) this.getScene().getWindow();
 			       stage.setScene(newScene);
 			       stage.show();
@@ -118,7 +127,7 @@ public class MeldAanController extends BorderPane implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
-		this.lblMeldAan.setText(String.format("Geef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
+		this.lblMeldAan.setText(String.format(language.getString("geefSpelersnaam") + " %d:", aantalSpelersMomenteelAangemeld + 1));
 		
 	}
 	

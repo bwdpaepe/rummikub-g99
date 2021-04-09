@@ -60,7 +60,7 @@
                         <Button fx:id="btnMeldAan" minWidth="317.0" mnemonicParsing="false" onAction="#btnMeldAanOnAction" style="-fx-background-color: silver;" text="OK" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="txfMeldAanSpelersnaam" alignment="CENTER" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
                         <TextField fx:id="txfMeldAanWachtwoord" alignment="CENTER" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" text="spelersnaam:">
+                        <Label alignment="CENTER" text="%spelersnaam">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -68,7 +68,7 @@
                               <Insets />
                            </GridPane.margin>
                         </Label>
-                        <Label text="wachtwoord:" GridPane.rowIndex="1">
+                        <Label text="%wachtwoord" GridPane.rowIndex="1">
                            <font>
                               <Font size="18.0" />
                            </font>
