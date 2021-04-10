@@ -49,7 +49,12 @@ public class ToonSpelerAanBeurtController extends BorderPane implements Initiali
 	
 	@FXML
 	public void btnSpeelBeurtOnAction(ActionEvent event) {
-		// opvangen exeptions uit domein 
+		//Doorgaan naar volgend scherm 
+		Scene newScene = new Scene(new SpelSituatieController(this.dc));
+		Stage stage = (Stage) this.getScene().getWindow();
+        stage.setScene(newScene);
+        stage.show();
+        // opvangen exeptions uit domein ?  
 	}
 	
 	
