@@ -42,7 +42,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Speler aan zet: x" GridPane.halignment="CENTER">
+                  <Label fx:id="lblSpelerAanZet" text="Speler aan zet: X" GridPane.halignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font></Label>

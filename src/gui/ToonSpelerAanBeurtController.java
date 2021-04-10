@@ -47,12 +47,17 @@ public class ToonSpelerAanBeurtController extends BorderPane implements Initiali
 		}
 	}
 	
+	@FXML
+	public void btnSpeelBeurtOnAction(ActionEvent event) {
+		// opvangen exeptions uit domein 
+	}
+	
 	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		String spelerAanBeurt = this.dc.speelBeurt(); 
+		String spelerAanBeurt = this.dc.geefNaamSpelerAanBeurt(); 
 		this.lblSpelerAanZet.setText(String.format("Speler aan zet: %s", spelerAanBeurt));
 	}
 }

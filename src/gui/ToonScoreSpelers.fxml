@@ -24,10 +24,8 @@
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="60.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.0" minWidth="10.0" prefWidth="171.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.0" minWidth="10.0" prefWidth="176.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.0" minWidth="10.0" prefWidth="172.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.00003662109376" minWidth="10.0" prefWidth="81.60001220703126" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.0" minWidth="10.0" prefWidth="418.1999877929687" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="61.0" />
         </columnConstraints>
         <rowConstraints>
@@ -36,24 +34,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ListView fx:id="lvSpelers" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ListView fx:id="lvStenen" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ListView fx:id="lvScore" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Label fx:id="lblSpeler" text="Speler" GridPane.columnIndex="1">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblStenen" alignment="CENTER" text="Waarde stenen in bezit" GridPane.columnIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblScore" text="Score" GridPane.columnIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
+            <ListView fx:id="lvEindScores" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Eind scores" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </center>

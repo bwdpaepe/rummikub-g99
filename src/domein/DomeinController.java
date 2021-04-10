@@ -64,4 +64,7 @@ public class DomeinController {
 	public String geefScores() {
 		return this.spel.geefScores();
 	}
+	
+	//UC2
+	
 }
