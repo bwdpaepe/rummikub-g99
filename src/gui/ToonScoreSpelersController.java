@@ -18,6 +18,8 @@ import javafx.scene.layout.BorderPane;
 public class ToonScoreSpelersController extends BorderPane implements Initializable {
 	@FXML
     private ListView<?> lvEindScores;
+	@FXML
+    private ListView<?> lvGebruikersNamen;
 	
 	private DomeinController dc;
 
@@ -38,6 +40,8 @@ public class ToonScoreSpelersController extends BorderPane implements Initializa
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		ObservableList<String> namenLijst = FXCollections.observableArrayList(this.dc.geefSpelersnamen());
+		this.lvEindScores.setItems(namenLijst);
 		ObservableList<String> scoresLijst = FXCollections.observableArrayList(this.dc.geefScores());
 		this.lvEindScores.setItems(scoresLijst);
 	}
