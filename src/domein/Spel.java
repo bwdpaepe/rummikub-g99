@@ -201,15 +201,13 @@ public class Spel {
 		
 	}
 	
-	public String geefScores() {
-		// retourneer string met scores van alle spelers
-		String output = "";
+	public List<String> geefScores() {
+		List<String> scores = new ArrayList<>();
 		for (Speler spelerMetScore : this.spelers) {
-			output += String.format(language.getString("speler") + " %s " + language.getString("heeftAlsScore") + " %d%n", spelerMetScore.getSpelersnaam(),
-					spelerMetScore.getScore());
+			scores.add(String.format(language.getString("speler") + " %s " + language.getString("heeftAlsScore") + " %d%n", spelerMetScore.getSpelersnaam(),
+					spelerMetScore.getScore()));
 		}
-		return output;
+		return scores;
 	}
-	
 
 }

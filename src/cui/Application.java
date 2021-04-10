@@ -165,7 +165,7 @@ public class Application {
 					this.startSpel();
 					break;
 				case 2: 
-					// ToDo
+					this.toonOverzicht();
 					break;
 				default:
 					// toon keuzemenu nog eens
@@ -204,6 +204,15 @@ public class Application {
 			}
 		}while(keuze != 1);
 		
+	}
+	
+	//UC2
+	private void toonOverzicht() {
+		List<String> scorelijst = dc.geefScores();
+		System.out.printf("\n\n" + language.getString("scoreOverzicht") + "\n");
+		for(String score:scorelijst){
+            System.out.printf("\t%s\n", score);
+        }
 	}
 	
 	//UC2
