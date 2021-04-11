@@ -17,9 +17,9 @@ import javafx.scene.layout.BorderPane;
 
 public class ToonScoreSpelersController extends BorderPane implements Initializable {
 	@FXML
-    private ListView<?> lvEindScores;
+    private ListView<String> lvEindScores;
 	@FXML
-    private ListView<?> lvGebruikersNamen;
+    private ListView<String> lvGebruikersNamen;
 	
 	private DomeinController dc;
 
