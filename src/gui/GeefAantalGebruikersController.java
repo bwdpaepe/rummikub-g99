@@ -4,26 +4,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import talen.Language;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import domein.DomeinController;
 import domein.Spel;
 import exceptions.BuitenBereikAantalSpelersException;
-import exceptions.SpelerNietInDBException;
-import exceptions.SpelerReedsAangemeldException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -36,12 +31,19 @@ public class GeefAantalGebruikersController extends BorderPane implements Initia
 	@FXML
 	private Button btnAantalSpelers;
 
-	private DomeinController dc;
+	private ResourceBundle bundle ;
 
-	public GeefAantalGebruikersController(DomeinController dc) {
+	private DomeinController dc;
+	
+	private Language language = Language.getInstance();
+
+	public GeefAantalGebruikersController(DomeinController dc, Locale l) {
 		super();
 		this.dc = dc;
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("GeefAantalGebruikers.fxml"));
+		ResourceBundle bundle = ResourceBundle.getBundle("talen.ApplicationMessage", l);
+		this.bundle = bundle;
+		language.stelTaalIn(l.getLanguage(), l.getCountry());
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("GeefAantalGebruikers.fxml"), this.bundle);
 		loader.setRoot(this);
 		loader.setController(this);
 		try
@@ -62,7 +64,7 @@ public class GeefAantalGebruikersController extends BorderPane implements Initia
 			int aantalSpelers = Integer.parseInt(txfAantalSpelers.getText());
 			dc.initialiseerSpel(aantalSpelers);
 			
-			Scene newScene = new Scene(new MeldAanController(this.dc));
+			Scene newScene = new Scene(new MeldAanController(this.dc, this.bundle.getLocale()));
 			Stage stage = (Stage) this.getScene().getWindow();
 	        stage.setScene(newScene);
 	        stage.show();
@@ -101,8 +103,7 @@ public class GeefAantalGebruikersController extends BorderPane implements Initia
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		this.lblAantalSpelers.setText(String.format("Hoeveel spelers wenst u aan te melden?\n(min=%d, max=%d)",Spel.MINIMUM_SPELERS, Spel.MAXIMUM_SPELERS));
+		this.lblAantalSpelers.setText(String.format(language.getString("hoeveelSpelers") + "\n(min=%d, max=%d)",Spel.MINIMUM_SPELERS, Spel.MAXIMUM_SPELERS));
 		
 	}
-	
 }
