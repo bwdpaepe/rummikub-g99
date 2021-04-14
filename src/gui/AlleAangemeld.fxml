@@ -60,12 +60,12 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btnAlleAangemeldSpeel" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="%speelSpel">
+                        <Button fx:id="btnAlleAangemeldSpeel" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" onAction="#btnAlleAangemeldSpeelOnAction" style="-fx-background-color: silver;" text="%speelSpel">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnAlleAangemeldOverzicht" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" style="-fx-background-color: silver;" text="%toonOverzicht">
+                        <Button fx:id="btnAlleAangemeldOverzicht" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" onAction="#btnAlleAangemeldOverzichtOnAction" style="-fx-background-color: silver;" text="%toonOverzicht">
                            <font>
                               <Font size="18.0" />
                            </font>
