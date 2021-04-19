@@ -32,7 +32,7 @@ public class Language {
 		this.bundle = bundle;
 	}
 
-	private static Language getInstance() { // heb dit prive gezet, andere klassen moeten hier niet mee werken
+	public static Language getInstance() { 
 		return LANGUAGE_INSTANCE; 
 		
 	}
