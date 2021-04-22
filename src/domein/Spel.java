@@ -27,7 +27,7 @@ public class Spel {
 	// UC2
 	private Pot pot;
 	// UC2
-	private GemeenschappelijkeVeld gemeenschappelijkeVeld;
+	private GemeenschappelijkVeld gemeenschappelijkVeld;
 	// UC2
 	private int spelerAanZet;
 
@@ -102,7 +102,7 @@ public class Spel {
 		// maak de pot
 		this.pot = new Pot();
 		// maak het gemeenschappelijke veld
-		this.gemeenschappelijkeVeld = new GemeenschappelijkeVeld();
+		this.gemeenschappelijkVeld = new GemeenschappelijkVeld();
 		// bepaal de volgorde van de spelers
 		this.randomizeVolgordeSpelers();
 		// geef iedere speler 14 willekeurige stenen
