@@ -13,6 +13,7 @@ import talen.Language;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -36,7 +37,7 @@ public class GeefAantalGebruikersController extends BorderPane implements Initia
 	private DomeinController dc;
 	
 	private Language language = Language.getInstance();
-
+	
 	public GeefAantalGebruikersController(DomeinController dc, Locale l) {
 		super();
 		this.dc = dc;

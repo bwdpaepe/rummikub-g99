@@ -9,11 +9,10 @@ module rummikub_g99 {
 	exports exceptions;
 
 	requires java.sql;
+	requires javafx.fxml;
 	requires javafx.base;
 	requires javafx.controls;
-	requires javafx.fxml;
 	requires javafx.graphics;
-	requires org.junit.jupiter.api;
 	
 	opens main to javafx.graphics,javafx.fxml;
 	opens gui to javafx.graphics,javafx.fxml;

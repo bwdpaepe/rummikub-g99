@@ -28,15 +28,11 @@ public class Language {
 		return bundle.getString(key);
 	}
 
-	public ResourceBundle getBundle() {
-		return bundle;
-	}
-
-	public void setBundle(ResourceBundle bundle) {
+	private void setBundle(ResourceBundle bundle) {
 		this.bundle = bundle;
 	}
 
-	public static Language getInstance() {
+	public static Language getInstance() { 
 		return LANGUAGE_INSTANCE; 
 		
 	}
