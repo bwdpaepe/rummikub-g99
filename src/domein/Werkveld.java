@@ -1,7 +1,10 @@
 package domein;
 
+import java.util.List;
+
 public class Werkveld {
 	private Werkveld duplicaatWerkveld;
+	private List<Steen> stenen;
 
 	public Werkveld() {
 		
@@ -11,8 +14,8 @@ public class Werkveld {
 		
 	}
 	
-	public Steen[] getStenen() {
-		
+	public List<Steen> getStenen() {
+		return this.stenen;
 	}
 
 	

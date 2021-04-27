@@ -1,7 +1,10 @@
 package domein;
 
+import java.util.List;
+
 public class PersoonlijkeStenen {
 	private PersoonlijkeStenen duplicaatPersoonlijkeStenen;
+	private List<Steen> stenen;
 	
 	public PersoonlijkeStenen() {
 		
@@ -11,8 +14,8 @@ public class PersoonlijkeStenen {
 		
 	}
 	
-	public Steen[] getStenen() {
-		
+	public List<Steen> getStenen() {
+		return this.stenen;
 	}
 
 }

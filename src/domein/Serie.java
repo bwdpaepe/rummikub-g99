@@ -6,7 +6,7 @@ import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 public class Serie extends Reeks{
-	public Serie(int rijnummer, boolean isGewijzigd, ArrayList<Steen> stenen) {
+	public Serie(int rijnummer, boolean isGewijzigd, List<Steen> stenen) {
 		super(rijnummer, isGewijzigd, stenen);
 	}
 	

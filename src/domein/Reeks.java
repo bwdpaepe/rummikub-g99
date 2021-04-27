@@ -1,14 +1,15 @@
 package domein;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Reeks {
 	private int rijnummer;
 	private boolean isGewijzigd;
-	private ArrayList<Steen> stenen;
+	private List<Steen> stenen;
 	
 	
-	public Reeks(int rijnummer, boolean isGewijzigd, ArrayList<Steen> stenen) {
+	public Reeks(int rijnummer, boolean isGewijzigd, List<Steen> stenen) {
 		this.setRijnummer(rijnummer);
 		this.setGewijzigd(isGewijzigd);
 		this.setStenen(stenen);
@@ -29,11 +30,11 @@ public class Reeks {
 	
 	
 	
-	public ArrayList<Steen> getStenen() {
+	public List<Steen> getStenen() {
 		return this.stenen;
 	}
 
-	public void setStenen(ArrayList<Steen> stenen) {
+	public void setStenen(List<Steen> stenen) {
 		this.stenen = stenen;
 	}
 
@@ -53,14 +54,14 @@ public class Reeks {
 	}
 	
 	public Steen vervangJoker(Steen steen, int positieInReeks) {
-		
+		return this.getStenen().remove(positieInReeks);
 	}
 	private void valideerVervangJoker(Steen steen, int positieInReeks) {
 		
 	}
 	
 	public Steen steenNaarWerkveld(int positieInReeks) {
-		
+		return this.getStenen().remove(positieInReeks);
 	}
 	private void valideerSteenNaarWerkveld(int positieInReeks) {
 		

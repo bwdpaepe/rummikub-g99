@@ -19,8 +19,8 @@ public class GemeenschappelijkVeld {
 		
 	}
 	
-	public Reeks[] getReeksen() {
-		
+	public List<Reeks> getReeksen() {
+		return this.reeksen;
 	}
 	
 	public boolean bepaalGeldigeSpelsituatie() {
@@ -62,11 +62,11 @@ public class GemeenschappelijkVeld {
 	}
 	
 	public Steen vervangJoker(Steen steen, int reeksnummer, int positieInReeks) {
-		
+		return this.getReeksen().get(reeksnummer).vervangJoker(steen, positieInReeks);
 	}
 	
 	public Steen steenNaarWerveld(int reeknummer, int positieInReeks) {
-		
+		return this.getReeksen().get(reeknummer).steenNaarWerkveld(positieInReeks);
 	}
 
 		

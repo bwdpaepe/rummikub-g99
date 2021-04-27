@@ -1,10 +1,11 @@
 package domein;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Rij extends Reeks{
-	public Rij(int rijnummer, boolean isGewijzigd, ArrayList<Steen> stenen) {
+	public Rij(int rijnummer, boolean isGewijzigd, List<Steen> stenen) {
 		super(rijnummer, isGewijzigd, stenen);
 	}
 	
