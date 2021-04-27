@@ -32,13 +32,13 @@ public class GemeenschappelijkVeld {
 		while (isGeldig && iterator.hasNext()) {
 			Reeks kandidaatReeks = iterator.next();
 			// eerste proberen we een rij
-			kandidaatReeks = new Rij(kandidaatReeks.getRijnummer(), kandidaatReeks.isGewijzigd(), kandidaatReeks.getStenen());
+			kandidaatReeks = new Rij(kandidaatReeks.getRijnummer(), kandidaatReeks.isNieuw(), kandidaatReeks.getStenen());
 			isGeldig = kandidaatReeks.bepaalIsGeldig();
 			
 			
 			// indien ongeldig, dan proberen we een serie
 			if(!isGeldig) {
-				kandidaatReeks = new Serie(kandidaatReeks.getRijnummer(), kandidaatReeks.isGewijzigd(), kandidaatReeks.getStenen());
+				kandidaatReeks = new Serie(kandidaatReeks.getRijnummer(), kandidaatReeks.isNieuw(), kandidaatReeks.getStenen());
 				isGeldig = kandidaatReeks.bepaalIsGeldig();
 				if(isGeldig) {
 					this.reeksen.set(index,kandidaatReeks);

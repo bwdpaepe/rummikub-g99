@@ -1,31 +1,33 @@
 package domein;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Reeks {
 	private int rijnummer;
-	private boolean isGewijzigd;
+	private boolean isNieuw;
 	private List<Steen> stenen;
 	
 	
-	public Reeks(int rijnummer, boolean isGewijzigd, List<Steen> stenen) {
+	public Reeks(int rijnummer, boolean isNieuw, List<Steen> stenen) {
 		this.setRijnummer(rijnummer);
-		this.setGewijzigd(isGewijzigd);
+		this.setIsNieuw(isNieuw);
 		this.setStenen(stenen);
 	}
 	
 	public int getRijnummer() {
-		return rijnummer;
+		return this.rijnummer;
 	}
 	private void setRijnummer(int rijnummer) {
 		this.rijnummer = rijnummer;
 	}
-	public boolean isGewijzigd() {
-		return isGewijzigd;
+	public boolean isNieuw() {
+		return this.isNieuw;
 	}
-	private void setGewijzigd(boolean isGewijzigd) {
-		this.isGewijzigd = isGewijzigd;
+	private void setIsNieuw(boolean isNieuw) {
+		this.isNieuw = isNieuw;
 	}
 	
 	
@@ -40,7 +42,7 @@ public class Reeks {
 
 	protected boolean bepaalIsGeldig() {
 		// minimaal 3 stenen voor zowel Rij als Serie
-		if(this.stenen.size() < 3) {
+		if(this.getStenen().size() < 3) {
 			return false;
 		}
 		return true;
@@ -48,7 +50,15 @@ public class Reeks {
 	
 	public void legSteenAan(Steen steen, int positieInReeks) {
 		
+		Steen[] stenenArray = this.getStenen().toArray(new Steen[this.getStenen().size()]);
+		Steen[] stenenArrayCopyRange = Arrays.copyOfRange(stenenArray, positieInReeks-1, stenenArray.length);
+		stenenArrayCopyRange[0] = steen;
+		IntStream.rangeClosed(positieInReeks, this.getStenen().size()+1)
+		         .forEach(x -> this.getStenen().set(x, stenenArrayCopyRange[x-positieInReeks]));
+		this.valideerLegSteenAan(positieInReeks);
+		
 	}
+	
 	private void valideerLegSteenAan(int positieInReeks) {
 		
 	}

@@ -60,7 +60,15 @@ public class Serie extends Reeks{
 	}
 	
 	private  void valideerLegSteenAan(int positieInReeks) {
-		
+		if(positieInReeks == 0) {//eerste positie
+			
+		}
+		else if(positieInReeks == this.getStenen().size()-1) {//laatste positie
+			
+		}
+		else {//ergens tussenin
+			
+		}
 	}
 	
 	private  void valideerVervangJoker(int positieInReeks) {

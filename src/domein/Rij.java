@@ -40,8 +40,16 @@ public class Rij extends Reeks{
 		return isGeldig;
 	}
 	
-	private  void valideerLegSteenAan(int positieInReeks) {
-		
+	public void legSteenAan(Steen steen, int positieInReeks) {
+		super.legSteenAan(steen, positieInReeks);
+	}
+	
+	private  void valideerLegSteenAan(int positieInReeks) throws Exception {
+		//in een rij doet het er niet toe waar de steen aangelegd wordt, belangrijk is andere kleur en max 4
+		//dus bepalen of de rij geldig is
+		if(!this.bepaalIsGeldig()) {
+			throw new Exception();
+		}
 	}
 	
 	private  void valideerVervangJoker(int positieInReeks) {
