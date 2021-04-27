@@ -1,12 +1,17 @@
 package domein;
 
-public abstract class Reeks {
+import java.util.ArrayList;
+
+public class Reeks {
 	private int rijnummer;
 	private boolean isGewijzigd;
+	private ArrayList<Steen> stenen;
 	
 	
-	public Reeks() {
-		
+	public Reeks(int rijnummer, boolean isGewijzigd, ArrayList<Steen> stenen) {
+		this.setRijnummer(rijnummer);
+		this.setGewijzigd(isGewijzigd);
+		this.setStenen(stenen);
 	}
 	
 	public int getRijnummer() {
@@ -20,6 +25,24 @@ public abstract class Reeks {
 	}
 	private void setGewijzigd(boolean isGewijzigd) {
 		this.isGewijzigd = isGewijzigd;
+	}
+	
+	
+	
+	public ArrayList<Steen> getStenen() {
+		return this.stenen;
+	}
+
+	public void setStenen(ArrayList<Steen> stenen) {
+		this.stenen = stenen;
+	}
+
+	protected boolean bepaalIsGeldig() {
+		// minimaal 3 stenen voor zowel Rij als Serie
+		if(this.stenen.size() < 3) {
+			return false;
+		}
+		return true;
 	}
 	
 	public void legSteenAan(Steen steen, int positieInReeks) {
