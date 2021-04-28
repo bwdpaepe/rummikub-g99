@@ -6,18 +6,22 @@ import java.util.Objects;
 
 public class Speler{
 
+	//UC2 
 	private String spelersnaam;
 	private String wachtwoord;
-	private List<Steen> stenen;
 	private int score;
+	//UC3
+	private List<Steen> persoonlijkeStenen; // Vervangt constructor persoonlijkeStenen
+	private boolean eersteUitleg;
 
 	/** Elke speler zal ook stenen hebben: ArrayList bij voorkeur te gebruiken bij veel opzoekingen */
 	public Speler(String spelersnaam, String wachtwoord) {
 		setSpelersnaam(spelersnaam);
 		setWachtwoord(wachtwoord);
 		
-		this.stenen = new ArrayList<>();
+		this.persoonlijkeStenen = new ArrayList<>();
 		this.setScore(0);
+		this.setEersteUitleg(true);
 	}
 
 	public String getSpelersnaam() {
@@ -51,18 +55,18 @@ public class Speler{
 	// UC2
 	/** bij de start van het spel krijgt iedere speler 14 stenen, 1 per keer, via deze methode */
 	public void voegSteenToe(Steen steen) {
-		this.stenen.add(steen);
+		this.persoonlijkeStenen.add(steen);
 	}
 	
 	// UC2
 	/** om te bepalen of het spel beëindigd is moeten we kunnen opvragen hoeveel stenen elke speler nog heeft */
 	public int hoeveelStenenHeeftDeSpeler() {
-		return this.stenen.size();
+		return this.persoonlijkeStenen.size();
 	}
 	
 	// UC2
 	public int somVanStenen() {
-		return (this.stenen.stream()
+		return (this.persoonlijkeStenen.stream()
 	                       .mapToInt(Steen::getWaarde)
 	                       .sum());
 	}
@@ -72,7 +76,33 @@ public class Speler{
 		this.score += waarde;
 	}
 	
+	//UC3
+	/*
+	 * Link met stenen om lijst op te vragen. Hoeft hiervoor geen aparte klasse te definiëren. NIET aantal maar lijst
+	 * Plus duplicaat van de stenen van deze speler worden hier gemaakt. 
+	 */
+	public List<Steen> vraagAllePersoonlijkeStenenOp(){ //Vervangt getStenen uit PS
+		return persoonlijkeStenen;
+	}
 	
+	public List<Steen> maakDuplicaatPersoonlijkeStenen(){ //Vervangt methode maakDuplicaat uit PS
+		List<Steen> duplicaat = new ArrayList<>();
+		for(Steen persoonlijkeSteen: this.persoonlijkeStenen) {
+			duplicaat.add(persoonlijkeSteen);
+		}
+		return duplicaat;
+	}
+	
+	//UC3
+	public boolean getEersteUitleg() {
+		return eersteUitleg;
+	} 
+	
+	//UC3
+	// EersteUitleg: Zijn eerste uitleg  van stenen naar GemVeld moet nog gebeuren
+	public void setEersteUitleg(boolean eersteUitleg) {  
+		this.eersteUitleg = eersteUitleg;
+	}
 	
 }
 

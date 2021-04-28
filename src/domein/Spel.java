@@ -26,11 +26,13 @@ public class Spel {
 	private MessageFormat messageForm = new MessageFormat("");
 	// UC2
 	private Pot pot;
-	// UC2
 	private GemeenschappelijkVeld gemeenschappelijkVeld;
-	// UC2
 	private int spelerAanZet;
+	//UC3
+	private Werkveld werkveld;
+	private List<Steen> duplicaatStenen; // bijhouden van de aangemaakt duplicaten. Speler maak enkel duplicaat van de Lijst.
 
+	
 	// UC1
 	public Spel(int aantalSpelers) {
 		setAantalSpelers(aantalSpelers);
@@ -210,6 +212,19 @@ public class Spel {
 		return scores;
 	}
 	
-	/*toto*/
+	//UC3
+	public void startBeurt() {
+		this.duplicaatStenen = this.spelers.get(this.spelerAanZet).maakDuplicaatPersoonlijkeStenen();
+	}
+	
+	//UC3
+	public String[] geefMogelijkeActies() {
+		//Opzoeken hoe ik van enum een arrayList maak of opties weergeef.
+	}
+	
+	//UC3
+	public void geldigeSpelSituatie() {
+		// if structuur nog uitwerken
+	}
 
 }
