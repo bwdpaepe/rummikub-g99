@@ -34,8 +34,11 @@ public class Rij extends Reeks{
 	}
 	
 	//UC3
+	
+	//UC3
 	private boolean bepaalZelfdeCijferwaardes() {
 		if(super.getStenen().stream()
+				.filter(x->x.getKleur() != Kleur.JOKER)	//jokers hebben een cijferwaarde 25 en kunnen we niet gebruiken in deze controle, jokers zijn sowieso goed en kunnen we dus uitsluiten voor verdere controle
                 .map(x->x.getWaarde())
                 .collect(Collectors.toSet())
                 .size() > 1) {
@@ -46,11 +49,17 @@ public class Rij extends Reeks{
 	
 	//UC3
 	private boolean bepaalVerschillendeKleur() {
-		if(super.getStenen().stream()
+		int aantalKleuren = super.getStenen().stream()
+				.filter(x->x.getKleur() != Kleur.JOKER)	//jokers hebben een kleur JOKER en kunnen we niet gebruiken in deze controle, jokers zijn sowieso goed en kunnen we dus uitsluiten voor verdere controle
                 .map(x->x.getKleur())
-                .collect(Collectors.toSet())
-                .size() != super.getStenen().size()) {
-					return false;
+                .collect(Collectors.toSet()) //unieke kleuren
+                .size();
+		int aantalJokers =super.getStenen().stream()
+				.filter(x->x.getKleur() == Kleur.JOKER)
+                .collect(Collectors.toList()) //aantal jokers
+                .size();
+		if(aantalKleuren + aantalJokers != super.getStenen().size()) {
+			return false;
 		}
 		return true;
 	}

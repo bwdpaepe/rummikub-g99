@@ -1,5 +1,7 @@
 package domein;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
@@ -41,11 +43,17 @@ public class Serie extends Reeks{
 	
 	//UC3
 	private boolean bepaalVerschillendeCijferwaardes() {
-		if(super.getStenen().stream()
-                .map(x->x.getWaarde())
-                .collect(Collectors.toSet())
-                .size() != super.getStenen().size()) {
-					return false;
+		int aantalCijferwaardes = super.getStenen().stream()
+				.filter(x->x.getKleur() != Kleur.JOKER)	//jokers hebben een cijferwaarde 25 en kunnen we niet gebruiken in deze controle, jokers zijn sowieso goed en kunnen we dus uitsluiten voor verdere controle
+				.map(x->x.getWaarde())
+                .collect(Collectors.toSet()) //unieke cijferwaardes
+                .size();
+		int aantalJokers =super.getStenen().stream()
+				.filter(x->x.getKleur() == Kleur.JOKER)
+                .collect(Collectors.toList()) //aantal jokers
+                .size();
+		if(aantalCijferwaardes + aantalJokers != super.getStenen().size()) {
+			return false;
 		}
 		return true;
 	}
@@ -53,6 +61,7 @@ public class Serie extends Reeks{
 	//UC3
 	private boolean bepaalZelfdeKleur() {
 		if(super.getStenen().stream()
+				.filter(x->x.getKleur() != Kleur.JOKER)	//jokers hebben een kleur JOKER en kunnen we niet gebruiken in deze controle, jokers zijn sowieso goed en kunnen we dus uitsluiten voor verdere controle
                 .map(x->x.getKleur())
                 .collect(Collectors.toSet())
                 .size() > 1) {
@@ -64,15 +73,66 @@ public class Serie extends Reeks{
 	//UC3
 	private boolean bepaalAaneensluitendeCijferwaardes() {
 		boolean isGeldig = true;
-		List<Integer> cijferwaardes = super.getStenen().stream()
+		
+		// is er een joker(s)? 
+		// bepaal zijn positie(s)
+		List<Kleur> steenKleurLijst = super.getStenen().stream()
+				.map(x->x.getKleur())
+				.collect(Collectors.toList());
+		List<Integer> jokerPosities = new ArrayList<>();
+		int positieJoker = 0;
+		int offset = 0;
+		do {
+			positieJoker = this.zoekJoker(steenKleurLijst.subList(positieJoker, steenKleurLijst.size()));
+			if(positieJoker != -1) {
+				jokerPosities.add(positieJoker + offset);
+				offset += positieJoker;
+				positieJoker++;
+			}
+		}while(positieJoker != -1);
+		
+		if(jokerPosities.size() > 0) {	//joker(s)
+			List<Integer> cijferwaardes = super.getStenen().stream()
+	                .map(x->x.getWaarde())
+	                .sorted()
+	                .collect(Collectors.toList());
+			
+			Iterator<Integer> iterator = jokerPosities.iterator();
+			int old_index = 0;
+			while (isGeldig && iterator.hasNext()) {	
+				int new_index = iterator.next();
+				List<Integer> subCijferwaardes = cijferwaardes.subList(old_index, new_index);
+				isGeldig = this.checkAaneensluitendeCijferwaardes(subCijferwaardes);
+				old_index = new_index + 1;
+			}
+			List<Integer> subCijferwaardes = cijferwaardes.subList(old_index, cijferwaardes.size());
+			isGeldig = this.checkAaneensluitendeCijferwaardes(subCijferwaardes);
+		}
+		else {	//geen joker
+		
+			List<Integer> cijferwaardes = super.getStenen().stream()
                 .map(x->x.getWaarde())
                 .sorted()
                 .collect(Collectors.toList());
 		
+			isGeldig = this.checkAaneensluitendeCijferwaardes(cijferwaardes);
+		}
+		return isGeldig;
+	}
+	
+	//UC3
+	private int zoekJoker(List<Kleur> inputLijst) {
+		return inputLijst.indexOf(Kleur.JOKER);
+	}
+	
+	
+	//UC3
+	private boolean checkAaneensluitendeCijferwaardes(List<Integer> cijferwaardes) {
+		boolean isGeldig = true;
 		ListIterator<Integer> iterator = cijferwaardes.listIterator();
 		int referentiewaarde = iterator.next();
 		int nieuweWaarde;
-		
+	
 		while (isGeldig && iterator.nextIndex() < cijferwaardes.size()) {
 			nieuweWaarde = iterator.next();
 			if(referentiewaarde != nieuweWaarde - 1) {
@@ -84,7 +144,6 @@ public class Serie extends Reeks{
 		}
 		return isGeldig;
 	}
-	
 	
 	//UC3
 	private boolean valideerSerie() {
