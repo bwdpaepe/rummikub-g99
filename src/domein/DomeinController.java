@@ -65,6 +65,48 @@ public class DomeinController {
 		return this.spel.geefScores();
 	}
 	
-	//UC2
+	//UC3
+	public void startBeurt() {
+		this.spel.startBeurt();
+	}
 	
+	//UC3
+	/*ToDo
+	public List<Integer> geefSpelsituatie(){
+		return this.spel.geefSpelsituatie();
+	}
+	*/
+	
+	//UC3
+	public String[] geefMogelijkActies() {
+		return this.spel.geefMogelijkeActies();
+	}
+	
+	
+	//UC3
+	/*ToDo
+	public void beeindigBeurt() {
+		this.spel.beeindigBeurt();
+	}
+	*/
+	
+	//UC3
+	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {
+		this.spel.splitsRijOfSerie(reeksnummer, positieInReeks);
+	}
+	
+	//UC3
+	public void legSteenAan(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks) throws Exception {
+		this.spel.legSteenAan(nummerInInput, positieInInput, reeksnummer, positieInReeks);
+	}
+	
+	//UC3
+	public void vervangJoker(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks) throws Exception {
+		this.spel.vervangJoker(nummerInInput, positieInInput, reeksnummer, positieInReeks);
+	}
+	
+	//UC3
+	public void steenNaarWerkveld(int reeksnummer, int positieInReeks) throws Exception {
+		this.spel.steenNaarWerkveld(reeksnummer, positieInReeks);
+	}
 }
