@@ -220,11 +220,111 @@ public class Spel {
 	//UC3
 	public String[] geefMogelijkeActies() {
 		//Opzoeken hoe ik van enum een arrayList maak of opties weergeef.
+		// p 48, hoofdstuk 6, OOSD1
+		String [] mogelijkeActiesArray = new String [6];
+		int counter = 0;
+		for(MogelijkeActies ma: MogelijkeActies.values()) {
+			mogelijkeActiesArray[counter] = ma.name();
+			counter++;
+		}
+		return mogelijkeActiesArray;
 	}
 	
 	//UC3
 	public void geldigeSpelSituatie() {
 		// if structuur nog uitwerken
+	}
+	
+	//UC3
+	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {
+		this.gemeenschappelijkVeld.splitsRijOfSerie(reeksnummer, positieInReeks);
+	}
+	
+	//UC3
+	public void legSteenAan(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks) throws Exception {
+		//pak de steen
+		Steen steenOmAanTeLeggen;
+		//nummerInInput '0': PS
+		//nummerInInput '1': Werkveld
+		switch(nummerInInput) {
+		case 0: 
+			steenOmAanTeLeggen = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp().remove(positieInInput);
+			break;
+		default:
+			steenOmAanTeLeggen = this.werkveld.getStenenWerkveld().remove(positieInInput);
+		}
+		
+		try {
+			this.gemeenschappelijkVeld.legSteenAan(steenOmAanTeLeggen, reeksnummer, positieInReeks);
+		} catch (Exception e) {
+			// we kunnen de steen niet aanleggen
+			// nu moeten we hem terugleggen vanwaar hij kwam
+			switch(nummerInInput) {
+			case 0: 
+				List<Steen> psLijst = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
+				this.legSteenTerug(psLijst, positieInInput, steenOmAanTeLeggen);
+				break;
+			default:
+				List<Steen> werkveldLijst = this.werkveld.getStenenWerkveld();
+				this.legSteenTerug(werkveldLijst, positieInInput, steenOmAanTeLeggen);
+			}
+			
+			//We gooien de exception verder
+			throw e;
+		}
+	}
+	
+	//UC3
+	private void legSteenTerug(List<Steen> teruglegLijst, int positieInInput, Steen steenOmAanTeLeggen) {
+		// omzetten naar array om dan de staart te kopieren
+		Steen[] stenenArray = teruglegLijst.toArray(new Steen[teruglegLijst.size()]);
+		// staart kopieren
+		Steen[] stenenArrayCopyRange = Arrays.copyOfRange(stenenArray, positieInInput-1, stenenArray.length);
+		// steen aanleggen
+		stenenArrayCopyRange[0] = steenOmAanTeLeggen;
+		// staart terug aan de reeks hangen
+		IntStream.rangeClosed(positieInInput, teruglegLijst.size()+1)
+		         .forEach(x -> teruglegLijst.set(x, stenenArrayCopyRange[x-positieInInput]));
+	}
+	
+	//UC3
+	public void vervangJoker(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks) throws Exception {
+		//pak de steen
+		Steen steenOmJokerTeVervangen;
+		//nummerInInput '0': PS
+		//nummerInInput '1': Werkveld
+		switch(nummerInInput) {
+		case 0: 
+			steenOmJokerTeVervangen = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp().remove(positieInInput);
+			break;
+		default:
+			steenOmJokerTeVervangen = this.werkveld.getStenenWerkveld().remove(positieInInput);
+		}
+		
+		try {
+			this.gemeenschappelijkVeld.vervangJoker(steenOmJokerTeVervangen, reeksnummer, positieInReeks);
+		} catch (Exception e) {
+			// we kunnen de steen niet aanleggen
+			// nu moeten we hem terugleggen vanwaar hij kwam
+			switch(nummerInInput) {
+			case 0: 
+				List<Steen> psLijst = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
+				this.legSteenTerug(psLijst, positieInInput, steenOmJokerTeVervangen);
+				break;
+			default:
+				List<Steen> werkveldLijst = this.werkveld.getStenenWerkveld();
+				this.legSteenTerug(werkveldLijst, positieInInput, steenOmJokerTeVervangen);
+			}
+			
+			//We gooien de exception verder
+			throw e;
+		}			
+	}
+	
+	//UC3
+	public void steenNaarWerkveld(int reeksnummer, int positieInReeks) throws Exception {
+		// in geval van problemen moeten we hier niets terugleggen, we kunnen de exception gewoon verder gooien
+		this.werkveld.voegSteenToeWerkveld(this.gemeenschappelijkVeld.steenNaarWerkveld(reeksnummer, positieInReeks));
 	}
 
 }

@@ -16,7 +16,7 @@ public class GemeenschappelijkVeld {
 	
 	//UC3
 	public GemeenschappelijkVeld() {
-		
+		this.reeksen = new ArrayList<>();
 	}
 
 	//UC3
