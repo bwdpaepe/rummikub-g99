@@ -45,14 +45,34 @@ public class Pot {
 		EnumSet.range(Kleur.ZWART,Kleur.GEEL)
 		      .forEach(steenKleur->IntStream.rangeClosed(this.MINIMUMNUMMERSTEEN, this.MAXIMUMNUMMERSTEEN)
 		    		                        .forEach(steenWaarde->IntStream.rangeClosed(1,this.AANTALREEKSEN)
-		    		                        		.forEach(steenReeksnummer->this.stenen.add(new Steen(steenWaarde, steenKleur)))));
+		    		                        		.forEach(steenReeksnummer->this.stenen.add(new Steen(steenWaarde, steenKleur, this.bepaalAfbeelding(steenWaarde, steenKleur))))));
 		
 		/* tenslotte voegen we de 2 jokers toe aan onze pot
 		   joker krijgt waarde 25
 		*/
 		IntStream.rangeClosed(1, this.AANTALJOKERS)
-		         .forEach(steenReeksnummer->this.stenen.add(new Steen(this.WAARDEJOKER,Kleur.JOKER)));
+		         .forEach(steenReeksnummer->this.stenen.add(new Steen(this.WAARDEJOKER,Kleur.JOKER, this.bepaalAfbeelding(steenReeksnummer,Kleur.JOKER))));
 		
+	}
+	
+	//UC3
+	private String bepaalAfbeelding(int steenWaarde, Kleur steenKleur) {
+		String afbeelding = "";
+		if(steenKleur == Kleur.BLAUW) {
+			return afbeelding.format("src\\images\\B%d.png",steenWaarde);
+		}
+		else if(steenKleur == Kleur.ZWART) {
+			return afbeelding.format("src\\images\\G%d.png",steenWaarde);
+		}
+		else if(steenKleur == Kleur.GEEL) {
+			return afbeelding.format("src\\images\\O%d.png",steenWaarde);
+		}
+		else if(steenKleur == Kleur.ROOD) {
+			return afbeelding.format("src\\images\\R%d.png",steenWaarde);
+		}
+		else {
+			return afbeelding.format("src\\images\\J%d.png",steenWaarde - 1);
+		}
 	}
 	
 	

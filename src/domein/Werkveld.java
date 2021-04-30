@@ -16,11 +16,6 @@ public class Werkveld {
 		return stenenWerkveld;
 	}
 
-	public void setStenenWerkveld(List<Steen> stenenWerkveld) { // Mag weg want je moet enkel stenen kunnen toevoegen
-		this.stenenWerkveld = stenenWerkveld;
-	}
-	
-	
 	public void voegSteenToeWerkveld(Steen steen) {
 		this.stenenWerkveld.add(steen);
 	}

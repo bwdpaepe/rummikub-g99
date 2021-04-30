@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -215,6 +214,56 @@ public class Spel {
 	}
 	
 	//UC3
+		public String[][][] geefSpelsituatie() {
+			List<Steen> PS = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
+			List<Steen> WV = this.werkveld.getStenenWerkveld();
+			List<Reeks> GV = this.gemeenschappelijkVeld.getReeksen();
+			int maxDimensie2 = Integer.MIN_VALUE;
+			int maxDimensie3 = Integer.MIN_VALUE;
+			
+			// Berekenen max dimensies
+			// 1ste dimensie kan 3 waarden bevatten : SP, Werkveld, GV
+			// 2de dimensie
+			maxDimensie2 = Math.max(PS.size(), Math.max(WV.size(), GV.size()));
+			// 3de dimensie
+			maxDimensie3 = GV.stream()
+							 .mapToInt(Reeks::hoeveelStenenHeeftDeReeks)
+							 .max()
+							 .getAsInt();
+			
+			
+			//opvullen van berekende aantallen
+			String[][][] spelSituatie = new String[3][maxDimensie2][maxDimensie3];
+			// opvullen met images 
+			int counter1 = 0;
+			int counter2 = 0;
+			// PS
+			for(Steen steen: PS) {
+				spelSituatie[0][counter1][0] = steen.getAfbeelding();
+				counter1++;
+			}
+			// WV
+			counter1 = 0;
+			for(Steen steen: WV) {
+				spelSituatie[1][counter1][0] = steen.getAfbeelding();
+				counter1++;
+			}
+			// GV
+			counter1 = 0;
+			for(Reeks reeks: GV) {
+				for(Steen steen: reeks.getStenen()) {
+					spelSituatie[2][counter1][counter2] = steen.getAfbeelding();
+					counter2++;
+				}
+				counter1++;
+			}
+			
+			//array teruggeven
+			return spelSituatie;
+		}
+		
+		
+	//UC3
 	public void startBeurt() {
 		this.spelers.get(this.spelerAanZet).maakDuplicaatPersoonlijkeStenen();
 	}
@@ -234,7 +283,7 @@ public class Spel {
 	
 	//UC3
 	public void beeindigBeurt() throws Exception {
-		if (this.geldigeSpelSituatie()) {
+		if (this.bepaalGeldigeSpelSituatie()) {
 			this.eindeBeurt();
 		}
 	}
@@ -248,7 +297,7 @@ public class Spel {
 	 * 		NEE: steen bijgeven aan speler
 	 * @throws Exception 
 	 */
-	private boolean geldigeSpelSituatie() throws Exception {
+	private boolean bepaalGeldigeSpelSituatie() throws Exception {
 		boolean isGeldig = true;
 		Speler actieveSpeler = this.spelers.get(this.spelerAanZet);
 		if (werkveld.getStenenWerkveld().size() == 0) { //GEEN stenen werkveld
@@ -287,23 +336,6 @@ public class Spel {
 		}
 		return isGeldig;
 	}
-	
-	//UC3
-	public String[][][] geefSpelSituatie() {
-		List<Steen> PS = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
-		List<Steen> werkveld = this.werkveld.getStenenWerkveld();
-		List<Reeks> GemeenschappelijkVeld = this.gemeenschappelijkVeld.getReeksen();
-		
-		// Berekenen aantallen
-		
-		//opvullen van berekende aantallen
-		String[][][] spelSituatie = new String[3][10][13];
-		// opvullen met images 
-		
-		//array teruggeven
-		return spelSituatie;
-	}
-	
 	
 	//UC3
 	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {

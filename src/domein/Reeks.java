@@ -88,5 +88,13 @@ public class Reeks {
 		// de reeks wordt 1 index kleiner
 		return this.getStenen().remove(positieInReeks);
 	}
+	
+	// UC3
+	/** hoeveel stenen bevat een reeks */
+	public int hoeveelStenenHeeftDeReeks() {
+		return this.getStenen().size();
+	}
+	
+	
 
 }

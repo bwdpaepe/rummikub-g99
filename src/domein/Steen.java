@@ -14,14 +14,17 @@ public class Steen {
 	private int waarde;
 	private Kleur kleur;
 	//UC3
-	ArrayList<Image> images = new ArrayList<>();
+	//ArrayList<Image> images = new ArrayList<>();
+	private String afbeelding;
 
 	//UC2
 	/** Constructor van Steen: argumenten waarde, kleur en reeksnummer */
-	public Steen(int waarde, Kleur kleur, ArrayList<Image> images) {
+	public Steen(int waarde, Kleur kleur, String afbeelding) {
 		this.setWaarde(waarde);
 		this.setKleur(kleur);
-		this.setImages(images);
+		//this.setImages(images);
+		this.setAfbeelding(afbeelding);
+		
 	}
 
 	//UC2
@@ -43,14 +46,24 @@ public class Steen {
 	private void setKleur(Kleur kleur) {
 		this.kleur = kleur;
 	}
+
+	public String getAfbeelding() {
+		return afbeelding;
+	}
+
+	private void setAfbeelding(String afbeelding) {
+		this.afbeelding = afbeelding;
+	}
+	
+	
 	
 	//UC3
-	public ArrayList<Image> getImages() {
+	/*public ArrayList<Image> getImages() {
 		return images;
-	}
+	}*/
 	//UC3
-	public void setImages(ArrayList<Image> images) {
+	/*public void setImages(ArrayList<Image> images) {
 		this.images = images;
-	}
+	}*/
 	
 }

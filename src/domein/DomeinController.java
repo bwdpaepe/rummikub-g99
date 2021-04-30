@@ -71,11 +71,11 @@ public class DomeinController {
 	}
 	
 	//UC3
-	/*ToDo
-	public List<Integer> geefSpelsituatie(){
+	//1ste dimensie: 0 = PS, 1 = WV, 2 = GV
+	public String[][][] geefSpelsituatie(){
 		return this.spel.geefSpelsituatie();
 	}
-	*/
+	
 	
 	//UC3
 	public String[] geefMogelijkActies() {
