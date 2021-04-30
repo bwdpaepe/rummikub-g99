@@ -30,7 +30,6 @@ public class Spel {
 	private int spelerAanZet;
 	//UC3
 	private Werkveld werkveld;
-	private List<Steen> duplicaatStenen; // bijhouden van de aangemaakt duplicaten. Speler maak enkel duplicaat van de Lijst.
 	private Reeks reeks;
 	private Steen steen;
 	private Speler speler;
@@ -217,7 +216,7 @@ public class Spel {
 	
 	//UC3
 	public void startBeurt() {
-		this.duplicaatStenen = this.spelers.get(this.spelerAanZet).maakDuplicaatPersoonlijkeStenen();
+		this.spelers.get(this.spelerAanZet).maakDuplicaatPersoonlijkeStenen();
 	}
 	
 	//UC3
@@ -234,66 +233,74 @@ public class Spel {
 	}
 	
 	//UC3
+	public void beeindigBeurt() throws Exception {
+		if (this.geldigeSpelSituatie()) {
+			this.eindeBeurt();
+		}
+	}
+	
+	//UC3
 	/** 
 	 * Controleren als er nog stenen in werkveld liggen 
 	 * JA: foutmelding
 	 * NEE: controleren als er stenen zijn afgelegd
 	 * 		JA: regels nakijken ivm joker, waarden en geldige spelsituatie ivm rij en serie
 	 * 		NEE: steen bijgeven aan speler
+	 * @throws Exception 
 	 */
-	public void geldigeSpelSituatie() {	
+	private boolean geldigeSpelSituatie() throws Exception {
+		boolean isGeldig = true;
 		Speler actieveSpeler = this.spelers.get(this.spelerAanZet);
 		if (werkveld.getStenenWerkveld().size() == 0) { //GEEN stenen werkveld
-			if(actieveSpeler.hoeveelStenenHeeftDeSpeler() != this.duplicaatStenen.size()){ // stenen afgelegt
-				for(Reeks geldig: this.gemeenschappelijkVeld.getReeksen()){
-					if(this.gemeenschappelijkVeld.bepaalGeldigeSpelsituatie()){
-						if(this.reeks.isNieuw() == true){
+			if(actieveSpeler.hoeveelStenenHeeftDeSpeler() != actieveSpeler.getDuplicaatPersoonlijkeStenen().size()){ // stenen afgelegt
+				if(this.gemeenschappelijkVeld.bepaalGeldigeSpelsituatie()){
+					for(Reeks geldig: this.gemeenschappelijkVeld.getReeksen()){
+						if(this.speler.getEersteUitleg() == true){ 
 							for(Steen s: this.reeks.getStenen()){
 								if(s.getWaarde() == 25){ //joker in nieuwe reeks --> Waar staat joker gedefinieerd??
-									throw new IllegalArgumentException("Bij de eerste afleg mag er geen gebruik gemaakt worden van een Joker.");
+									throw new Exception("Bij de eerste afleg mag er geen gebruik gemaakt worden van een Joker.");
 								} else { // geen joker in nieuwe reeks
 									int somStenen = 0;
 									somStenen += s.getWaarde();
 									if(somStenen >= 30){ // controleren som
-										reeks.setIsNieuw(false);
+										speler.setEersteUitleg(false);
 									}else { //somStenen < 30
-										throw new IllegalArgumentException("De som van de gelegde stenen moet minimaal 30 zijn.");
+										throw new Exception("De som van de gelegde stenen moet minimaal 30 zijn.");
 									} 
 								}	
 							}
 						}else {
-							this.eindeBeurt();
+							isGeldig = true;
 						}
-					speler.setEersteUitleg(false);	
-					} else { //geen stenen afgelegd
-						actieveSpeler.voegSteenToe(this.pot.geefSteen());
-						this.eindeBeurt();
-					}
+					reeks.setIsNieuw(false);	
+					} 
+				}else { // indien geen geldigeSpelsituatie
+					throw new Exception("De stenen op het werkveld voldoen niet aan de eisen van een rij of serie.");
 				}
-			} else { //Er liggen nog stenen op het werkveld !! 
-				throw new IllegalArgumentException("Er mogen geen stenen meer in uw werkveld liggen!"); // indien werkveld niet leeg is
+			} else { //geen stenen afgelegd
+				actieveSpeler.voegSteenToe(this.pot.geefSteen());
+				isGeldig = true;
 			}
+		}else { //Er liggen nog stenen op het werkveld !! 
+			isGeldig = false;
+			throw new Exception("Er mogen geen stenen meer in uw werkveld liggen!"); // indien werkveld niet leeg is
 		}
+		return isGeldig;
 	}
 	
 	//UC3
 	public String[][][] geefSpelSituatie() {
-		String[][][] spelSituatie = null;
-		return spelSituatie;
-	}
-	//UC3
-	public String[][][] geefSituatiePS() {
-		String[][][] spelSituatie = null;
-		return spelSituatie;
-	}
-	//UC3
-	public String[][][] geefSituatieWerkVeld() {
-		String[][][] spelSituatie = null;
-		return spelSituatie;
-	}
-	//UC3
-	public String[][][] geefSituatieGV() {
-		String[][][] spelSituatie = null;
+		List<Steen> PS = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
+		List<Steen> werkveld = this.werkveld.getStenenWerkveld();
+		List<Reeks> GemeenschappelijkVeld = this.gemeenschappelijkVeld.getReeksen();
+		
+		// Berekenen aantallen
+		
+		//opvullen van berekende aantallen
+		String[][][] spelSituatie = new String[3][10][13];
+		// opvullen met images 
+		
+		//array teruggeven
 		return spelSituatie;
 	}
 	

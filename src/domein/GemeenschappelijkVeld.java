@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 //UC3
 public class GemeenschappelijkVeld {
 
-	private GemeenschappelijkVeld duplicaatGemeenschappelijkVeld;
+	private List<Reeks> duplicaatGemeenschappelijkVeld;
 	private List<Reeks> reeksen;
 	
 	
@@ -20,8 +20,16 @@ public class GemeenschappelijkVeld {
 	}
 
 	//UC3
-	public void maakDuplicaat() {
-		
+	private void maakDuplicaat() {
+		this.duplicaatGemeenschappelijkVeld = new ArrayList<>();
+		for(Reeks reeks: this.reeksen) {
+			this.duplicaatGemeenschappelijkVeld.add(reeks);
+		}
+	}
+	
+	//UC3
+	public List<Reeks> getDuplicaatGemeenschappelijkVeld(){
+		return this.duplicaatGemeenschappelijkVeld;
 	}
 	
 	//UC3

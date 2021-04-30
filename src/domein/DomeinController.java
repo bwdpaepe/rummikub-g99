@@ -84,8 +84,8 @@ public class DomeinController {
 	
 	
 	//UC3
-	public void beeindigBeurt() {
-		this.spel.geldigeSpelSituatie();
+	public void beeindigBeurt() throws Exception {
+		this.spel.beeindigBeurt();
 	}
 	
 	

@@ -13,6 +13,7 @@ public class Speler{
 	//UC3
 	private List<Steen> persoonlijkeStenen; // Vervangt constructor persoonlijkeStenen
 	private boolean eersteUitleg;
+	private List<Steen> duplicaat;
 
 	/** Elke speler zal ook stenen hebben: ArrayList bij voorkeur te gebruiken bij veel opzoekingen */
 	public Speler(String spelersnaam, String wachtwoord) {
@@ -85,12 +86,16 @@ public class Speler{
 		return persoonlijkeStenen;
 	}
 	
-	public List<Steen> maakDuplicaatPersoonlijkeStenen(){ //Vervangt methode maakDuplicaat uit PS
-		List<Steen> duplicaat = new ArrayList<>();
+	public void maakDuplicaatPersoonlijkeStenen(){ //Vervangt methode maakDuplicaat uit PS
+		this.duplicaat = new ArrayList<>();
 		for(Steen persoonlijkeSteen: this.persoonlijkeStenen) {
-			duplicaat.add(persoonlijkeSteen);
+			this.duplicaat.add(persoonlijkeSteen);
 		}
-		return duplicaat;
+	}
+
+	//UC3
+	public List<Steen> getDuplicaatPersoonlijkeStenen(){
+		return this.duplicaat;
 	}
 	
 	//UC3
