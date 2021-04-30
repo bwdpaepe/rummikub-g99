@@ -20,7 +20,6 @@ public class GemeenschappelijkVeld {
 	}
 
 	//UC3
-
 	public void maakDuplicaat() {
 		
 	}

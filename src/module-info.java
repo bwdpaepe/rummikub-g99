@@ -13,6 +13,7 @@ module rummikub_g99 {
 	requires javafx.base;
 	requires javafx.controls;
 	requires javafx.graphics;
+	requires java.desktop;
 	
 	opens main to javafx.graphics,javafx.fxml;
 	opens gui to javafx.graphics,javafx.fxml;

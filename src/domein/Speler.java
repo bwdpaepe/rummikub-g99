@@ -99,7 +99,7 @@ public class Speler{
 	} 
 	
 	//UC3
-	// EersteUitleg: Zijn eerste uitleg  van stenen naar GemVeld moet nog gebeuren
+	
 	public void setEersteUitleg(boolean eersteUitleg) {  
 		this.eersteUitleg = eersteUitleg;
 	}

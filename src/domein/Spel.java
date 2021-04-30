@@ -277,6 +277,28 @@ public class Spel {
 	}
 	
 	//UC3
+	public String[][][] geefSpelSituatie() {
+		String[][][] spelSituatie = null;
+		return spelSituatie;
+	}
+	//UC3
+	public String[][][] geefSituatiePS() {
+		String[][][] spelSituatie = null;
+		return spelSituatie;
+	}
+	//UC3
+	public String[][][] geefSituatieWerkVeld() {
+		String[][][] spelSituatie = null;
+		return spelSituatie;
+	}
+	//UC3
+	public String[][][] geefSituatieGV() {
+		String[][][] spelSituatie = null;
+		return spelSituatie;
+	}
+	
+	
+	//UC3
 	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {
 		this.gemeenschappelijkVeld.splitsRijOfSerie(reeksnummer, positieInReeks);
 	}

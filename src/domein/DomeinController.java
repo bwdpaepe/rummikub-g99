@@ -84,11 +84,10 @@ public class DomeinController {
 	
 	
 	//UC3
-	/*ToDo
 	public void beeindigBeurt() {
-		this.spel.beeindigBeurt();
+		this.spel.geldigeSpelSituatie();
 	}
-	*/
+	
 	
 	//UC3
 	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {
