@@ -34,7 +34,7 @@ public class Reeks {
 	}
 	
 	//UC3
-	private void setIsNieuw(boolean isNieuw) {
+	public void setIsNieuw(boolean isNieuw) {
 		this.isNieuw = isNieuw;
 	}
 	

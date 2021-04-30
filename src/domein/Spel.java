@@ -31,7 +31,10 @@ public class Spel {
 	//UC3
 	private Werkveld werkveld;
 	private List<Steen> duplicaatStenen; // bijhouden van de aangemaakt duplicaten. Speler maak enkel duplicaat van de Lijst.
-
+	private Reeks reeks;
+	private Steen steen;
+	private Speler speler;
+	
 	
 	// UC1
 	public Spel(int aantalSpelers) {
@@ -231,8 +234,46 @@ public class Spel {
 	}
 	
 	//UC3
-	public void geldigeSpelSituatie() {
-		// if structuur nog uitwerken
+	/** 
+	 * Controleren als er nog stenen in werkveld liggen 
+	 * JA: foutmelding
+	 * NEE: controleren als er stenen zijn afgelegd
+	 * 		JA: regels nakijken ivm joker, waarden en geldige spelsituatie ivm rij en serie
+	 * 		NEE: steen bijgeven aan speler
+	 */
+	public void geldigeSpelSituatie() {	
+		Speler actieveSpeler = this.spelers.get(this.spelerAanZet);
+		if (werkveld.getStenenWerkveld().size() == 0) { //GEEN stenen werkveld
+			if(actieveSpeler.hoeveelStenenHeeftDeSpeler() != this.duplicaatStenen.size()){ // stenen afgelegt
+				for(Reeks geldig: this.gemeenschappelijkVeld.getReeksen()){
+					if(this.gemeenschappelijkVeld.bepaalGeldigeSpelsituatie()){
+						if(this.reeks.isNieuw() == true){
+							for(Steen s: this.reeks.getStenen()){
+								if(s.getWaarde() == 25){ //joker in nieuwe reeks --> Waar staat joker gedefinieerd??
+									throw new IllegalArgumentException("Bij de eerste afleg mag er geen gebruik gemaakt worden van een Joker.");
+								} else { // geen joker in nieuwe reeks
+									int somStenen = 0;
+									somStenen += s.getWaarde();
+									if(somStenen >= 30){ // controleren som
+										reeks.setIsNieuw(false);
+									}else { //somStenen < 30
+										throw new IllegalArgumentException("De som van de gelegde stenen moet minimaal 30 zijn.");
+									} 
+								}	
+							}
+						}else {
+							this.eindeBeurt();
+						}
+					speler.setEersteUitleg(false);	
+					} else { //geen stenen afgelegd
+						actieveSpeler.voegSteenToe(this.pot.geefSteen());
+						this.eindeBeurt();
+					}
+				}
+			} else { //Er liggen nog stenen op het werkveld !! 
+				throw new IllegalArgumentException("Er mogen geen stenen meer in uw werkveld liggen!"); // indien werkveld niet leeg is
+			}
+		}
 	}
 	
 	//UC3
