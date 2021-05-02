@@ -15,10 +15,16 @@ public class DomeinController {
 		spelerRepo = new SpelerRepository();
 	}
 	
+	//tijdelijke methode voor test GUI!!!!
+	public void testvolgende()  {
+		spel.eindeBeurt();
+	}
+	
 	//UC1
 	public void initialiseerSpel(int aantalSpelers) {
 		
 		this.spel = new Spel(aantalSpelers);
+		
 	}
 	
 	//UC1

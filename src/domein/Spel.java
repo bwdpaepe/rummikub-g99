@@ -159,17 +159,20 @@ public class Spel {
 	 * en berekent de scores of bepaalt de naam van de volgende speler aan zet al
 	 * naargelang
 	 */
-	private void eindeBeurt() {
+	//Tijdelijk op public gezet!!!
+	public void eindeBeurt() {
 		// bepaalIsEindeSpel
 		// na elke speelbeurt moeten we evalueren of het einde van het spel bereikt is
 		if (this.bepaalIsEindeSpel()) {
 			// ja: einde spel bereikt
 			this.berekenScores();
+			System.out.printf ("eindespel ");
 		}
 		// nee: einde spel niet bereikt, we spelen volgende beurt
 		// met de volgende speler aan de beurt: bepaalVolgendeSpelerAanZet
 		else {
 			this.bepaalVolgendeSpelerAanZet();	
+			//System.out.printf ("niet einde spel ");
 		}
 	}
 
