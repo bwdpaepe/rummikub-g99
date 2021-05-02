@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane prefHeight="39.0" prefWidth="900.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
@@ -65,7 +65,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnAlleAangemeldOverzicht" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" onAction="#btnAlleAangemeldOverzichtOnAction" style="-fx-background-color: silver;" text="%toonOverzicht">
+                        <Button fx:id="btnAlleAangemeldOverzicht" alignment="CENTER" minWidth="180.0" mnemonicParsing="false" onAction="#btnAlleAangemeldOverzichtOnAction" style="-fx-background-color: silver;" text="%toonOverzicht" translateX="20.0">
                            <font>
                               <Font size="18.0" />
                            </font>
