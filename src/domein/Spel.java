@@ -254,6 +254,7 @@ public class Spel {
 			// GV
 			counter1 = 0;
 			for(Reeks reeks: GV) {
+				counter2=0;
 				for(Steen steen: reeks.getStenen()) {
 					spelSituatie[2][counter1][counter2] = steen.getAfbeelding();
 					counter2++;
