@@ -157,8 +157,220 @@
 							<GridPane.margin>
 								<Insets bottom="20.0" left="50.0" top="20.0" />
 							</GridPane.margin>
+                     <children>
+                        <ImageView fx:id="IvImageGV00" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="IvImageGV01" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV02" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV03" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV04" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV05" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV06" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV07" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV08" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV09" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV10" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                        <ImageView fx:id="IvImageGV11" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV12" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV13" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV14" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV15" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV16" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV17" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV18" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV19" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV20" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                        <ImageView fx:id="IvImageGV21" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV22" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV23" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV24" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV25" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV26" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV27" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV28" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV29" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV30" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+                        <ImageView fx:id="IvImageGV31" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV32" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV33" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV34" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV35" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV36" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV37" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV38" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV39" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV40" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+                        <ImageView fx:id="IvImageGV41" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV42" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV43" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV44" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV45" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV46" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV47" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV48" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV49" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV50" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
+                        <ImageView fx:id="IvImageGV51" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV52" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV53" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV54" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV55" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV56" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV57" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV58" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV59" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV60" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
+                        <ImageView fx:id="IvImageGV61" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV62" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV63" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV64" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV65" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV66" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV67" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV68" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV69" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV70" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
+                        <ImageView fx:id="IvImageGV71" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV72" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV73" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV74" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV75" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV76" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV77" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV78" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV79" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV80" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" />
+                        <ImageView fx:id="IvImageGV81" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV82" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV83" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV84" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV85" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV86" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV87" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV88" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV89" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV90" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" />
+                        <ImageView fx:id="IvImageGV91" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV92" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV93" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV94" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV95" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV96" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV97" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV98" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV99" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV100" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" />
+                        <ImageView fx:id="IvImageGV101" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV102" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV103" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV104" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV105" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV106" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV107" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV108" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV109" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV110" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" />
+                        <ImageView fx:id="IvImageGV111" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV112" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV113" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV114" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV115" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV116" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV117" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV118" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV119" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV120" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" />
+                        <ImageView fx:id="IvImageGV121" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV122" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV123" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV124" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV125" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV126" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV127" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV128" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV129" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV130" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" />
+                        <ImageView fx:id="IvImageGV131" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV132" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV133" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV134" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV135" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV136" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV137" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV138" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV139" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV140" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="14" />
+                        <ImageView fx:id="IvImageGV141" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="14" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV142" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="14" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV143" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="14" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV144" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="14" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV145" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="14" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV146" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="14" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV147" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="14" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV148" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="14" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV149" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="14" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV150" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" />
+                        <ImageView fx:id="IvImageGV151" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV152" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV153" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV154" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV155" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV156" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV157" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV158" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV159" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV160" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" />
+                        <ImageView fx:id="IvImageGV161" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV162" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV163" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV164" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV165" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV166" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV167" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV168" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV169" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV170" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="17" />
+                        <ImageView fx:id="IvImageGV171" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="17" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV172" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="17" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV173" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="17" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV174" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="17" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV175" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="17" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV176" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="17" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV177" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="17" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV178" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="17" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV179" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="17" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV180" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="18" />
+                        <ImageView fx:id="IvImageGV181" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="18" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV182" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="18" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV183" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="18" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV184" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="18" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV185" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="18" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV186" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="18" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV187" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="18" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV188" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="18" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV189" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="18" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV190" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="19" />
+                        <ImageView fx:id="IvImageGV191" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="19" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV192" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="19" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV193" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="19" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV194" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="19" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV195" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="19" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV196" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="19" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV197" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="19" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV198" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="19" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV199" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="19" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImageGV200" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" />
+                        <ImageView fx:id="IvImageGV201" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageGV202" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageGV203" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageGV204" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageGV205" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageGV206" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageGV207" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageGV208" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageGV209" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" GridPane.rowIndex="9" />
+                     </children>
 						</GridPane>
-						<Label fx:id="lblinfoLabelSpelSituatie2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: white;" text="Selecteer je persoonlijke steen en de joker die je wenst te vervangen">
+						<Label fx:id="lblinfoLabelSpelSituatie2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="446.0" text="Selecteer je persoonlijke steen en de joker die je wenst te vervangen">
 							<GridPane.margin>
 								<Insets bottom="10.0" left="50.0" right="75.0" top="20.0" />
 							</GridPane.margin>
@@ -182,6 +394,18 @@
 							<GridPane.margin>
 								<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
 							</GridPane.margin>
+                     <children>
+                        <ImageView fx:id="IvImageWV00" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="IvImageWV01" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImageWV02" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImageWV03" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImageWV04" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImageWV05" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImageWV06" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImageWV07" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImageWV08" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImageWV09" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="9" />
+                     </children>
 						</GridPane>
 						<GridPane fx:id="grdPanePers" gridLinesVisible="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
 							<columnConstraints>
@@ -209,23 +433,23 @@
                               <Image url="@../images/B1.png" />
                            </image></ImageView>
                         <ImageView fx:id="IvImagePers00" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" />
+                        <ImageView fx:id="IvImagePers01" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="1" />
                         <ImageView fx:id="IvImagePers02" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="2" />
                         <ImageView fx:id="IvImagePers03" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="3" />
-                        <ImageView fx:id="IvImagePers01" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImagePers04" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImagePers05" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImagePers06" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImagePers07" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImagePers08" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImagePers09" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="9" />
                         <ImageView fx:id="IvImagePers11" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <ImageView fx:id="IvImagePers12" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <ImageView fx:id="IvImagePers13" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <ImageView fx:id="IvImagePers04" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="4" />
                         <ImageView fx:id="IvImagePers14" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <ImageView fx:id="IvImagePers05" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="5" />
                         <ImageView fx:id="IvImagePers15" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <ImageView fx:id="IvImagePers06" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="6" />
                         <ImageView fx:id="IvImagePers16" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <ImageView fx:id="IvImagePers07" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="7" />
                         <ImageView fx:id="IvImagePers17" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <ImageView fx:id="IvImagePers08" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="8" />
                         <ImageView fx:id="IvImagePers18" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <ImageView fx:id="IvImagePers09" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.rowIndex="9" />
                         <ImageView fx:id="IvImagePers19" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                      </children>
 						</GridPane>
