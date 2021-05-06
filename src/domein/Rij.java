@@ -12,7 +12,7 @@ public class Rij extends Reeks{
 	}
 	
 	//UC3
-	protected boolean bepaalIsGeldig() {
+	public boolean bepaalIsGeldig() {
 		// minimaal 3 stenen voor zowel Rij als Serie
 		boolean isGeldig = super.bepaalIsGeldig();
 		
