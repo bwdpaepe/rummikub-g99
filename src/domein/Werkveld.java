@@ -10,6 +10,7 @@ public class Werkveld {
 	//Constructor 
 	public Werkveld() {
 		this.stenenWerkveld = new ArrayList<Steen>(); // Bij aanroepen werkveld zal hij een lege lijst projecteren
+	//	this.voegSteenToeWerkveld(new Steen(8, Kleur.BLAUW, "src\\images\\B1.png"));
 	}
 	
 	public List<Steen> getStenenWerkveld() { // is in UML getStenen

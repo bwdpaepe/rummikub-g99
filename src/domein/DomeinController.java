@@ -81,6 +81,11 @@ public class DomeinController {
 	public String[][][] geefSpelsituatie(){
 		return this.spel.geefSpelsituatie();
 	}
+	//UC3
+/*Joost*/ //Extra toegevoegd om de alternatieve methode geefspelsituatie op te kunnen roepen
+	public List<List<String>> geefSpelsituatieJoost() {
+		return spel.geefSpelsituatieJoost();
+	}
 	
 	
 	//UC3
