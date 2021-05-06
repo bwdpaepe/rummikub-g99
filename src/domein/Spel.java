@@ -27,16 +27,19 @@ public class Spel {
 	private Pot pot;
 	private GemeenschappelijkVeld gemeenschappelijkVeld;
 	private int spelerAanZet;
-	//UC3
+	// UC3
 	private Werkveld werkveld;
 	private Reeks reeks;
 	private Steen steen;
 	private Speler speler;
-	
-	
+
 	// UC1
 	public Spel(int aantalSpelers) {
 		setAantalSpelers(aantalSpelers);
+//Joost aanmaak werkveld toegevoegd
+		werkveld = new Werkveld();
+//Joost aanmaak instantie toegevoegd
+		gemeenschappelijkVeld = new GemeenschappelijkVeld();
 	}
 
 	public int getAantalSpelers() {
@@ -55,8 +58,8 @@ public class Spel {
 
 	// UC1
 	public void voegSpelerToe(Speler speler) throws SpelerReedsAangemeldException, AlleSpelersReedsAangemeldException {
-		//if (spelers.size() == aantalSpelers)
-		if(this.bepaalAlleSpelersAangemeld())
+		// if (spelers.size() == aantalSpelers)
+		if (this.bepaalAlleSpelersAangemeld())
 			throw new AlleSpelersReedsAangemeldException(String.format(language.getString("spelersReedsAangemeld")));
 		checkReedsAangemeld(speler.getSpelersnaam());
 		speler.resetWachtwoord();
@@ -99,7 +102,7 @@ public class Spel {
 
 	// UC2
 	/**
-	 * Iemand heeft op de knop 'start spel' gedrukt, we beginnen het spel. 
+	 * Iemand heeft op de knop 'start spel' gedrukt, we beginnen het spel.
 	 */
 	public void startSpel() {
 		// maak de pot
@@ -109,10 +112,11 @@ public class Spel {
 		// bepaal de volgorde van de spelers
 		this.randomizeVolgordeSpelers();
 		// geef iedere speler 14 willekeurige stenen
-		this.bepaalStartStenen();
+//		this.bepaalStartStenen();
+		bepaalStartStenenJoost();
 		// initialiseer de speler aan zet
 		this.spelerAanZet = 0;
-		
+
 	}
 
 	// UC2
@@ -123,7 +127,7 @@ public class Spel {
 	private void randomizeVolgordeSpelers() {
 		Collections.shuffle(this.spelers);
 	}
-	
+
 	// UC2
 	/** Geef iedere speler 14 willekeurige stenen */
 	private void bepaalStartStenen() {
@@ -136,6 +140,22 @@ public class Spel {
 																							// dat niet nodig
 		}
 	}
+//joost methode herschreven omdat streams me niet toelieten de code na te zien tijdens debuggen
+	private void bepaalStartStenenJoost() {
+		for (Speler s : spelers) {
+			for (int i = 0; i < AANTAL_STENEN_PER_SPELER_BIJ_AANVANG; i++) {
+//				System.out.print("i = "+i);
+				Steen steen = pot.geefSteen();
+//				System.out.println(steen.getAfbeelding());
+				s.voegSteenToe(steen);
+//				System.out.println(s.vraagAllePersoonlijkeStenenOp().size());
+			}
+			System.out.println("speler: "+s.getSpelersnaam());
+			for(Steen steen:s.vraagAllePersoonlijkeStenenOp()) {
+				System.out.println(steen.getAfbeelding());
+			}
+		}
+	}
 
 	// UC2
 	/** Het systeem toont de gebruikersnaam van de speler aan de beurt */
@@ -143,7 +163,7 @@ public class Spel {
 		// retourneer string met de naam van de speler aan zet
 		return this.spelers.get(this.spelerAanZet).getSpelersnaam();
 	}
-			
+
 	// UC2
 	/**
 	 * Aan het einde van een beurt, indien er geen winnaar is, bepalen we hier de
@@ -155,24 +175,24 @@ public class Spel {
 
 	// UC2
 	/**
-	 * aan het einde van een beurt, het systeem kijkt of er een winnaar is,
-	 * en berekent de scores of bepaalt de naam van de volgende speler aan zet al
+	 * aan het einde van een beurt, het systeem kijkt of er een winnaar is, en
+	 * berekent de scores of bepaalt de naam van de volgende speler aan zet al
 	 * naargelang
 	 */
-	//Tijdelijk op public gezet!!!
+//Joost Tijdelijk op public staan om te testen. Nog te wijzigen in finale versie!!!
 	public void eindeBeurt() {
 		// bepaalIsEindeSpel
 		// na elke speelbeurt moeten we evalueren of het einde van het spel bereikt is
 		if (this.bepaalIsEindeSpel()) {
 			// ja: einde spel bereikt
 			this.berekenScores();
-			System.out.printf ("eindespel ");
+			System.out.printf("eindespel ");
 		}
 		// nee: einde spel niet bereikt, we spelen volgende beurt
 		// met de volgende speler aan de beurt: bepaalVolgendeSpelerAanZet
 		else {
-			this.bepaalVolgendeSpelerAanZet();	
-			//System.out.printf ("niet einde spel ");
+			this.bepaalVolgendeSpelerAanZet();
+			// System.out.printf ("niet einde spel ");
 		}
 	}
 
@@ -189,183 +209,220 @@ public class Spel {
 	/** het spel is ten einde, bereken de scores van alle spelers */
 	private void berekenScores() {
 		List<Speler> spelersGesorteerd = this.spelers.stream()
-				                                     .sorted(Comparator.comparing(Speler::hoeveelStenenHeeftDeSpeler))
-				                                     .collect(Collectors.toList());
+				.sorted(Comparator.comparing(Speler::hoeveelStenenHeeftDeSpeler)).collect(Collectors.toList());
 		// de winnaar staat nu op de eerste plaats
-		
+
 		int somVanStenen = 0;
 		int pluspunten = 0;
-		
-		for(Speler gesorteerdeSpeler: spelersGesorteerd) {
+
+		for (Speler gesorteerdeSpeler : spelersGesorteerd) {
 			somVanStenen = gesorteerdeSpeler.somVanStenen();
 			pluspunten += somVanStenen;
 			gesorteerdeSpeler.pasScoreAan(somVanStenen * (-1));
 		}
-		
+
 		// we geven de winnaar alle pluspunten
 		spelersGesorteerd.get(0).pasScoreAan(pluspunten);
-		
+
 	}
-	
+
 	public List<String> geefScores() {
 		List<String> scores = new ArrayList<>();
 		for (Speler spelerMetScore : this.spelers) {
-			scores.add(String.format(language.getString("speler") + " %s " + language.getString("heeftAlsScore") + " %d%n", spelerMetScore.getSpelersnaam(),
-					spelerMetScore.getScore()));
+			scores.add(
+					String.format(language.getString("speler") + " %s " + language.getString("heeftAlsScore") + " %d%n",
+							spelerMetScore.getSpelersnaam(), spelerMetScore.getScore()));
 		}
 		return scores;
 	}
-	
-	//UC3
-		public String[][][] geefSpelsituatie() {
-			List<Steen> PS = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
-			List<Steen> WV = this.werkveld.getStenenWerkveld();
-			List<Reeks> GV = this.gemeenschappelijkVeld.getReeksen();
-			int maxDimensie2 = Integer.MIN_VALUE;
-			int maxDimensie3 = Integer.MIN_VALUE;
-			
-			// Berekenen max dimensies
-			// 1ste dimensie kan 3 waarden bevatten : SP, Werkveld, GV
-			// 2de dimensie
-			maxDimensie2 = Math.max(PS.size(), Math.max(WV.size(), GV.size()));
-			// 3de dimensie
-			maxDimensie3 = GV.stream()
-							 .mapToInt(Reeks::hoeveelStenenHeeftDeReeks)
-							 .max()
-							 .getAsInt();
-			
-			
-			//opvullen van berekende aantallen
-			String[][][] spelSituatie = new String[3][maxDimensie2][maxDimensie3];
-			// opvullen met images 
-			int counter1 = 0;
-			int counter2 = 0;
-			// PS
-			for(Steen steen: PS) {
-				spelSituatie[0][counter1][0] = steen.getAfbeelding();
-				counter1++;
-			}
-			// WV
-			counter1 = 0;
-			for(Steen steen: WV) {
-				spelSituatie[1][counter1][0] = steen.getAfbeelding();
-				counter1++;
-			}
-			// GV
-			counter1 = 0;
-			for(Reeks reeks: GV) {
-				for(Steen steen: reeks.getStenen()) {
-					spelSituatie[2][counter1][counter2] = steen.getAfbeelding();
-					counter2++;
-				}
-				counter1++;
-			}
-			
-			//array teruggeven
-			return spelSituatie;
+
+	// UC3
+	public String[][][] geefSpelsituatie() {
+		List<Steen> PS = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
+		List<Steen> WV = this.werkveld.getStenenWerkveld();
+		List<Reeks> GV = this.gemeenschappelijkVeld.getReeksen();
+		int maxDimensie2 = 21;
+		int maxDimensie3 = 10;
+//			int maxDimensie2 = Integer.MIN_VALUE;
+//			int maxDimensie3 = Integer.MIN_VALUE;
+
+		// Berekenen max dimensies
+		// 1ste dimensie kan 3 waarden bevatten : SP, Werkveld, GV
+		// 2de dimensie
+//			maxDimensie2 = Math.max(PS.size(), Math.max(WV.size(), GV.size()));
+		// 3de dimensie
+//			maxDimensie3 = GV.stream()
+//							 .mapToInt(Reeks::hoeveelStenenHeeftDeReeks)
+//							 .max()
+//							 .getAsInt();
+
+		// opvullen van berekende aantallen
+		String[][][] spelSituatie = new String[3][maxDimensie2][maxDimensie3];
+		// opvullen met images
+		int counter1 = 0;
+		int counter2 = 0;
+		// PS
+		for (Steen steen : PS) {
+			spelSituatie[0][counter1][0] = steen.getAfbeelding();
+			counter1++;
 		}
-		
-		
-	//UC3
+		// WV
+		counter1 = 0;
+		for (Steen steen : WV) {
+			spelSituatie[1][counter1][0] = steen.getAfbeelding();
+			counter1++;
+		}
+		// GV
+		counter1 = 0;
+		for (Reeks reeks : GV) {
+			counter2 = 0;
+			for (Steen steen : reeks.getStenen()) {
+				spelSituatie[2][counter1][counter2] = steen.getAfbeelding();
+				counter2++;
+			}
+			counter1++;
+		}
+
+		// array teruggeven
+		return spelSituatie;
+	}
+//Joost dit is een alternatieve methode. 
+	// spelsituatie.get(0) bevat stenen van spelers type: List<Steen>
+	// spelsituatie.get(1) bevat stenen op werkveld type: List<Steen>
+	// spelsituatie.get(2) bevat reeksen op gemeenschappelijk veld type: List<Reeks>
+	public List<List<String>> geefSpelsituatieJoost() {
+		List<List<String>> spelsituatie = new ArrayList<List<String>>();
+
+		List<Steen> spelerStenen = spelers.get(spelerAanZet).vraagAllePersoonlijkeStenenOp();
+		List<String> spelerStenenInfo = new ArrayList<String>();
+		for (int i = 0; i < spelerStenen.size(); i++) {
+			spelerStenenInfo.add(spelerStenen.get(i).getAfbeelding());
+		}
+		spelsituatie.add(spelerStenenInfo);
+
+		List<Steen> werkveldStenen = spelers.get(spelerAanZet).vraagAllePersoonlijkeStenenOp();
+		List<String> werkveldStenenInfo = new ArrayList<String>();
+		for (int i = 0; i < werkveldStenen.size(); i++) {
+			werkveldStenenInfo.add(werkveldStenen.get(i).getAfbeelding());
+		}
+		spelsituatie.add(werkveldStenenInfo);
+
+		List<Reeks> veldStenen = gemeenschappelijkVeld.getReeksen();
+		List<String> veldStenenInfo = new ArrayList<String>();
+		for (Reeks r : veldStenen) {
+			for (Steen s : r.getStenen()) {
+				veldStenenInfo.add(s.getAfbeelding());
+			}
+		}
+		spelsituatie.add(veldStenenInfo);
+
+		return spelsituatie;
+	}
+
+	// UC3
 	public void startBeurt() {
 		this.spelers.get(this.spelerAanZet).maakDuplicaatPersoonlijkeStenen();
 	}
-	
-	//UC3
+
+	// UC3
 	public String[] geefMogelijkeActies() {
-		//Opzoeken hoe ik van enum een arrayList maak of opties weergeef.
+		// Opzoeken hoe ik van enum een arrayList maak of opties weergeef.
 		// p 48, hoofdstuk 6, OOSD1
-		String [] mogelijkeActiesArray = new String [6];
+		String[] mogelijkeActiesArray = new String[6];
 		int counter = 0;
-		for(MogelijkeActies ma: MogelijkeActies.values()) {
+		for (MogelijkeActies ma : MogelijkeActies.values()) {
 			mogelijkeActiesArray[counter] = ma.name();
 			counter++;
 		}
 		return mogelijkeActiesArray;
 	}
-	
-	//UC3
+
+	// UC3
 	public void beeindigBeurt() throws Exception {
 		if (this.bepaalGeldigeSpelSituatie()) {
 			this.eindeBeurt();
 		}
 	}
-	
-	//UC3
-	/** 
-	 * Controleren als er nog stenen in werkveld liggen 
-	 * JA: foutmelding
-	 * NEE: controleren als er stenen zijn afgelegd
-	 * 		JA: regels nakijken ivm joker, waarden en geldige spelsituatie ivm rij en serie
-	 * 		NEE: steen bijgeven aan speler
-	 * @throws Exception 
+
+	// UC3
+	/**
+	 * Controleren als er nog stenen in werkveld liggen JA: foutmelding NEE:
+	 * controleren als er stenen zijn afgelegd JA: regels nakijken ivm joker,
+	 * waarden en geldige spelsituatie ivm rij en serie NEE: steen bijgeven aan
+	 * speler
+	 * 
+	 * @throws Exception
 	 */
 	private boolean bepaalGeldigeSpelSituatie() throws Exception {
 		boolean isGeldig = true;
 		Speler actieveSpeler = this.spelers.get(this.spelerAanZet);
-		if (werkveld.getStenenWerkveld().size() == 0) { //GEEN stenen werkveld
-			if(actieveSpeler.hoeveelStenenHeeftDeSpeler() != actieveSpeler.getDuplicaatPersoonlijkeStenen().size()){ // stenen afgelegt
-				if(this.gemeenschappelijkVeld.bepaalGeldigeSpelsituatie()){
-					for(Reeks geldig: this.gemeenschappelijkVeld.getReeksen()){
-						if(this.speler.getEersteUitleg() == true){ 
-							for(Steen s: this.reeks.getStenen()){
-								if(s.getWaarde() == 25){ //joker in nieuwe reeks --> Waar staat joker gedefinieerd??
-									throw new Exception("Bij de eerste afleg mag er geen gebruik gemaakt worden van een Joker.");
+		if (werkveld.getStenenWerkveld().size() == 0) { // GEEN stenen werkveld
+			if (actieveSpeler.hoeveelStenenHeeftDeSpeler() != actieveSpeler.getDuplicaatPersoonlijkeStenen().size()) { // stenen
+																														// afgelegt
+				if (this.gemeenschappelijkVeld.bepaalGeldigeSpelsituatie()) {
+					for (Reeks geldig : this.gemeenschappelijkVeld.getReeksen()) {
+						if (this.speler.getEersteUitleg() == true) {
+							for (Steen s : this.reeks.getStenen()) {
+								if (s.getWaarde() == 25) { // joker in nieuwe reeks --> Waar staat joker gedefinieerd??
+									throw new Exception(
+											"Bij de eerste afleg mag er geen gebruik gemaakt worden van een Joker.");
 								} else { // geen joker in nieuwe reeks
 									int somStenen = 0;
 									somStenen += s.getWaarde();
-									if(somStenen >= 30){ // controleren som
+									if (somStenen >= 30) { // controleren som
 										speler.setEersteUitleg(false);
-									}else { //somStenen < 30
+									} else { // somStenen < 30
 										throw new Exception("De som van de gelegde stenen moet minimaal 30 zijn.");
-									} 
-								}	
+									}
+								}
 							}
-						}else {
+						} else {
 							isGeldig = true;
 						}
-					reeks.setIsNieuw(false);	
-					} 
-				}else { // indien geen geldigeSpelsituatie
+						reeks.setIsNieuw(false);
+					}
+				} else { // indien geen geldigeSpelsituatie
 					throw new Exception("De stenen op het werkveld voldoen niet aan de eisen van een rij of serie.");
 				}
-			} else { //geen stenen afgelegd
+			} else { // geen stenen afgelegd
 				actieveSpeler.voegSteenToe(this.pot.geefSteen());
 				isGeldig = true;
 			}
-		}else { //Er liggen nog stenen op het werkveld !! 
+		} else { // Er liggen nog stenen op het werkveld !!
 			isGeldig = false;
 			throw new Exception("Er mogen geen stenen meer in uw werkveld liggen!"); // indien werkveld niet leeg is
 		}
 		return isGeldig;
 	}
-	
-	//UC3
+
+	// UC3
 	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {
 		this.gemeenschappelijkVeld.splitsRijOfSerie(reeksnummer, positieInReeks);
 	}
-	
-	//UC3
-	public void legSteenAan(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks) throws Exception {
-		//pak de steen
+
+	// UC3
+	public void legSteenAan(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks)
+			throws Exception {
+		// pak de steen
 		Steen steenOmAanTeLeggen;
-		//nummerInInput '0': PS
-		//nummerInInput '1': Werkveld
-		switch(nummerInInput) {
-		case 0: 
-			steenOmAanTeLeggen = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp().remove(positieInInput);
+		// nummerInInput '0': PS
+		// nummerInInput '1': Werkveld
+		switch (nummerInInput) {
+		case 0:
+			steenOmAanTeLeggen = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp()
+					.remove(positieInInput);
 			break;
 		default:
 			steenOmAanTeLeggen = this.werkveld.getStenenWerkveld().remove(positieInInput);
 		}
-		
+
 		try {
 			this.gemeenschappelijkVeld.legSteenAan(steenOmAanTeLeggen, reeksnummer, positieInReeks);
 		} catch (Exception e) {
 			// we kunnen de steen niet aanleggen
 			// nu moeten we hem terugleggen vanwaar hij kwam
-			switch(nummerInInput) {
-			case 0: 
+			switch (nummerInInput) {
+			case 0:
 				List<Steen> psLijst = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
 				this.legSteenTerug(psLijst, positieInInput, steenOmAanTeLeggen);
 				break;
@@ -373,46 +430,48 @@ public class Spel {
 				List<Steen> werkveldLijst = this.werkveld.getStenenWerkveld();
 				this.legSteenTerug(werkveldLijst, positieInInput, steenOmAanTeLeggen);
 			}
-			
-			//We gooien de exception verder
+
+			// We gooien de exception verder
 			throw e;
 		}
 	}
-	
-	//UC3
+
+	// UC3
 	private void legSteenTerug(List<Steen> teruglegLijst, int positieInInput, Steen steenOmAanTeLeggen) {
 		// omzetten naar array om dan de staart te kopieren
 		Steen[] stenenArray = teruglegLijst.toArray(new Steen[teruglegLijst.size()]);
 		// staart kopieren
-		Steen[] stenenArrayCopyRange = Arrays.copyOfRange(stenenArray, positieInInput-1, stenenArray.length);
+		Steen[] stenenArrayCopyRange = Arrays.copyOfRange(stenenArray, positieInInput - 1, stenenArray.length);
 		// steen aanleggen
 		stenenArrayCopyRange[0] = steenOmAanTeLeggen;
 		// staart terug aan de reeks hangen
-		IntStream.rangeClosed(positieInInput, teruglegLijst.size()+1)
-		         .forEach(x -> teruglegLijst.set(x, stenenArrayCopyRange[x-positieInInput]));
+		IntStream.rangeClosed(positieInInput, teruglegLijst.size() + 1)
+				.forEach(x -> teruglegLijst.set(x, stenenArrayCopyRange[x - positieInInput]));
 	}
-	
-	//UC3
-	public void vervangJoker(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks) throws Exception {
-		//pak de steen
+
+	// UC3
+	public void vervangJoker(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks)
+			throws Exception {
+		// pak de steen
 		Steen steenOmJokerTeVervangen;
-		//nummerInInput '0': PS
-		//nummerInInput '1': Werkveld
-		switch(nummerInInput) {
-		case 0: 
-			steenOmJokerTeVervangen = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp().remove(positieInInput);
+		// nummerInInput '0': PS
+		// nummerInInput '1': Werkveld
+		switch (nummerInInput) {
+		case 0:
+			steenOmJokerTeVervangen = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp()
+					.remove(positieInInput);
 			break;
 		default:
 			steenOmJokerTeVervangen = this.werkveld.getStenenWerkveld().remove(positieInInput);
 		}
-		
+
 		try {
 			this.gemeenschappelijkVeld.vervangJoker(steenOmJokerTeVervangen, reeksnummer, positieInReeks);
 		} catch (Exception e) {
 			// we kunnen de steen niet aanleggen
 			// nu moeten we hem terugleggen vanwaar hij kwam
-			switch(nummerInInput) {
-			case 0: 
+			switch (nummerInInput) {
+			case 0:
 				List<Steen> psLijst = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
 				this.legSteenTerug(psLijst, positieInInput, steenOmJokerTeVervangen);
 				break;
@@ -420,15 +479,16 @@ public class Spel {
 				List<Steen> werkveldLijst = this.werkveld.getStenenWerkveld();
 				this.legSteenTerug(werkveldLijst, positieInInput, steenOmJokerTeVervangen);
 			}
-			
-			//We gooien de exception verder
+
+			// We gooien de exception verder
 			throw e;
-		}			
+		}
 	}
-	
-	//UC3
+
+	// UC3
 	public void steenNaarWerkveld(int reeksnummer, int positieInReeks) throws Exception {
-		// in geval van problemen moeten we hier niets terugleggen, we kunnen de exception gewoon verder gooien
+		// in geval van problemen moeten we hier niets terugleggen, we kunnen de
+		// exception gewoon verder gooien
 		this.werkveld.voegSteenToeWerkveld(this.gemeenschappelijkVeld.steenNaarWerkveld(reeksnummer, positieInReeks));
 	}
 

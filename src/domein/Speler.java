@@ -21,6 +21,12 @@ public class Speler{
 		setWachtwoord(wachtwoord);
 		
 		this.persoonlijkeStenen = new ArrayList<>();
+//joost tijdelijke teststenen omdat er niets uit de domaincontroller naar GUI kwam
+		//persoonlijkeStenen.add(new Steen(1, Kleur.BLAUW, "/images/B1.png"));
+		//persoonlijkeStenen.add(new Steen(7, Kleur.BLAUW, "/images/B7.png"));
+		//persoonlijkeStenen.add(new Steen(1, Kleur.ROOD, "/images/R1.png"));
+		//persoonlijkeStenen.add(new Steen(12, Kleur.GEEL, "/images/G12.png"));
+		//spelersnaam.persoonlijkeStenen.add(new Steen(0, Kleur.JOKER, "/images/J0.png"));
 		this.setScore(0);
 		this.setEersteUitleg(true);
 	}
