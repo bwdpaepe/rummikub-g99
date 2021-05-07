@@ -107,6 +107,8 @@ public class Spel {
 	public void startSpel() {
 		// maak de pot
 		this.pot = new Pot();
+		// maak het werkveld
+		this.werkveld = new Werkveld();
 		// maak het gemeenschappelijke veld
 		this.gemeenschappelijkVeld = new GemeenschappelijkVeld();
 		// bepaal de volgorde van de spelers
@@ -256,6 +258,13 @@ public class Spel {
 //							 .max()
 //							 .getAsInt();
 
+		//if(maxDimensie2<0) {
+			//maxDimensie2 = 1;	// we hebben er minstens 1 nodig om onze array op te bouwen 
+		//}
+		//if(maxDimensie3<0) {
+			//maxDimensie3 = 1;	// we hebben er 1 nodig voor PS en WV
+		//}
+		
 		// opvullen van berekende aantallen
 		String[][][] spelSituatie = new String[3][maxDimensie2][maxDimensie3];
 		// opvullen met images
