@@ -535,7 +535,24 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	private String[][][] spelsituatie;
 	private List<List<String>> spelsituatieJoost;
 	private List<ImageView> imagePersList;
-	private int subroutineID;
+	private int subroutineID;	// 1: joker vervangen
+								// 2: serie of rij splitsen
+								// 3: steen aanleggen
+								// 4: steen naar werkveld
+								// 5: beurt beeindigen
+								// 6: reset van de beurt
+	
+	
+
+	private int veldInInput = 999; 	// 0 = PS, 1 = WV, 2 = GV
+	private int reeksInInput = 999; // index van de geselecteerde reeks in het GV (dit is gebaseerd op de y-coordinaat van het grid)
+	private int positieInInput = 999; // index van de geselecteerde steen in de reeks van het GV (dit is gebaseerd op de x-coordinaat van het grid)
+								// index van de geselecteerde steen in PS en WV (dit is gebaseerd op de Y-coordinaat van het grid)
+	private int veldInOutput = 999; 	// 0 = PS, 1 = WV, 2 = GV
+	private int reeksInOutput = 999; // index van de geselecteerde reeks in het GV (dit is gebaseerd op de y-coordinaat van het grid)
+	private int positieInOutput = 999; // index van de geselecteerde plaats in de reeks van het GV (dit is gebaseerd op de x-coordinaat van het grid)
+								// index van de geselecteerde plaats in PS en WV (dit is gebaseerd op de Y-coordinaat van het grid)
+
 
 	public Spelsituatie2Controller(DomeinController dc) {
 		super();
@@ -591,6 +608,17 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	// Event Listener on Button[#btnBeëindigbeurtSpeelBeurt].onAction
 	@FXML
 	public void btnBeëindigbeurtSpeelBeurt(ActionEvent event) {
+		try {
+			this.dc.beeindigBeurt();
+			this.lblinfoLabelSpelSituatie2.setText(String.format("Volgende speler is aan zet."));
+			this.lblSpelerAanZetSpeelbeurt.setText(String.format("Speler: %s", dc.geefNaamSpelerAanBeurt()));
+			this.toonSpelSituatieOpHetScherm();
+		} catch (Exception e) {
+			this.lblinfoLabelSpelSituatie2.setText(String.format("De spelsituatie is niet correct. De beurt kan niet beeindigd worden."));
+			this.toonSpelSituatieOpHetScherm();
+		}
+		
+		/***	DIT WAS OM TE TESTEN
 		dc.testvolgende();
 		Scene newScene = new Scene(new Spelsituatie2Controller(this.dc));
 		Stage stage = (Stage) this.getScene().getWindow();
@@ -600,63 +628,108 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 //		this.lblSpelerAanZetSpeelbeurt.setText(String.format("Speler: %s", dc.geefNaamSpelerAanBeurt()));
 //Joost	test
 		//this.IvImagePers14.setImage(new Image(getClass().getResourceAsStream("/images/B1.png")));
+		 ***/
 	}
 	// Event Listener on GridPane[#grdPaneGv].onMouseClicked
 	@FXML
 	public void grdPaneGvOnAction(MouseEvent event) {
+		this.veldInOutput = 2;
+		// https://stackoverflow.com/questions/28320110/javafx-how-to-get-column-and-row-index-in-gridpane
 		for( Node node: this.grdPaneGv.getChildren()) {
-			  
 			if(node instanceof ImageView) { 
 				if(node.getBoundsInParent().contains(event.getX(), event.getY())) {
 					int row = GridPane.getRowIndex( node); 
 					int column = GridPane.getColumnIndex( node);
 					
-					System.out.printf("row: %d, col: %d", row, column);
+					// we gaan er voorlopig van uit dat we elke reeks op een afzonderlijke rij tonen
+					this.reeksInOutput = row;
+					this.positieInOutput = column;
+					// 1: joker vervangen
+					// 2: serie of rij splitsen
+					// 3: steen aanleggen
+					// 4: steen naar werkveld
+					// 5: beurt beeindigen
+					// 6: reset van de beurt
+					switch(this.subroutineID) {
+					case 1: 
+						try {
+							this.dc.vervangJoker(this.veldInInput, this.positieInInput, this.reeksInOutput, this.positieInOutput);
+							this.toonSpelSituatieOpHetScherm();
+						} catch (Exception e) {
+							this.lblinfoLabelSpelSituatie2.setText(String.format("De joker kan niet vervangen worden."));
+							this.toonSpelSituatieOpHetScherm();
+						}
+						break;
+					case 2: 
+						this.dc.splitsRijOfSerie(this.reeksInOutput, this.positieInOutput);
+						this.toonSpelSituatieOpHetScherm();
+						break;
+					case 3: 
+						try {
+							this.dc.legSteenAan(this.veldInInput, this.positieInInput, this.reeksInOutput, this.positieInOutput);
+							this.toonSpelSituatieOpHetScherm();
+						} catch (Exception e) {
+							this.lblinfoLabelSpelSituatie2.setText(String.format("De steen kan niet aangelegd worden op deze positie."));
+							this.toonSpelSituatieOpHetScherm();
+						}
+						break;
+					case 4: 
+						try {
+							this.dc.steenNaarWerkveld(this.reeksInOutput, this.positieInOutput);
+							this.toonSpelSituatieOpHetScherm();
+						} catch (Exception e) {
+							this.lblinfoLabelSpelSituatie2.setText(String.format("Deze steen kan niet naar het werkveld verplaatst worden."));
+							this.toonSpelSituatieOpHetScherm();
+						}
+						break;
+					case 5: 
+						// niet hier maar in de btnBeëindigbeurtSpeelBeurt
+						break;
+					case 6: 
+						// reset hoeven we niet te implementeren
+						break;
+					default:
+						this.lblinfoLabelSpelSituatie2.setText(String.format("Er werd een verkeerde actie geregistreerd."));
+					}
 				}
 			}
 		}
-		
 	}
 	// Event Listener on GridPane[#grdPaneWv].onMouseClicked
 	@FXML
 	public void grdPaneWvOnAction(MouseEvent event) {
-		// TODO Autogenerated
+		this.veldInInput = 1;
+		
+		// https://stackoverflow.com/questions/28320110/javafx-how-to-get-column-and-row-index-in-gridpane
+		for( Node node: this.grdPaneWv.getChildren()) {
+				  
+			if(node instanceof ImageView) { 
+				if(node.getBoundsInParent().contains(event.getX(), event.getY())) {
+					int row = GridPane.getRowIndex( node); 
+					int column = GridPane.getColumnIndex( node);
+					
+					this.positieInInput = row + (10 * column); 	// dus 2de kolom (index 1) start bij 10
+				}
+			}
+		}
 	}
 	// Event Listener on GridPane[#grdPanePers].onMouseClicked
 	@FXML
 	public void grdPanePersOnAction(MouseEvent event) {
+		this.veldInInput = 0;
 		
 		// https://stackoverflow.com/questions/28320110/javafx-how-to-get-column-and-row-index-in-gridpane
 		for( Node node: this.grdPanePers.getChildren()) {
 				  
 			if(node instanceof ImageView) { 
 				if(node.getBoundsInParent().contains(event.getX(), event.getY())) {
-					int row = GridPane.getRowIndex( (ImageView)node); 
-					int column = GridPane.getColumnIndex( (ImageView)node);
-					System.out.printf("row: %d, col: %d", row, column);
+					int row = GridPane.getRowIndex( node); 
+					int column = GridPane.getColumnIndex( node);
+					
+					this.positieInInput = row + (10 * column); 	// dus 2de kolom (index 1) start bij 10
 				}
 			}
 		}
-		/*
-		 * Caused by: java.lang.NullPointerException: Cannot invoke
-		 * "java.lang.Integer.intValue()" because the return value of
-		 * "javafx.scene.layout.GridPane.getRowIndex(javafx.scene.Node)" is null at
-		 * rummikub_g99/gui.Spelsituatie2Controller.grdPanePersOnAction(
-		 * Spelsituatie2Controller.java:639) ... 42 more
-		 */
-				 
-		
-		/*
-		 * Node node = (Node) event.getTarget(); if(node instanceof ImageView) { int row
-		 * = GridPane.getRowIndex(node); int column = GridPane.getColumnIndex(node); }
-		 */
-		/*
-		 * Caused by: java.lang.NullPointerException: Cannot invoke
-		 * "java.lang.Integer.intValue()" because the return value of
-		 * "javafx.scene.layout.GridPane.getRowIndex(javafx.scene.Node)" is null at
-		 * rummikub_g99/gui.Spelsituatie2Controller.grdPanePersOnAction(
-		 * Spelsituatie2Controller.java:616) ... 42 more
-		 */
 	}
 	
 	@Override
@@ -682,5 +755,54 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 				IvImagePers05, IvImagePers06, IvImagePers07, IvImagePers08, IvImagePers09, IvImagePers10, IvImagePers11,
 				IvImagePers12, IvImagePers13, IvImagePers14, IvImagePers15, IvImagePers16, IvImagePers17, IvImagePers18,
 				IvImagePers19);
+	}
+	private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
+	    for (Node node : gridPane.getChildren()) {
+	        if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
+	            return node;
+	        }
+	    }
+	    return null;
+	}
+	
+	private void toonSpelSituatieOpHetScherm() {
+		// PS
+		int counter = 0;
+		for(String[] afbeeldingOpNul: this.dc.geefSpelsituatie()[0]) {
+			String afbeelding = afbeeldingOpNul[0];
+			if(afbeelding!=null) {
+			//Alert errorAlert = new Alert(AlertType.ERROR);
+			//errorAlert.setHeaderText("Speler bestaat niet!");
+			//errorAlert.setContentText(afbeelding);
+			//errorAlert.showAndWait();
+			ImageView imv = (ImageView) this.grdPanePers.getChildren().get(counter);
+			imv.setImage(new Image(getClass().getResourceAsStream(afbeelding)));
+			}
+			counter++;
+		}
+		// WV
+		counter = 0;
+		for(String[] afbeeldingOpNul: this.dc.geefSpelsituatie()[1]) {
+			String afbeelding = afbeeldingOpNul[0];
+			if(afbeelding!=null) {
+			ImageView imv = (ImageView) this.grdPaneWv.getChildren().get(counter);
+			imv.setImage(new Image(getClass().getResourceAsStream(afbeelding)));
+			}
+			counter++;
+		}
+		// GV
+		counter = 0;
+		int counter2 = 0;
+		for(String[] afbeeldingReeks: this.dc.geefSpelsituatie()[2]) {
+			counter2 = 0;
+			for(String afbeelding: afbeeldingReeks) {
+				if(afbeelding!=null) {
+					ImageView imv = (ImageView) this.getNodeFromGridPane(grdPaneGv, counter2, counter);
+					imv.setImage(new Image(getClass().getResourceAsStream(afbeelding)));
+				}
+				counter2++;
+			}
+			counter++;
+		}
 	}
 }
