@@ -103,34 +103,48 @@ public class GemeenschappelijkVeld {
 	
 	//UC3
 	public void legSteenAan(Steen steen, int reeksnummer, int positieInReeks) throws Exception {
-		// maak backup
-		Reeks backupReeks = this.getReeksen().get(reeksnummer);
-		// leg steen aan
-		this.getReeksen().get(reeksnummer).legSteenAan(steen, positieInReeks);
-		// valideer
-		// Rij
-		if(this.getReeksen().get(reeksnummer) instanceof Rij) {
-			Rij valideerRij = (Rij)this.getReeksen().get(reeksnummer);
-			try {
-				valideerRij.valideerLegSteenAan();
-			} catch (Exception e) {
-				// zet de backup terug
-				this.getReeksen().set(reeksnummer, backupReeks);
-				// gooi de error verder (naar Spel)
-				throw e;
+		// bestaat deze reeks al?
+		if(reeksnummer < this.getReeksen().size()) {	// deze reeks bestaat al
+			// maak backup
+			Reeks backupReeks = this.getReeksen().get(reeksnummer);
+			// leg steen aan
+			this.getReeksen().get(reeksnummer).legSteenAan(steen, positieInReeks);
+			// valideer
+			// Rij
+			if(this.getReeksen().get(reeksnummer) instanceof Rij) {
+				Rij valideerRij = (Rij)this.getReeksen().get(reeksnummer);
+				try {
+					valideerRij.valideerLegSteenAan();
+				} catch (Exception e) {
+					// zet de backup terug
+					this.getReeksen().set(reeksnummer, backupReeks);
+					// gooi de error verder (naar Spel)
+					throw e;
+				}
+			}
+			// Serie
+			else if(this.getReeksen().get(reeksnummer) instanceof Serie) {
+				Serie valideerSerie = (Serie)this.getReeksen().get(reeksnummer);
+				try {
+					valideerSerie.valideerLegSteenAan();
+				} catch (Exception e) {
+					// zet de backup terug
+					this.getReeksen().set(reeksnummer, backupReeks);
+					// gooi de error verder (naar Spel)
+					throw e;
+				}
+			}	
+			// nog niet bepaald
+			else {
+				// niets te doen
 			}
 		}
-		// Serie
-		else {
-			Serie valideerSerie = (Serie)this.getReeksen().get(reeksnummer);
-			try {
-				valideerSerie.valideerLegSteenAan();
-			} catch (Exception e) {
-				// zet de backup terug
-				this.getReeksen().set(reeksnummer, backupReeks);
-				// gooi de error verder (naar Spel)
-				throw e;
-			}
+		else {	// deze reeks bestaat nog niet
+			// maak de reeks
+			List<Steen> steenLijst = new ArrayList<>();
+			steenLijst.add(steen);
+			this.getReeksen().add(new Reeks(reeksnummer, steenLijst));
+			// validatie is niet nodig want er zit slechts 1 steen in
 		}
 	}
 	

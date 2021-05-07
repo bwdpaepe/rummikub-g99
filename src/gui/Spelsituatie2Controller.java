@@ -530,6 +530,13 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	private ImageView IvImagePers18;
 	@FXML
 	private ImageView IvImagePers19;
+	
+	private static int GV_AANTAL_KOLOMMEN = 21;
+	private static int GV_AANTAL_RIJEN = 10;
+	private static int WV_AANTAL_KOLOMMEN = 1;
+	private static int WV_AANTAL_RIJEN = 10;
+	private static int PS_AANTAL_KOLOMMEN = 2;
+	private static int PS_AANTAL_RIJEN = 10;
 
 	private DomeinController dc;
 	private String[][][] spelsituatie;
@@ -654,31 +661,38 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 					case 1: 
 						try {
 							this.dc.vervangJoker(this.veldInInput, this.positieInInput, this.reeksInOutput, this.positieInOutput);
+							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						} catch (Exception e) {
 							this.lblinfoLabelSpelSituatie2.setText(String.format("De joker kan niet vervangen worden."));
+							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						}
 						break;
 					case 2: 
 						this.dc.splitsRijOfSerie(this.reeksInOutput, this.positieInOutput);
+						this.verwijderSpelSituatieOpHetScherm();
 						this.toonSpelSituatieOpHetScherm();
 						break;
 					case 3: 
 						try {
 							this.dc.legSteenAan(this.veldInInput, this.positieInInput, this.reeksInOutput, this.positieInOutput);
+							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						} catch (Exception e) {
 							this.lblinfoLabelSpelSituatie2.setText(String.format("De steen kan niet aangelegd worden op deze positie."));
+							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						}
 						break;
 					case 4: 
 						try {
 							this.dc.steenNaarWerkveld(this.reeksInOutput, this.positieInOutput);
+							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						} catch (Exception e) {
 							this.lblinfoLabelSpelSituatie2.setText(String.format("Deze steen kan niet naar het werkveld verplaatst worden."));
+							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						}
 						break;
@@ -803,6 +817,29 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 				counter2++;
 			}
 			counter++;
+		}
+	}
+	
+	private void verwijderSpelSituatieOpHetScherm() {
+		//PS
+		for(int x = 0; x < this.PS_AANTAL_KOLOMMEN; x++) {
+			for(int y = 0; y < this.PS_AANTAL_RIJEN; y++) {
+				((ImageView)this.getNodeFromGridPane(this.grdPanePers, x, y)).setImage(null);
+			}
+		}
+		
+		//WV
+		for(int x = 0; x < this.WV_AANTAL_KOLOMMEN; x++) {
+			for(int y = 0; y < this.WV_AANTAL_RIJEN; y++) {
+				((ImageView)this.getNodeFromGridPane(this.grdPaneWv, x, y)).setImage(null);
+			}
+		}
+		
+		//GV
+		for(int x = 0; x < this.GV_AANTAL_KOLOMMEN; x++) {
+			for(int y = 0; y < this.GV_AANTAL_RIJEN; y++) {
+				((ImageView)this.getNodeFromGridPane(this.grdPaneGv, x, y)).setImage(null);
+			}
 		}
 	}
 }
