@@ -535,6 +535,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	private String[][][] spelsituatie;
 	private List<List<String>> spelsituatieJoost;
 	private List<ImageView> imagePersList;
+	private int subroutineID;
 
 	public Spelsituatie2Controller(DomeinController dc) {
 		super();
@@ -555,13 +556,14 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	public void btnJokerVervangenSpeelbeurtOnAction(ActionEvent event) {
 		this.lblinfoLabelSpelSituatie2.setText(String.format(
 				"Selecteer een steen in werk- of persoonlijk veld.%nVervolgens een joker gemeenschappelijk veld"));
-
+		this.subroutineID=1;
 	}
 	// Event Listener on Button[#btnSplitsSpeelBeurt].onAction
 	@FXML
 	public void btnSplitsSpeelBeurtOnAction(ActionEvent event) {
 		this.lblinfoLabelSpelSituatie2
 		.setText(String.format("Selecteer rechts in de rij/reeks waar je wilt splitsen."));
+		this.subroutineID=2;
 		// this.lblinfoLabelSpelSituatie2.setStyle("-fx-text-fill: green;");
 	}
 	// Event Listener on Button[#btnSteenAanleggenSpeelBeurt].onAction
@@ -569,13 +571,14 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	public void btnSteenAanleggenSpeelBeurtOnAction(ActionEvent event) {
 		this.lblinfoLabelSpelSituatie2.setText(String.format(
 				"Selecteer een steen in werk- of persoonlijk veld.%nSelecteer vervolgens een lokatie in gemeenschappelijk veld"));
+		this.subroutineID=3;
 	}
 	// Event Listener on Button[#btnSteenNaarWerkveldSpeelBeurt].onAction
 	@FXML
 	public void btnSteenNaarWerkveldSpeelBeurtOnAction(ActionEvent event) {
 		this.lblinfoLabelSpelSituatie2.setText(
 				/*joost*/				String.format("Selecteer een steen uit rij.%nOf selecteer een start -of eindsteen uit reeks."));
-
+		this.subroutineID=4;
 	}
 	// Event Listener on Button[#btnResetBeurtSpeelBeurt].onAction
 	@FXML
@@ -607,6 +610,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 				if(node.getBoundsInParent().contains(event.getX(), event.getY())) {
 					int row = GridPane.getRowIndex( node); 
 					int column = GridPane.getColumnIndex( node);
+					
 					System.out.printf("row: %d, col: %d", row, column);
 				}
 			}
