@@ -619,9 +619,11 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 			this.dc.beeindigBeurt();
 			this.lblinfoLabelSpelSituatie2.setText(String.format("Volgende speler is aan zet."));
 			this.lblSpelerAanZetSpeelbeurt.setText(String.format("Speler: %s", dc.geefNaamSpelerAanBeurt()));
+			this.verwijderSpelSituatieOpHetScherm();
 			this.toonSpelSituatieOpHetScherm();
 		} catch (Exception e) {
 			this.lblinfoLabelSpelSituatie2.setText(String.format("De spelsituatie is niet correct. De beurt kan niet beeindigd worden."));
+			this.verwijderSpelSituatieOpHetScherm();
 			this.toonSpelSituatieOpHetScherm();
 		}
 		

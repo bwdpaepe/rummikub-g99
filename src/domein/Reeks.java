@@ -30,7 +30,7 @@ public class Reeks {
 	}
 	
 	//UC3
-	public boolean isNieuw() {
+	public boolean getIsNieuw() {
 		return this.isNieuw;
 	}
 	

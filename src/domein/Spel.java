@@ -118,6 +118,8 @@ public class Spel {
 		bepaalStartStenenJoost();
 		// initialiseer de speler aan zet
 		this.spelerAanZet = 0;
+		this.spelers.get(this.spelerAanZet).maakDuplicaatPersoonlijkeStenen();
+		
 
 	}
 
@@ -194,6 +196,7 @@ public class Spel {
 		// met de volgende speler aan de beurt: bepaalVolgendeSpelerAanZet
 		else {
 			this.bepaalVolgendeSpelerAanZet();
+			this.startBeurt();
 			// System.out.printf ("niet einde spel ");
 		}
 	}
@@ -369,26 +372,34 @@ public class Spel {
 			if (actieveSpeler.hoeveelStenenHeeftDeSpeler() != actieveSpeler.getDuplicaatPersoonlijkeStenen().size()) { // stenen
 																														// afgelegt
 				if (this.gemeenschappelijkVeld.bepaalGeldigeSpelsituatie()) {
-					for (Reeks geldig : this.gemeenschappelijkVeld.getReeksen()) {
-						if (this.speler.getEersteUitleg() == true) {
-							for (Steen s : this.reeks.getStenen()) {
+					int nieuweReeksCounter = 0;
+					int somStenen = 0;
+					for (Reeks actieveReeks : this.gemeenschappelijkVeld.getReeksen()) {
+						if (actieveSpeler.getEersteUitleg() && actieveReeks.getIsNieuw()) {
+							nieuweReeksCounter++;
+							for (Steen s : actieveReeks.getStenen()) {
 								if (s.getWaarde() == 25) { // joker in nieuwe reeks --> Waar staat joker gedefinieerd??
 									throw new Exception(
 											"Bij de eerste afleg mag er geen gebruik gemaakt worden van een Joker.");
 								} else { // geen joker in nieuwe reeks
-									int somStenen = 0;
 									somStenen += s.getWaarde();
-									if (somStenen >= 30) { // controleren som
-										speler.setEersteUitleg(false);
-									} else { // somStenen < 30
-										throw new Exception("De som van de gelegde stenen moet minimaal 30 zijn.");
-									}
 								}
 							}
+							
 						} else {
 							isGeldig = true;
 						}
-						reeks.setIsNieuw(false);
+						actieveReeks.setIsNieuw(false);
+					}
+					if(actieveSpeler.getEersteUitleg()) {
+						if(nieuweReeksCounter == 0) {
+							throw new Exception("Bij een eerste uitleg moet minstens 1 van de reeksen op het GV nieuw zijn.");	
+						}
+						else if (somStenen >= 30) {
+							actieveSpeler.setEersteUitleg(false);
+						} else { // somStenen < 30
+							throw new Exception("De som van de gelegde stenen moet minimaal 30 zijn.");
+						}
 					}
 				} else { // indien geen geldigeSpelsituatie
 					throw new Exception("De stenen op het werkveld voldoen niet aan de eisen van een rij of serie.");
