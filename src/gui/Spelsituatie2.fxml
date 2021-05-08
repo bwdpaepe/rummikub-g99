@@ -428,7 +428,6 @@
 								<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
 							</GridPane.margin>
                      <children>
-                        <ImageView fx:id="IvImagePers10" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                         <ImageView fx:id="IvImagePers00" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                         <ImageView fx:id="IvImagePers01" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                         <ImageView fx:id="IvImagePers02" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="2" />
@@ -439,6 +438,7 @@
                         <ImageView fx:id="IvImagePers07" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="7" />
                         <ImageView fx:id="IvImagePers08" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="8" />
                         <ImageView fx:id="IvImagePers09" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImagePers10" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                         <ImageView fx:id="IvImagePers11" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <ImageView fx:id="IvImagePers12" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <ImageView fx:id="IvImagePers13" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />

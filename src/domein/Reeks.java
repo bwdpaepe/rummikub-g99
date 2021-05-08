@@ -1,5 +1,6 @@
 package domein;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -61,15 +62,16 @@ public class Reeks {
 	public void legSteenAan(Steen steen, int positieInReeks) {
 		// de reeks wordt 1 index groter
 		// omzetten naar array om dan de staart te kopieren
-		Steen[] stenenArray = this.getStenen().toArray(new Steen[this.getStenen().size()]);
+		Steen[] stenenArray = this.getStenen().toArray(new Steen[this.getStenen().size() + 1]);
 		// staart kopieren
-		Steen[] stenenArrayCopyRange = Arrays.copyOfRange(stenenArray, positieInReeks-1, stenenArray.length);
+		Steen[] stenenArrayCopyRange = Arrays.copyOfRange(stenenArray, positieInReeks, stenenArray.length);
 		// steen aanleggen
-		stenenArrayCopyRange[0] = steen;
+		stenenArray[positieInReeks] = steen;
 		// staart terug aan de reeks hangen
-		IntStream.rangeClosed(positieInReeks, this.getStenen().size()+1)
+		this.setStenen(new ArrayList<>(Arrays.asList(stenenArray)));
+		IntStream.range(positieInReeks + 1, this.getStenen().size())
 		         .forEach(x -> this.getStenen().set(x, stenenArrayCopyRange[x-positieInReeks]));
-		
+		int test = 0;
 	}
 	
 	//UC3
