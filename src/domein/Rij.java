@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 public class Rij extends Reeks{
 	
 	//UC3
-	public Rij(int rijnummer, List<Steen> stenen) {
-		super(rijnummer, stenen);
+	public Rij(int rijnummer, List<Steen> stenen, boolean isNieuw) {
+		super(rijnummer, stenen, isNieuw);
 	}
 	
 	//UC3

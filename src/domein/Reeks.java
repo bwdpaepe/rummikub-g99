@@ -13,9 +13,9 @@ public class Reeks {
 	
 	
 	//UC3
-	public Reeks(int rijnummer, List<Steen> stenen) {
+	public Reeks(int rijnummer, List<Steen> stenen, boolean isNieuw) {
 		this.setRijnummer(rijnummer);
-		this.setIsNieuw(true);
+		this.setIsNieuw(isNieuw);
 		this.setStenen(stenen);
 	}
 	

@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public class Serie extends Reeks{
 	
 	//UC3
-	public Serie(int rijnummer, List<Steen> stenen) {
-		super(rijnummer, stenen);
+	public Serie(int rijnummer, List<Steen> stenen, boolean isNieuw) {
+		super(rijnummer, stenen, isNieuw);
 	}
 	
 	//UC3
@@ -94,7 +94,6 @@ public class Serie extends Reeks{
 		if(jokerPosities.size() > 0) {	//joker(s)
 			List<Integer> cijferwaardes = super.getStenen().stream()
 	                .map(x->x.getWaarde())
-	                .sorted()
 	                .collect(Collectors.toList());
 			
 			Iterator<Integer> iterator = jokerPosities.iterator();
@@ -112,7 +111,6 @@ public class Serie extends Reeks{
 		
 			List<Integer> cijferwaardes = super.getStenen().stream()
                 .map(x->x.getWaarde())
-                .sorted()
                 .collect(Collectors.toList());
 		
 			isGeldig = this.checkAaneensluitendeCijferwaardes(cijferwaardes);

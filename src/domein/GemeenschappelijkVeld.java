@@ -46,13 +46,13 @@ public class GemeenschappelijkVeld {
 		while (isGeldig && iterator.hasNext()) {
 			Reeks kandidaatReeks = iterator.next();
 			// eerste proberen we een rij
-			kandidaatReeks = new Rij(kandidaatReeks.getRijnummer(), kandidaatReeks.getStenen());
+			kandidaatReeks = new Rij(kandidaatReeks.getRijnummer(), kandidaatReeks.getStenen(), kandidaatReeks.getIsNieuw());
 			isGeldig = kandidaatReeks.bepaalIsGeldig();
 			
 			
 			// indien ongeldig, dan proberen we een serie
 			if(!isGeldig) {
-				kandidaatReeks = new Serie(kandidaatReeks.getRijnummer(), kandidaatReeks.getStenen());
+				kandidaatReeks = new Serie(kandidaatReeks.getRijnummer(), kandidaatReeks.getStenen(), kandidaatReeks.getIsNieuw());
 				isGeldig = kandidaatReeks.bepaalIsGeldig();
 				if(isGeldig) {
 					this.reeksen.set(index,kandidaatReeks);
@@ -70,7 +70,7 @@ public class GemeenschappelijkVeld {
 	//UC3
 	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {
 		// het GV wordt 1 index groter
-		this.getReeksen().add(new Reeks(this.getReeksen().size() + 1, new ArrayList<Steen>()));
+		this.getReeksen().add(new Reeks(this.getReeksen().size() + 1, new ArrayList<Steen>(), false));
 		// omzetten naar array om dan de staart te kopieren
 		Reeks[] reeksenArray = this.getReeksen().toArray(new Reeks[this.getReeksen().size()]);
 		// staart kopieren
@@ -90,8 +90,8 @@ public class GemeenschappelijkVeld {
 			}
 			counter++;
 		}
-		Reeks eersteReeks = new Reeks(reeksnummer, eersteStenen);
-		Reeks tweedeReeks = new Reeks(reeksnummer+1, tweedeStenen);
+		Reeks eersteReeks = new Reeks(reeksnummer, eersteStenen, false);
+		Reeks tweedeReeks = new Reeks(reeksnummer+1, tweedeStenen, false);
 		// reeksen terug aan GV hangen
 		this.getReeksen().set(reeksnummer, eersteReeks);
 		this.getReeksen().set(++reeksnummer, tweedeReeks);
@@ -143,7 +143,7 @@ public class GemeenschappelijkVeld {
 			// maak de reeks
 			List<Steen> steenLijst = new ArrayList<>();
 			steenLijst.add(steen);
-			this.getReeksen().add(new Reeks(reeksnummer, steenLijst));
+			this.getReeksen().add(new Reeks(reeksnummer, steenLijst, true));
 			// validatie is niet nodig want er zit slechts 1 steen in
 		}
 	}
