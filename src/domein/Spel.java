@@ -246,28 +246,34 @@ public class Spel {
 		List<Steen> PS = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
 		List<Steen> WV = this.werkveld.getStenenWerkveld();
 		List<Reeks> GV = this.gemeenschappelijkVeld.getReeksen();
-		int maxDimensie2 = 21;
+		int maxDimensie2 = 30;
 		int maxDimensie3 = 10;
-//			int maxDimensie2 = Integer.MIN_VALUE;
-//			int maxDimensie3 = Integer.MIN_VALUE;
+/*		int maxDimensie2 = Integer.MIN_VALUE;
+		int maxDimensie3 = Integer.MIN_VALUE;
 
 		// Berekenen max dimensies
 		// 1ste dimensie kan 3 waarden bevatten : SP, Werkveld, GV
 		// 2de dimensie
-//			maxDimensie2 = Math.max(PS.size(), Math.max(WV.size(), GV.size()));
+		maxDimensie2 = Math.max(PS.size(), Math.max(WV.size(), GV.size()));
 		// 3de dimensie
-//			maxDimensie3 = GV.stream()
-//							 .mapToInt(Reeks::hoeveelStenenHeeftDeReeks)
-//							 .max()
-//							 .getAsInt();
-
-		//if(maxDimensie2<0) {
-			//maxDimensie2 = 1;	// we hebben er minstens 1 nodig om onze array op te bouwen 
-		//}
-		//if(maxDimensie3<0) {
-			//maxDimensie3 = 1;	// we hebben er 1 nodig voor PS en WV
-		//}
+		if(GV == null) {
+			maxDimensie3 = 0;
+		} else {
+			maxDimensie3 = GV.stream()
+						 .mapToInt(Reeks::hoeveelStenenHeeftDeReeks)
+						 .max()
+						 .getAsInt();
+		}
 		
+
+		
+		if(maxDimensie2<0) {
+			maxDimensie2 = 1;	// we hebben er minstens 1 nodig om onze array op te bouwen 
+		}
+		if(maxDimensie3<0) {
+			maxDimensie3 = 1;	// we hebben er 1 nodig voor PS en WV
+		}
+		*/
 		// opvullen van berekende aantallen
 		String[][][] spelSituatie = new String[3][maxDimensie2][maxDimensie3];
 		// opvullen met images

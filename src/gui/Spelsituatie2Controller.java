@@ -595,6 +595,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	public void btnSteenAanleggenSpeelBeurtOnAction(ActionEvent event) {
 		this.lblinfoLabelSpelSituatie2.setText(String.format(
 				"Selecteer een steen in werk- of persoonlijk veld.%nSelecteer vervolgens een lokatie in gemeenschappelijk veld"));
+		
 		this.subroutineID=3;
 	}
 	// Event Listener on Button[#btnSteenNaarWerkveldSpeelBeurt].onAction

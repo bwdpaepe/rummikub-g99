@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
 	<top>
 		<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="900.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
 			<children>
@@ -409,8 +409,9 @@
 						</GridPane>
 						<GridPane fx:id="grdPanePers" gridLinesVisible="true" onMouseClicked="#grdPanePersOnAction" GridPane.columnIndex="2" GridPane.rowIndex="1">
 							<columnConstraints>
-								<ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="20.0" />
-								<ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="20.0" prefWidth="20.0" />
+								<ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="100.0" />
 							</columnConstraints>
 							<rowConstraints>
 								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -448,6 +449,16 @@
                         <ImageView fx:id="IvImagePers17" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <ImageView fx:id="IvImagePers18" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <ImageView fx:id="IvImagePers19" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <ImageView fx:id="IvImagePers20" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                        <ImageView fx:id="IvImagePers21" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ImageView fx:id="IvImagePers22" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <ImageView fx:id="IvImagePers23" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <ImageView fx:id="IvImagePers24" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <ImageView fx:id="IvImagePers25" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <ImageView fx:id="IvImagePers26" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <ImageView fx:id="IvImagePers27" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                        <ImageView fx:id="IvImagePers28" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <ImageView fx:id="IvImagePers29" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                      </children>
 						</GridPane>
 					</children>
