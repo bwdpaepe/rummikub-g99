@@ -535,7 +535,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	private static int GV_AANTAL_RIJEN = 10;
 	private static int WV_AANTAL_KOLOMMEN = 1;
 	private static int WV_AANTAL_RIJEN = 10;
-	private static int PS_AANTAL_KOLOMMEN = 2;
+	private static int PS_AANTAL_KOLOMMEN = 3;
 	private static int PS_AANTAL_RIJEN = 10;
 
 	private DomeinController dc;
