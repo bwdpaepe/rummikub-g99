@@ -36,6 +36,12 @@ public class GemeenschappelijkVeld {
 		return this.reeksen;
 	}
 	
+	
+	//UC3
+	public void setReeksen(List<Reeks> reeksen) {
+		this.reeksen = reeksen;
+	}
+
 	//UC3
 	public boolean bepaalGeldigeSpelsituatie() {
 		boolean isGeldig = true;
@@ -70,13 +76,10 @@ public class GemeenschappelijkVeld {
 	//UC3
 	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {
 		// het GV wordt 1 index groter
-		this.getReeksen().add(new Reeks(this.getReeksen().size() + 1, new ArrayList<Steen>(), false));
 		// omzetten naar array om dan de staart te kopieren
-		Reeks[] reeksenArray = this.getReeksen().toArray(new Reeks[this.getReeksen().size()]);
+		Reeks[] reeksenArray = this.getReeksen().toArray(new Reeks[this.getReeksen().size() + 1]);
 		// staart kopieren
-		Reeks[] reeksenArrayCopyRange = Arrays.copyOfRange(reeksenArray, reeksnummer + 1, reeksenArray.length);
-		// asList
-		List<Reeks> listReeksenArrayCopyRange = new ArrayList<>(Arrays.asList(reeksenArrayCopyRange));
+		Reeks[] reeksenArrayCopyRange = Arrays.copyOfRange(reeksenArray, reeksnummer + 1, reeksenArray.length -1);
 		// reeks splitsen
 		List<Steen> eersteStenen = new ArrayList<>();
 		List<Steen> tweedeStenen = new ArrayList<>();
@@ -93,12 +96,14 @@ public class GemeenschappelijkVeld {
 		Reeks eersteReeks = new Reeks(reeksnummer, eersteStenen, false);
 		Reeks tweedeReeks = new Reeks(reeksnummer+1, tweedeStenen, false);
 		// reeksen terug aan GV hangen
-		this.getReeksen().set(reeksnummer, eersteReeks);
-		this.getReeksen().set(++reeksnummer, tweedeReeks);
-		for(Reeks reeks: listReeksenArrayCopyRange) {
-			this.getReeksen().set(++reeksnummer, reeks);
+		reeksenArray[reeksnummer] = eersteReeks;
+		reeksenArray[++reeksnummer] = tweedeReeks;
+		this.setReeksen(new ArrayList<>(Arrays.asList(reeksenArray)));
+		for(Reeks reeks: reeksenArrayCopyRange) {
+			++reeksnummer;
+			reeks.setRijnummer(reeksnummer);
+			this.getReeksen().set(reeksnummer, reeks);
 		}
-		
 	}
 	
 	//UC3

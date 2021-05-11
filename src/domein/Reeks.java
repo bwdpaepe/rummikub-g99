@@ -25,7 +25,7 @@ public class Reeks {
 	}
 	
 	//UC3
-	private void setRijnummer(int rijnummer) {
+	public void setRijnummer(int rijnummer) {
 		this.rijnummer = rijnummer;
 	}
 	
