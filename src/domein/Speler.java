@@ -93,10 +93,12 @@ public class Speler{
 	}
 	
 	public void maakDuplicaatPersoonlijkeStenen(){ //Vervangt methode maakDuplicaat uit PS
-		this.duplicaatPersoonlijkeStenen = new ArrayList<>();
-		for(Steen persoonlijkeSteen: this.persoonlijkeStenen) {
-			this.duplicaatPersoonlijkeStenen.add(persoonlijkeSteen);
-		}
+		this.duplicaatPersoonlijkeStenen = new ArrayList<>(this.persoonlijkeStenen);
+	}
+	
+	// UC3 
+	public void resetPersoonlijkeStenen(){
+		this.persoonlijkeStenen = new ArrayList<>(this.duplicaatPersoonlijkeStenen);
 	}
 
 	//UC3

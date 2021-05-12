@@ -119,4 +119,9 @@ public class DomeinController {
 	public void steenNaarWerkveld(int reeksnummer, int positieInReeks) throws Exception {
 		this.spel.steenNaarWerkveld(reeksnummer, positieInReeks);
 	}
+	
+	//UC3
+	public void resetBeurt() {
+		this.spel.resetBeurt();
+	}
 }

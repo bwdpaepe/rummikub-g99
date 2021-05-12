@@ -19,11 +19,13 @@ public class GemeenschappelijkVeld {
 	}
 
 	//UC3
-	private void maakDuplicaat() {
-		this.duplicaatGemeenschappelijkVeld = new ArrayList<>();
-		for(Reeks reeks: this.reeksen) {
-			this.duplicaatGemeenschappelijkVeld.add(reeks);
-		}
+	public void maakDuplicaat() {
+		this.duplicaatGemeenschappelijkVeld = new ArrayList<>(this.reeksen);
+	}
+	
+	//UC3
+	public void resetGemeenschappelijkVeld() {
+		this.reeksen = new ArrayList<>(this.duplicaatGemeenschappelijkVeld);
 	}
 	
 	//UC3

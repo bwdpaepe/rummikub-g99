@@ -608,7 +608,10 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	// Event Listener on Button[#btnResetBeurtSpeelBeurt].onAction
 	@FXML
 	public void btnResetBeurtSpeelBeurtOnAction(ActionEvent event) {
+		this.dc.resetBeurt();
 		this.lblinfoLabelSpelSituatie2.setText(String.format("Beurt werd gereset."));
+		this.verwijderSpelSituatieOpHetScherm();
+		this.toonSpelSituatieOpHetScherm();
 		//tests
 		//this.IvImagePers12.setImage(new Image(getClass().getResourceAsStream("/images/B1.png")));
 
@@ -703,7 +706,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 						// niet hier maar in de btnBeëindigbeurtSpeelBeurt
 						break;
 					case 6: 
-						// reset hoeven we niet te implementeren
+						// niet hier maar in de btnResetBeurtSpeelBeurtOnAction
 						break;
 					default:
 						this.lblinfoLabelSpelSituatie2.setText(String.format("Er werd een verkeerde actie geregistreerd."));

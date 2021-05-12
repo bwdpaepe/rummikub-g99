@@ -119,6 +119,10 @@ public class Spel {
 		// initialiseer de speler aan zet
 		this.spelerAanZet = 0;
 		this.spelers.get(this.spelerAanZet).maakDuplicaatPersoonlijkeStenen();
+		// initialiseer het werkveld (niets te doen, want is leeg)
+		//initialiseer het GV
+		this.gemeenschappelijkVeld.maakDuplicaat();
+		
 		
 
 	}
@@ -339,6 +343,9 @@ public class Spel {
 	// UC3
 	public void startBeurt() {
 		this.spelers.get(this.spelerAanZet).maakDuplicaatPersoonlijkeStenen();
+		// initialiseer het werkveld (niets te doen, want is leeg)
+		//initialiseer het GV
+		this.gemeenschappelijkVeld.maakDuplicaat();
 	}
 
 	// UC3
@@ -515,6 +522,18 @@ public class Spel {
 		// in geval van problemen moeten we hier niets terugleggen, we kunnen de
 		// exception gewoon verder gooien
 		this.werkveld.voegSteenToeWerkveld(this.gemeenschappelijkVeld.steenNaarWerkveld(reeksnummer, positieInReeks));
+	}
+	
+	// UC3
+	public void resetBeurt() {
+		// PS
+		this.spelers.get(this.spelerAanZet).resetPersoonlijkeStenen();
+		
+		// WV
+		this.werkveld.maakLeeg();
+		
+		// GV
+		this.gemeenschappelijkVeld.resetGemeenschappelijkVeld();
 	}
 
 }
