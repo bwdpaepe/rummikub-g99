@@ -101,7 +101,7 @@ public class DomeinController {
 	
 	
 	//UC3
-	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {
+	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) throws Exception {
 		this.spel.splitsRijOfSerie(reeksnummer, positieInReeks);
 	}
 	

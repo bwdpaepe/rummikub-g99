@@ -64,14 +64,14 @@ public class Reeks {
 		// omzetten naar array om dan de staart te kopieren
 		Steen[] stenenArray = this.getStenen().toArray(new Steen[this.getStenen().size() + 1]);
 		// staart kopieren
-		Steen[] stenenArrayCopyRange = Arrays.copyOfRange(stenenArray, positieInReeks, stenenArray.length);
+		Steen[] stenenArrayCopyRange = Arrays.copyOfRange(stenenArray, positieInReeks, stenenArray.length - 1);
 		// steen aanleggen
 		stenenArray[positieInReeks] = steen;
 		// staart terug aan de reeks hangen
 		this.setStenen(new ArrayList<>(Arrays.asList(stenenArray)));
 		IntStream.range(positieInReeks + 1, this.getStenen().size())
-		         .forEach(x -> this.getStenen().set(x, stenenArrayCopyRange[x-positieInReeks]));
-		int test = 0;
+		         .forEach(x -> this.getStenen().set(x, stenenArrayCopyRange[x-positieInReeks-1]));
+		
 	}
 	
 	//UC3

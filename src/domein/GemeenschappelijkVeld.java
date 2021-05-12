@@ -76,7 +76,10 @@ public class GemeenschappelijkVeld {
 	}
 	
 	//UC3
-	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {
+	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) throws Exception {
+		if(positieInReeks == -1) {
+			throw new Exception("De reeks kan niet gesplitst worden op deze positie");
+		}
 		// het GV wordt 1 index groter
 		// omzetten naar array om dan de staart te kopieren
 		Reeks[] reeksenArray = this.getReeksen().toArray(new Reeks[this.getReeksen().size() + 1]);
@@ -114,6 +117,8 @@ public class GemeenschappelijkVeld {
 		if(reeksnummer < this.getReeksen().size()) {	// deze reeks bestaat al
 			// maak backup
 			Reeks backupReeks = this.getReeksen().get(reeksnummer);
+			// if positieInReeks == -1 dan wordt de steen aan het begin toegevoegd
+			if(positieInReeks == -1) { positieInReeks++; }
 			// leg steen aan
 			this.getReeksen().get(reeksnummer).legSteenAan(steen, positieInReeks);
 			// valideer
@@ -157,6 +162,10 @@ public class GemeenschappelijkVeld {
 	
 	//UC3
 	public Steen vervangJoker(Steen steen, int reeksnummer, int positieInReeks) throws Exception {
+		if(positieInReeks == -1) {
+			throw new Exception("De joker op deze positie kan niet vervangen worden");
+		}
+		
 		// maak backup
 		Reeks backupReeks = this.getReeksen().get(reeksnummer);
 		// vervang joker
@@ -192,6 +201,10 @@ public class GemeenschappelijkVeld {
 	
 	//UC3
 	public Steen steenNaarWerkveld(int reeksnummer, int positieInReeks) throws Exception {
+		if(positieInReeks == -1) {
+			throw new Exception("De steen op deze positie kan niet naar het werkveld");
+		}
+		
 		// maak backup
 		Reeks backupReeks = this.getReeksen().get(reeksnummer);
 		// haal een Steen

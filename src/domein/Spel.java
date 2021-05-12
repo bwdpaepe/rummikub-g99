@@ -428,7 +428,7 @@ public class Spel {
 	}
 
 	// UC3
-	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) {
+	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) throws Exception {
 		this.gemeenschappelijkVeld.splitsRijOfSerie(reeksnummer, positieInReeks);
 	}
 

@@ -531,12 +531,13 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	@FXML
 	private ImageView IvImagePers19;
 	
-	private static int GV_AANTAL_KOLOMMEN = 21;
-	private static int GV_AANTAL_RIJEN = 10;
-	private static int WV_AANTAL_KOLOMMEN = 1;
-	private static int WV_AANTAL_RIJEN = 10;
-	private static int PS_AANTAL_KOLOMMEN = 3;
-	private static int PS_AANTAL_RIJEN = 10;
+	private final int GV_AANTAL_KOLOMMEN = 21;
+	private final int GV_AANTAL_RIJEN = 10;
+	private final int GV_OFFSET_KOLOMMEN = 1;
+	private final int WV_AANTAL_KOLOMMEN = 1;
+	private final int WV_AANTAL_RIJEN = 10;
+	private final int PS_AANTAL_KOLOMMEN = 3;
+	private final int PS_AANTAL_RIJEN = 10;
 
 	private DomeinController dc;
 	private String[][][] spelsituatie;
@@ -666,7 +667,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 					switch(this.subroutineID) {
 					case 1: 
 						try {
-							this.dc.vervangJoker(this.veldInInput, this.positieInInput, this.reeksInOutput, this.positieInOutput);
+							this.dc.vervangJoker(this.veldInInput, this.positieInInput, this.reeksInOutput, this.positieInOutput - this.GV_OFFSET_KOLOMMEN);
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						} catch (Exception e) {
@@ -676,13 +677,20 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 						}
 						break;
 					case 2: 
-						this.dc.splitsRijOfSerie(this.reeksInOutput, this.positieInOutput);
-						this.verwijderSpelSituatieOpHetScherm();
-						this.toonSpelSituatieOpHetScherm();
+						try {
+							this.dc.splitsRijOfSerie(this.reeksInOutput, this.positieInOutput - this.GV_OFFSET_KOLOMMEN);
+							this.verwijderSpelSituatieOpHetScherm();
+							this.toonSpelSituatieOpHetScherm();
+						} catch (Exception e) {
+							this.lblinfoLabelSpelSituatie2.setText(String.format("%s", e.getMessage()));
+							this.verwijderSpelSituatieOpHetScherm();
+							this.toonSpelSituatieOpHetScherm();
+						}
+						
 						break;
 					case 3: 
 						try {
-							this.dc.legSteenAan(this.veldInInput, this.positieInInput, this.reeksInOutput, this.positieInOutput);
+							this.dc.legSteenAan(this.veldInInput, this.positieInInput, this.reeksInOutput, this.positieInOutput - this.GV_OFFSET_KOLOMMEN);
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						} catch (Exception e) {
@@ -693,7 +701,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 						break;
 					case 4: 
 						try {
-							this.dc.steenNaarWerkveld(this.reeksInOutput, this.positieInOutput);
+							this.dc.steenNaarWerkveld(this.reeksInOutput, this.positieInOutput - this.GV_OFFSET_KOLOMMEN);
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						} catch (Exception e) {
@@ -817,7 +825,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 			counter2 = 0;
 			for(String afbeelding: afbeeldingReeks) {
 				if(afbeelding!=null) {
-					ImageView imv = (ImageView) this.getNodeFromGridPane(grdPaneGv, counter2, counter);
+					ImageView imv = (ImageView) this.getNodeFromGridPane(grdPaneGv, counter2 + this.GV_OFFSET_KOLOMMEN, counter);
 					imv.setImage(new Image(getClass().getResourceAsStream(afbeelding)));
 				}
 				counter2++;
