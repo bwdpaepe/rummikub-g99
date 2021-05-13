@@ -117,5 +117,10 @@ public class Speler{
 		this.eersteUitleg = eersteUitleg;
 	}
 	
+	// presentatie
+	public void verwijderAlePersoonlijkeStenen() {
+		this.persoonlijkeStenen.clear();
+	}
+	
 }
 

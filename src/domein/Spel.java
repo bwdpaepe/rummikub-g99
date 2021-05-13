@@ -542,5 +542,11 @@ public class Spel {
 		// GV
 		this.gemeenschappelijkVeld.resetGemeenschappelijkVeld();
 	}
+	
+	// UC3
+	public void fictiefEinde() {
+		this.spelers.get(this.spelerAanZet).verwijderAlePersoonlijkeStenen();
+		this.eindeBeurt();
+	}
 
 }

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
 	<top>
 		<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="900.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
 			<children>
@@ -461,6 +461,16 @@
                         <ImageView fx:id="IvImagePers29" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                      </children>
 						</GridPane>
+                  <Button fx:id="btnFictiefEinde" mnemonicParsing="false" onAction="#btnFictiefEindeOnAction" style="-fx-background-color: silver;" text="Fictief einde" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button fx:id="btnToonScores" mnemonicParsing="false" onAction="#btnToonScoresOnAction" style="-fx-background-color: silver;" text="Toon scores" GridPane.columnIndex="2">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Button>
 					</children>
 				</GridPane>
 			</children>

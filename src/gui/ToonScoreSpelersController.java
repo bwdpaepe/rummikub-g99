@@ -47,3 +47,4 @@ public class ToonScoreSpelersController extends BorderPane implements Initializa
 	}
 	
 }
+

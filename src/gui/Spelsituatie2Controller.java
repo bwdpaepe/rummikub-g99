@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -19,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 
 public class Spelsituatie2Controller extends BorderPane implements Initializable {
@@ -524,6 +526,30 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	private ImageView IvImagePers18;
 	@FXML
 	private ImageView IvImagePers19;
+	@FXML
+		private ImageView IvImagePers20;
+		@FXML
+		private ImageView IvImagePers21;
+		@FXML
+		private ImageView IvImagePers22;
+		@FXML
+		private ImageView IvImagePers23;
+		@FXML
+		private ImageView IvImagePers24;
+		@FXML
+		private ImageView IvImagePers25;
+		@FXML
+		private ImageView IvImagePers26;
+		@FXML
+		private ImageView IvImagePers27;
+		@FXML
+		private ImageView IvImagePers28;
+		@FXML
+		private ImageView IvImagePers29;
+		@FXML
+		private Button btnFictiefEinde;
+		@FXML
+	private Button btnToonScores;
 	
 	private final int GV_AANTAL_KOLOMMEN = 21;
 	private final int GV_AANTAL_RIJEN = 10;
@@ -755,6 +781,22 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 				}
 			}
 		}
+	}
+	// Event Listener on Button[#btnFictiefEinde].onAction
+		@FXML
+		public void btnFictiefEindeOnAction(ActionEvent event) {
+			this.dc.fictiefEinde();
+			this.lblinfoLabelSpelSituatie2.setText(String.format("Spel is ten einde. Je kan de scores bekijken."));
+		}
+		// Event Listener on Button[#btnToonScores].onAction
+		@FXML
+		public void btnToonScoresOnAction(ActionEvent event) {
+			Scene newScene = new Scene(new ToonScoreSpelersController(this.dc));
+			//Scene newScene = new Scene(new SpelSituatieController(this.dc));
+			
+			Stage stage = (Stage) this.getScene().getWindow();
+	        stage.setScene(newScene);
+	        stage.show();
 	}
 	
 	@Override
