@@ -486,6 +486,8 @@ public class Spel {
 			throws Exception {
 		// pak de steen
 		Steen steenOmJokerTeVervangen;
+	//jcr//	
+		Steen tijdelijkejoker;
 		// nummerInInput '0': PS
 		// nummerInInput '1': Werkveld
 		switch (nummerInInput) {
@@ -498,7 +500,8 @@ public class Spel {
 		}
 
 		try {
-			this.gemeenschappelijkVeld.vervangJoker(steenOmJokerTeVervangen, reeksnummer, positieInReeks);
+/*jcr*/		tijdelijkejoker = this.gemeenschappelijkVeld.vervangJoker(steenOmJokerTeVervangen, reeksnummer, positieInReeks);
+			werkveld.voegSteenToeWerkveld(tijdelijkejoker);
 		} catch (Exception e) {
 			// we kunnen de steen niet aanleggen
 			// nu moeten we hem terugleggen vanwaar hij kwam
