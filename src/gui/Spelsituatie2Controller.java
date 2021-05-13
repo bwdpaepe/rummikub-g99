@@ -1,14 +1,5 @@
 package gui;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -17,15 +8,18 @@ import java.util.ResourceBundle;
 
 import domein.DomeinController;
 import javafx.event.ActionEvent;
-
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
+
 
 public class Spelsituatie2Controller extends BorderPane implements Initializable {
 	@FXML
@@ -670,8 +664,11 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 							this.dc.vervangJoker(this.veldInInput, this.positieInInput, this.reeksInOutput, this.positieInOutput - this.GV_OFFSET_KOLOMMEN);
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
-						} catch (Exception e) {
-							this.lblinfoLabelSpelSituatie2.setText(String.format("De joker kan niet vervangen worden."));
+						} 
+						catch (Exception e) {
+							//this.lblinfoLabelSpelSituatie2.setText(String.format("De joker kan niet vervangen worden."));
+							lblinfoLabelSpelSituatie2.setText(e.getMessage());
+							e.printStackTrace();
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						}

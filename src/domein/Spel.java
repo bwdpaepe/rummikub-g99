@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
 import exceptions.AlleSpelersReedsAangemeldException;
 import exceptions.BuitenBereikAantalSpelersException;
 import exceptions.SpelerReedsAangemeldException;
+import exceptions.SteenIsGeenJokerException;
 import talen.Language;
 
 public class Spel {
@@ -483,7 +484,7 @@ public class Spel {
 
 	// UC3
 	public void vervangJoker(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks)
-			throws Exception {
+			throws Exception, SteenIsGeenJokerException {
 		// pak de steen
 		Steen steenOmJokerTeVervangen;
 	//jcr//	

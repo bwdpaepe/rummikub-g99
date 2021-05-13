@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import exceptions.SteenIsGeenJokerException;
+
 //UC3
 public class Reeks {
 	private int rijnummer;
@@ -75,10 +77,14 @@ public class Reeks {
 	}
 	
 	//UC3
-	public Steen vervangJoker(Steen steen, int positieInReeks) {
+	public Steen vervangJoker(Steen steen, int positieInReeks) throws SteenIsGeenJokerException {
 		// de reeks blijft even groot
 		// pak de joker
+		
 		Steen joker = this.getStenen().get(positieInReeks);
+		if ((!(joker.getKleur()==Kleur.JOKER))) {
+			throw new SteenIsGeenJokerException("De geselecteerde steen is geen joker!");
+		}
 		// voeg de steen in op die positie
 		this.getStenen().set(positieInReeks, steen);
 		// retourneer de joker (moet naar het werkveld)
