@@ -468,18 +468,21 @@ public class Spel {
 			throw e;
 		}
 	}
-
+	
+	
 	// UC3
 	private void legSteenTerug(List<Steen> teruglegLijst, int positieInInput, Steen steenOmAanTeLeggen) {
+		// de lijst wordt 1 index groter
+		teruglegLijst.add(steenOmAanTeLeggen);
 		// omzetten naar array om dan de staart te kopieren
 		Steen[] stenenArray = teruglegLijst.toArray(new Steen[teruglegLijst.size()]);
 		// staart kopieren
-		Steen[] stenenArrayCopyRange = Arrays.copyOfRange(stenenArray, positieInInput - 1, stenenArray.length);
+		Steen[] stenenArrayCopyRange = Arrays.copyOfRange(stenenArray, positieInInput, stenenArray.length - 1);
 		// steen aanleggen
-		stenenArrayCopyRange[0] = steenOmAanTeLeggen;
+		teruglegLijst.set(positieInInput, steenOmAanTeLeggen);
 		// staart terug aan de reeks hangen
-		IntStream.rangeClosed(positieInInput, teruglegLijst.size() + 1)
-				.forEach(x -> teruglegLijst.set(x, stenenArrayCopyRange[x - positieInInput]));
+		IntStream.range(positieInInput + 1, teruglegLijst.size())
+				.forEach(x -> teruglegLijst.set(x, stenenArrayCopyRange[x - positieInInput - 1]));
 	}
 
 	// UC3
