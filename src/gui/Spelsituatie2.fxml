@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
 	<top>
 		<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="900.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
 			<children>
@@ -47,7 +48,7 @@
 					<children>
 						<VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" GridPane.valignment="CENTER">
 							<children>
-								<Button fx:id="btnJokerVervangenSpeelBeurt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnJokerVervangenSpeelbeurtOnAction" style="-fx-background-color: silver;" text="Joker Vervangen" translateY="20.0">
+								<Button fx:id="btnJokerVervangenSpeelBeurt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnJokerVervangenSpeelbeurtOnAction" style="-fx-background-color: silver;" text="%knopJokerVervangen" translateY="20.0">
 									<padding>
 										<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 									</padding>
@@ -55,7 +56,7 @@
 										<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 									</VBox.margin>
 								</Button>
-								<Button fx:id="btnSplitsSpeelBeurt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSplitsSpeelBeurtOnAction" style="-fx-background-color: silver;" text="Splits rij of reeks" translateY="20.0">
+								<Button fx:id="btnSplitsSpeelBeurt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSplitsSpeelBeurtOnAction" style="-fx-background-color: silver;" text="%knopSplitsRijOfSerie" translateY="20.0">
 									<padding>
 										<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 									</padding>
@@ -63,7 +64,7 @@
 										<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 									</VBox.margin>
 								</Button>
-								<Button fx:id="btnSteenAanleggenSpeelBeurt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSteenAanleggenSpeelBeurtOnAction" style="-fx-background-color: silver;" text="steen aan leggen" translateY="20.0">
+								<Button fx:id="btnSteenAanleggenSpeelBeurt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSteenAanleggenSpeelBeurtOnAction" style="-fx-background-color: silver;" text="%knopSteenAanleggen" translateY="20.0">
 									<padding>
 										<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 									</padding>
@@ -71,7 +72,7 @@
 										<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 									</VBox.margin>
 								</Button>
-								<Button fx:id="btnSteenNaarWerkveldSpeelBeurt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSteenNaarWerkveldSpeelBeurtOnAction" style="-fx-background-color: silver;" text="steen naar werkveld" translateY="20.0">
+								<Button fx:id="btnSteenNaarWerkveldSpeelBeurt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSteenNaarWerkveldSpeelBeurtOnAction" style="-fx-background-color: silver;" text="%knopSteenNaarWerkveld" translateY="20.0">
 									<padding>
 										<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 									</padding>
@@ -81,7 +82,7 @@
 								</Button>
 							</children>
 						</VBox>
-						<Button fx:id="btnResetBeurtSpeelBeurt" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnResetBeurtSpeelBeurtOnAction" style="-fx-background-color: silver;" text="RESET Beurt" textFill="#f22020" GridPane.rowIndex="1">
+						<Button fx:id="btnResetBeurtSpeelBeurt" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnResetBeurtSpeelBeurtOnAction" style="-fx-background-color: silver;" text="%knopReset" textFill="#f22020" GridPane.rowIndex="1">
 							<padding>
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</padding>
@@ -89,7 +90,7 @@
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</GridPane.margin>
 						</Button>
-						<Button fx:id="btnBeëindigbeurtSpeelBeurt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnBeëindigbeurtSpeelBeurt" style="-fx-background-color: silver;" text="Beurt beëindigen" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+						<Button fx:id="btnBeëindigbeurtSpeelBeurt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnBeëindigbeurtSpeelBeurt" style="-fx-background-color: silver;" text="%knopBeurtBeeindigen" GridPane.rowIndex="3" GridPane.valignment="CENTER">
 							<padding>
 								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 							</padding>
@@ -370,7 +371,7 @@
                         <ImageView fx:id="IvImageGV209" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="20" GridPane.rowIndex="9" />
                      </children>
 						</GridPane>
-						<Label fx:id="lblinfoLabelSpelSituatie2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="446.0" text="Selecteer je persoonlijke steen en de joker die je wenst te vervangen">
+						<Label fx:id="lblinfoLabelSpelSituatie2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="446.0" text="%beginTekst">
 							<GridPane.margin>
 								<Insets bottom="10.0" left="50.0" right="75.0" top="20.0" />
 							</GridPane.margin>
@@ -461,12 +462,12 @@
                         <ImageView fx:id="IvImagePers29" fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                      </children>
 						</GridPane>
-                  <Button fx:id="btnFictiefEinde" mnemonicParsing="false" onAction="#btnFictiefEindeOnAction" style="-fx-background-color: silver;" text="Fictief einde" GridPane.columnIndex="1">
+                  <Button fx:id="btnFictiefEinde" mnemonicParsing="false" onAction="#btnFictiefEindeOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: silver;" text="%knopFictiefEinde" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="btnToonScores" mnemonicParsing="false" onAction="#btnToonScoresOnAction" style="-fx-background-color: silver;" text="Toon scores" GridPane.columnIndex="2">
+                  <Button fx:id="btnToonScores" mnemonicParsing="false" onAction="#btnToonScoresOnAction" style="-fx-background-color: silver;" text="%knopToonScores" GridPane.columnIndex="2">
                      <GridPane.margin>
                         <Insets left="20.0" />
                      </GridPane.margin>

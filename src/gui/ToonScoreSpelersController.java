@@ -2,6 +2,7 @@ package gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
@@ -14,6 +15,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
+import talen.Language;
 
 public class ToonScoreSpelersController extends BorderPane implements Initializable {
 	@FXML
@@ -22,12 +24,17 @@ public class ToonScoreSpelersController extends BorderPane implements Initializa
     private ListView<String> lvGebruikersNamen;
 	
 	private DomeinController dc;
+	
+	private ResourceBundle bundle ;
+	private Language language = Language.getInstance();
 
-	public ToonScoreSpelersController(DomeinController dc) {
+	public ToonScoreSpelersController(DomeinController dc, Locale l) {
 		super();
 		this.dc = dc;
-		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("ToonScoreSpelers.fxml"));
+		ResourceBundle bundle = ResourceBundle.getBundle("talen.ApplicationMessage", l);
+		this.bundle = bundle;
+		language.stelTaalIn(l.getLanguage(), l.getCountry());
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("ToonScoreSpelers.fxml"), this.bundle);
 		loader.setRoot(this);
 		loader.setController(this);
 		try{

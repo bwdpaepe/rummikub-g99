@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import domein.DomeinController;
@@ -21,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import talen.Language;
 
 
 public class Spelsituatie2Controller extends BorderPane implements Initializable {
@@ -527,28 +529,28 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	@FXML
 	private ImageView IvImagePers19;
 	@FXML
-		private ImageView IvImagePers20;
-		@FXML
-		private ImageView IvImagePers21;
-		@FXML
-		private ImageView IvImagePers22;
-		@FXML
-		private ImageView IvImagePers23;
-		@FXML
-		private ImageView IvImagePers24;
-		@FXML
-		private ImageView IvImagePers25;
-		@FXML
-		private ImageView IvImagePers26;
-		@FXML
-		private ImageView IvImagePers27;
-		@FXML
-		private ImageView IvImagePers28;
-		@FXML
-		private ImageView IvImagePers29;
-		@FXML
-		private Button btnFictiefEinde;
-		@FXML
+	private ImageView IvImagePers20;
+	@FXML
+	private ImageView IvImagePers21;
+	@FXML
+	private ImageView IvImagePers22;
+	@FXML
+	private ImageView IvImagePers23;
+	@FXML
+	private ImageView IvImagePers24;
+	@FXML
+	private ImageView IvImagePers25;
+	@FXML
+	private ImageView IvImagePers26;
+	@FXML
+	private ImageView IvImagePers27;
+	@FXML
+	private ImageView IvImagePers28;
+	@FXML
+	private ImageView IvImagePers29;
+	@FXML
+	private Button btnFictiefEinde;
+	@FXML
 	private Button btnToonScores;
 	
 	private final int GV_AANTAL_KOLOMMEN = 21;
@@ -563,6 +565,10 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	private String[][][] spelsituatie;
 	private List<List<String>> spelsituatieJoost;
 	private List<ImageView> imagePersList;
+	// om meertaligheid te kunnen toepassen
+	private ResourceBundle bundle;
+	private Language language = Language.getInstance();
+	
 	private int subroutineID;	// 1: joker vervangen
 								// 2: serie of rij splitsen
 								// 3: steen aanleggen
@@ -582,10 +588,13 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 								// index van de geselecteerde plaats in PS en WV (dit is gebaseerd op de Y-coordinaat van het grid)
 
 
-	public Spelsituatie2Controller(DomeinController dc) {
+	public Spelsituatie2Controller(DomeinController dc, Locale l) {
 		super();
 		this.dc = dc;
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Spelsituatie2.fxml"));
+		ResourceBundle bundle = ResourceBundle.getBundle("talen.ApplicationMessage", l);
+		this.bundle = bundle;
+		language.stelTaalIn(l.getLanguage(), l.getCountry());
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Spelsituatie2.fxml"), this.bundle);
 		loader.setRoot(this);
 		loader.setController(this);
 		try {
@@ -599,38 +608,43 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	// Event Listener on Button[#btnJokerVervangenSpeelBeurt].onAction
 	@FXML
 	public void btnJokerVervangenSpeelbeurtOnAction(ActionEvent event) {
-		this.lblinfoLabelSpelSituatie2.setText(String.format(
-				"Selecteer een steen in werk- of persoonlijk veld.%nVervolgens een joker gemeenschappelijk veld"));
+		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmSelecteer"))));
+		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopJokerVervangen"))));
+		/*this.lblinfoLabelSpelSituatie2.setText(String.format(
+				"Selecteer een steen in werk- of persoonlijk veld.%nVervolgens een joker gemeenschappelijk veld"));*/
 		this.subroutineID=1;
 	}
 	// Event Listener on Button[#btnSplitsSpeelBeurt].onAction
 	@FXML
 	public void btnSplitsSpeelBeurtOnAction(ActionEvent event) {
-		this.lblinfoLabelSpelSituatie2
-		.setText(String.format("Selecteer rechts in de rij/reeks waar je wilt splitsen."));
+		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopSplitsRijOfSteen"))));
+		//this.lblinfoLabelSpelSituatie2.setText(String.format("Selecteer rechts in de rij/reeks waar je wilt splitsen."));
 		this.subroutineID=2;
 		// this.lblinfoLabelSpelSituatie2.setStyle("-fx-text-fill: green;");
 	}
 	// Event Listener on Button[#btnSteenAanleggenSpeelBeurt].onAction
 	@FXML
 	public void btnSteenAanleggenSpeelBeurtOnAction(ActionEvent event) {
-		this.lblinfoLabelSpelSituatie2.setText(String.format(
-				"Selecteer een steen in werk- of persoonlijk veld.%nSelecteer vervolgens een lokatie in gemeenschappelijk veld"));
+		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmSelecteer"))));
+		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopSteenAanleggen"))));
+		/*this.lblinfoLabelSpelSituatie2.setText(String.format(
+				"Selecteer een steen in werk- of persoonlijk veld.%nSelecteer vervolgens een locatie in gemeenschappelijk veld"));*/
 		
 		this.subroutineID=3;
 	}
 	// Event Listener on Button[#btnSteenNaarWerkveldSpeelBeurt].onAction
 	@FXML
 	public void btnSteenNaarWerkveldSpeelBeurtOnAction(ActionEvent event) {
-		this.lblinfoLabelSpelSituatie2.setText(
-				/*joost*/				String.format("Selecteer een steen uit rij.%nOf selecteer een start -of eindsteen uit reeks."));
+		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopSteenNaarWerkveld"))));
+		//this.lblinfoLabelSpelSituatie2.setText(
+		//		/*joost*/				String.format("Selecteer een steen uit rij.%nOf selecteer een start -of eindsteen uit reeks."));
 		this.subroutineID=4;
 	}
 	// Event Listener on Button[#btnResetBeurtSpeelBeurt].onAction
 	@FXML
 	public void btnResetBeurtSpeelBeurtOnAction(ActionEvent event) {
 		this.dc.resetBeurt();
-		this.lblinfoLabelSpelSituatie2.setText(String.format("Beurt werd gereset."));
+		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopReset"))));
 		this.verwijderSpelSituatieOpHetScherm();
 		this.toonSpelSituatieOpHetScherm();
 		//tests
@@ -642,8 +656,8 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	public void btnBeëindigbeurtSpeelBeurt(ActionEvent event) {
 		try {
 			this.dc.beeindigBeurt();
-			this.lblinfoLabelSpelSituatie2.setText(String.format("Volgende speler is aan zet."));
-			this.lblSpelerAanZetSpeelbeurt.setText(String.format("Speler: %s", dc.geefNaamSpelerAanBeurt()));
+			this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopBeurtBeeindigen"))));
+			this.lblSpelerAanZetSpeelbeurt.setText(String.format((language.getString("speler"))+ "%s", dc.geefNaamSpelerAanBeurt()));
 			this.verwijderSpelSituatieOpHetScherm();
 			this.toonSpelSituatieOpHetScherm();
 		} catch (Exception e) {
@@ -717,7 +731,8 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						} catch (Exception e) {
-							this.lblinfoLabelSpelSituatie2.setText(String.format("De steen kan niet aangelegd worden op deze positie."));
+							this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("foutSteenAanleggen"))));
+							//this.lblinfoLabelSpelSituatie2.setText(String.format("De steen kan niet aangelegd worden op deze positie."));
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						}
@@ -728,7 +743,8 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						} catch (Exception e) {
-							this.lblinfoLabelSpelSituatie2.setText(String.format("Deze steen kan niet naar het werkveld verplaatst worden."));
+							this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("foutSteenWerkveld"))));
+							//this.lblinfoLabelSpelSituatie2.setText(String.format("Deze steen kan niet naar het werkveld verplaatst worden."));
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						}
@@ -740,7 +756,8 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 						// niet hier maar in de btnResetBeurtSpeelBeurtOnAction
 						break;
 					default:
-						this.lblinfoLabelSpelSituatie2.setText(String.format("Er werd een verkeerde actie geregistreerd."));
+						this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("foutDefault"))));
+						//this.lblinfoLabelSpelSituatie2.setText(String.format("Er werd een verkeerde actie geregistreerd."));
 					}
 				}
 			}
@@ -786,12 +803,13 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 		@FXML
 		public void btnFictiefEindeOnAction(ActionEvent event) {
 			this.dc.fictiefEinde();
-			this.lblinfoLabelSpelSituatie2.setText(String.format("Spel is ten einde. Je kan de scores bekijken."));
+			this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopFictiesEinde"))));
+			//this.lblinfoLabelSpelSituatie2.setText(String.format("Spel is ten einde. Je kan de scores bekijken."));
 		}
 		// Event Listener on Button[#btnToonScores].onAction
 		@FXML
 		public void btnToonScoresOnAction(ActionEvent event) {
-			Scene newScene = new Scene(new ToonScoreSpelersController(this.dc));
+			Scene newScene = new Scene(new ToonScoreSpelersController(this.dc, this.bundle.getLocale()));
 			//Scene newScene = new Scene(new SpelSituatieController(this.dc));
 			
 			Stage stage = (Stage) this.getScene().getWindow();
@@ -802,7 +820,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// String speler = dc.geefNaamSpelerAanBeurt();
-		this.lblSpelerAanZetSpeelbeurt.setText(String.format("Speler: %s", dc.geefNaamSpelerAanBeurt()));
+		this.lblSpelerAanZetSpeelbeurt.setText(String.format((language.getString("speler"))+ "%s", dc.geefNaamSpelerAanBeurt()));
 		initializeImagePersList();
 //joost nog code Bart toevoegen om met de 3dim array te werken
 		spelsituatieJoost = dc.geefSpelsituatieJoost();

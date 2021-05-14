@@ -1,13 +1,16 @@
 package main;
 	
-	import domein.DomeinController;
+	import java.util.ResourceBundle;
+
+import domein.DomeinController;
 import gui.StartAanmeldenController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import talen.Language;
 	
 	public class StartUp extends Application{
-	
+			
 		@Override
 		public void start(Stage primaryStage) throws Exception 
 		{

@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import talen.Language;
 import javafx.scene.control.MenuButton;
 
 public class StartAanmeldenController extends BorderPane {
@@ -29,7 +30,8 @@ public class StartAanmeldenController extends BorderPane {
 
 	private DomeinController dc;
 	@FXML
-    private ResourceBundle bundle ;
+    private ResourceBundle bundle;
+	
 
 	public StartAanmeldenController(DomeinController dc) {
 		super();
