@@ -647,7 +647,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 			this.verwijderSpelSituatieOpHetScherm();
 			this.toonSpelSituatieOpHetScherm();
 		} catch (Exception e) {
-			this.lblinfoLabelSpelSituatie2.setText(String.format("De spelsituatie is niet correct. De beurt kan niet beeindigd worden."));
+			this.lblinfoLabelSpelSituatie2.setText(e.getMessage());
 			this.verwijderSpelSituatieOpHetScherm();
 			this.toonSpelSituatieOpHetScherm();
 		}

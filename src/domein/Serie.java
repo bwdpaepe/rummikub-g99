@@ -35,7 +35,7 @@ public class Serie extends Reeks{
 						
 		// aaneensluitende cijferwaardes
 		if(isGeldig) {
-			isGeldig = this.bepaalAaneensluitendeCijferwaardes();			
+			isGeldig = this.bepaalAaneensluitendeCijferwaardes();
 		}
 						
 		return isGeldig;

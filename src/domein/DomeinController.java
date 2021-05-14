@@ -15,6 +15,12 @@ public class DomeinController {
 		spelerRepo = new SpelerRepository();
 	}
 	
+	//tijdelijke constructor om vlugger een spelsituatie op te zetten
+	public DomeinController(Spel spel) {
+		spelerRepo = new SpelerRepository();
+		this.spel = spel;
+	}
+
 	//tijdelijke methode voor test GUI!!!!
 	public void testvolgende()  {
 		spel.eindeBeurt();
@@ -128,5 +134,9 @@ public class DomeinController {
 	//presentatie
 	public void fictiefEinde() {
 		this.spel.fictiefEinde();
+	}
+	
+	public void startSpel2() {
+		spel.startspel2();
 	}
 }

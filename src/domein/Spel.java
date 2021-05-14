@@ -153,15 +153,8 @@ public class Spel {
 	private void bepaalStartStenenJoost() {
 		for (Speler s : spelers) {
 			for (int i = 0; i < AANTAL_STENEN_PER_SPELER_BIJ_AANVANG; i++) {
-//				System.out.print("i = "+i);
 				Steen steen = pot.geefSteen();
-//				System.out.println(steen.getAfbeelding());
 				s.voegSteenToe(steen);
-//				System.out.println(s.vraagAllePersoonlijkeStenenOp().size());
-			}
-			System.out.println("speler: "+s.getSpelersnaam());
-			for(Steen steen:s.vraagAllePersoonlijkeStenenOp()) {
-				System.out.println(steen.getAfbeelding());
 			}
 		}
 	}
@@ -393,7 +386,7 @@ public class Spel {
 							for (Steen s : actieveReeks.getStenen()) {
 								if (s.getWaarde() == 25) { // joker in nieuwe reeks --> Waar staat joker gedefinieerd??
 									throw new Exception(
-											"Bij de eerste afleg mag er geen gebruik gemaakt worden van een Joker.");
+											"Bij de eerste afleg mag er geen gebruik gemaakt worden van\neen Joker.");
 								} else { // geen joker in nieuwe reeks
 									somStenen += s.getWaarde();
 								}
@@ -406,16 +399,16 @@ public class Spel {
 					}
 					if(actieveSpeler.getEersteUitleg()) {
 						if(nieuweReeksCounter == 0) {
-							throw new Exception("Bij een eerste uitleg moet minstens 1 van de reeksen op het GV nieuw zijn.");	
+							throw new Exception("Bij een eerste uitleg moet\nminstens 1 van de reeksen op het GV nieuw zijn.");	
 						}
 						else if (somStenen >= 30) {
 							actieveSpeler.setEersteUitleg(false);
 						} else { // somStenen < 30
-							throw new Exception("De som van de gelegde stenen moet minimaal 30 zijn.");
+							throw new Exception("Bij een eerste uitleg moet\nde som van de gelegde stenen minimaal 30 zijn.");
 						}
 					}
 				} else { // indien geen geldigeSpelsituatie
-					throw new Exception("De stenen op het werkveld voldoen niet aan de eisen van een rij of serie.");
+					throw new Exception("De stenen op het werkveld voldoen niet aan\nde eisen van een rij of serie.");
 				}
 			} else { // geen stenen afgelegd
 				actieveSpeler.voegSteenToe(this.pot.geefSteen());
@@ -545,8 +538,28 @@ public class Spel {
 	
 	// UC3
 	public void fictiefEinde() {
-		this.spelers.get(this.spelerAanZet).verwijderAlePersoonlijkeStenen();
+		this.spelers.get(this.spelerAanZet).verwijderAllePersoonlijkeStenen();
 		this.eindeBeurt();
+	}
+
+	// tijdelijk om vlug te testen
+	public void startspel2() {
+		if(pot == null)this.pot = new Pot();
+		this.werkveld = new Werkveld();
+		this.gemeenschappelijkVeld = new GemeenschappelijkVeld();
+		this.randomizeVolgordeSpelers();
+		this.spelerAanZet = 0;
+		this.spelers.get(this.spelerAanZet).maakDuplicaatPersoonlijkeStenen();
+		this.gemeenschappelijkVeld.maakDuplicaat();
+	}
+	
+	// tijdelijk om vlug te testen
+	public void normaleStenen(Speler s) {
+		if(pot == null)this.pot = new Pot();
+		for (int i = 0; i < AANTAL_STENEN_PER_SPELER_BIJ_AANVANG; i++) {
+			Steen steen = pot.geefSteen();
+			s.voegSteenToe(steen);
+		}
 	}
 
 }

@@ -118,7 +118,7 @@ public class Speler{
 	}
 	
 	// presentatie
-	public void verwijderAlePersoonlijkeStenen() {
+	public void verwijderAllePersoonlijkeStenen() {
 		this.persoonlijkeStenen.clear();
 	}
 	

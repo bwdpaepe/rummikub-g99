@@ -15,17 +15,14 @@ public class Rij extends Reeks{
 	public boolean bepaalIsGeldig() {
 		// minimaal 3 stenen voor zowel Rij als Serie
 		boolean isGeldig = super.bepaalIsGeldig();
-		
 		// maximaal 4 stenen
 		if(isGeldig && super.getStenen().size() > 4) {
 			isGeldig = false;
 		}
-		
 		// zelfde cijferwaarde
 		if(isGeldig) {
 			isGeldig = this.bepaalZelfdeCijferwaardes();
 		}
-		
 		// verschillende kleur
 		if(isGeldig) {
 			isGeldig = this.bepaalVerschillendeKleur();

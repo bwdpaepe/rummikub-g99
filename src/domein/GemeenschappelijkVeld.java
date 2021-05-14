@@ -59,7 +59,6 @@ public class GemeenschappelijkVeld {
 			kandidaatReeks = new Rij(kandidaatReeks.getRijnummer(), kandidaatReeks.getStenen(), kandidaatReeks.getIsNieuw());
 			isGeldig = kandidaatReeks.bepaalIsGeldig();
 			
-			
 			// indien ongeldig, dan proberen we een serie
 			if(!isGeldig) {
 				kandidaatReeks = new Serie(kandidaatReeks.getRijnummer(), kandidaatReeks.getStenen(), kandidaatReeks.getIsNieuw());
@@ -73,7 +72,6 @@ public class GemeenschappelijkVeld {
 			}
 			index++;
 		}
-		
 		return isGeldig;
 	}
 	
