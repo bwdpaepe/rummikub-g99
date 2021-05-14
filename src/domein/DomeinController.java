@@ -135,7 +135,7 @@ public class DomeinController {
 	public void fictiefEinde() {
 		this.spel.fictiefEinde();
 	}
-	
+	//extra shortcut voor presentatie
 	public void startSpel2() {
 		spel.startspel2();
 	}
