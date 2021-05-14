@@ -5,11 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import exceptions.SteenIsGeenJokerException;
+import exceptions.VeldIsLeegEnGeenJokerException;
+
 //UC3
 public class Reeks {
 	private int rijnummer;
 	private boolean isNieuw;
 	private List<Steen> stenen;
+	private Steen joker;
 	
 	
 	//UC3
@@ -75,10 +79,21 @@ public class Reeks {
 	}
 	
 	//UC3
-	public Steen vervangJoker(Steen steen, int positieInReeks) {
+	public Steen vervangJoker(Steen steen, int positieInReeks) throws SteenIsGeenJokerException, VeldIsLeegEnGeenJokerException {
 		// de reeks blijft even groot
 		// pak de joker
-		Steen joker = this.getStenen().get(positieInReeks);
+		
+		try {
+			this.joker = this.getStenen().get(positieInReeks);		
+		} 
+		catch (Exception e) {
+			throw new VeldIsLeegEnGeenJokerException();
+		}
+		
+		if ((!(joker.getKleur()==Kleur.JOKER))) {
+			//throw new SteenIsGeenJokerException("Degeselecteerde steen is geen joker!");
+			throw new SteenIsGeenJokerException();
+		}
 		// voeg de steen in op die positie
 		this.getStenen().set(positieInReeks, steen);
 		// retourneer de joker (moet naar het werkveld)

@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import exceptions.SteenIsGeenJokerException;
+
 //UC3
 public class GemeenschappelijkVeld {
 
@@ -161,7 +163,7 @@ public class GemeenschappelijkVeld {
 	}
 	
 	//UC3
-	public Steen vervangJoker(Steen steen, int reeksnummer, int positieInReeks) throws Exception {
+	public Steen vervangJoker(Steen steen, int reeksnummer, int positieInReeks) throws Exception, SteenIsGeenJokerException {
 		if(positieInReeks == -1) {
 			throw new Exception("De joker op deze positie kan niet vervangen worden");
 		}
