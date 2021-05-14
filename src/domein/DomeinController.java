@@ -124,4 +124,9 @@ public class DomeinController {
 	public void resetBeurt() {
 		this.spel.resetBeurt();
 	}
+	
+	//presentatie
+	public void fictiefEinde() {
+		this.spel.fictiefEinde();
+	}
 }
