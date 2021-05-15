@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import domein.DomeinController;
+import domein.GemeenschappelijkVeld;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -562,6 +563,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	private final int PS_AANTAL_RIJEN = 10;
 
 	private DomeinController dc;
+	private GemeenschappelijkVeld gmv;
 	private String[][][] spelsituatie;
 	private List<List<String>> spelsituatieJoost;
 	private List<ImageView> imagePersList;
@@ -690,6 +692,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 					// we gaan er voorlopig van uit dat we elke reeks op een afzonderlijke rij tonen
 					this.reeksInOutput = row;
 					this.positieInOutput = column;
+					
 					// 1: joker vervangen
 					// 2: serie of rij splitsen
 					// 3: steen aanleggen
@@ -706,7 +709,6 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 						catch (Exception e) {
 							//this.lblinfoLabelSpelSituatie2.setText(String.format("De joker kan niet vervangen worden."));
 							lblinfoLabelSpelSituatie2.setText(e.getMessage());
-							e.printStackTrace();
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						}
@@ -818,7 +820,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// String speler = dc.geefNaamSpelerAanBeurt();
-		this.lblSpelerAanZetSpeelbeurt.setText(String.format("%s", dc.geefNaamSpelerAanBeurt()));
+		this.lblSpelerAanZetSpeelbeurt.setText(String.format(language.getString("speler") + "%s", dc.geefNaamSpelerAanBeurt()));
 		initializeImagePersList();
 //joost nog code Bart toevoegen om met de 3dim array te werken
 		spelsituatieJoost = dc.geefSpelsituatieJoost();
