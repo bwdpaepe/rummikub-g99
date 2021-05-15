@@ -87,12 +87,18 @@ public class Serie extends Reeks{
 		int positieJoker = 0;
 		int offset = 0;
 		do {
-			positieJoker = this.zoekJoker(steenKleurLijst.subList(positieJoker, steenKleurLijst.size()));
-			if(positieJoker != -1) {
-				jokerPosities.add(positieJoker + offset);
-				offset += positieJoker;
-				positieJoker++;
+			if(positieJoker < steenKleurLijst.size()) {
+				positieJoker = this.zoekJoker(steenKleurLijst.subList(positieJoker, steenKleurLijst.size()));
+				if(positieJoker != -1) {
+					jokerPosities.add(positieJoker + offset);
+					offset += positieJoker;
+					positieJoker++;
+				}
 			}
+			else {
+				positieJoker = -1;
+			}
+			
 		}while(positieJoker != -1);
 		
 		if(jokerPosities.size() > 0) {	//joker(s)
@@ -108,8 +114,10 @@ public class Serie extends Reeks{
 				isGeldig = this.checkAaneensluitendeCijferwaardes(subCijferwaardes);
 				old_index = new_index + 1;
 			}
-			List<Integer> subCijferwaardes = cijferwaardes.subList(old_index, cijferwaardes.size());
-			isGeldig = this.checkAaneensluitendeCijferwaardes(subCijferwaardes);
+			if(old_index < cijferwaardes.size()) {
+				List<Integer> subCijferwaardes = cijferwaardes.subList(old_index, cijferwaardes.size());
+				isGeldig = this.checkAaneensluitendeCijferwaardes(subCijferwaardes);
+			}
 		}
 		else {	//geen joker
 		
