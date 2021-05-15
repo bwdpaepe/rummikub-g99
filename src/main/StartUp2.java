@@ -68,7 +68,7 @@ import talen.Language;
 			startStenen2.addAll(Arrays.asList());
 			//voeg stenen toe als je de speler1 extra stenen wilt geven aan het begin
 			extraStenen2.addAll(Arrays.asList(
-					new Steen(0, Kleur.JOKER, "/images/J0.png")));
+					new Steen(25, Kleur.JOKER, "/images/J0.png")));
 			
 			
 			//voeg stenen toe als je de startstenen zelf wilt bepalen voor speler3
@@ -79,7 +79,7 @@ import talen.Language;
 					new Steen(10, Kleur.BLAUW, "/images/B10.png"),
 					new Steen(11, Kleur.BLAUW, "/images/B11.png"),
 					new Steen(12, Kleur.BLAUW, "/images/B12.png"),
-					new Steen(0, Kleur.JOKER, "/images/J0.png")));
+					new Steen(25, Kleur.JOKER, "/images/J0.png")));
 			
 			
 			if(!startStenen1.isEmpty()) {
