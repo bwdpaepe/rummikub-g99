@@ -485,7 +485,6 @@ public class Spel {
 			throws Exception, SteenIsGeenJokerException {
 		// pak de steen
 		Steen steenOmJokerTeVervangen;
-	//jcr//	
 		Steen tijdelijkejoker;
 		// nummerInInput '0': PS
 		// nummerInInput '1': Werkveld

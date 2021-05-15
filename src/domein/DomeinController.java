@@ -171,37 +171,65 @@ public class DomeinController {
 	
 	//UC3
 	/**
-	 * 
-	 * @param nummerInInput
-	 * @param positieInInput
-	 * @param reeksnummer
-	 * @param positieInReeks
-	 * @throws Exception
+	 * Legt een steen, vanuit het PV of werkveld, aan op een reeks uit het gemeenschappelijk veld. 
+	 * @param nummerInInput Deze integer geeft weer van waaruit je een steen wilt aanleggen (0=Pers Stenen en 1=werkveld)
+	 * @param positieInInput Deze integer bepaalt de hoeveelste steen uit PS of werkveld je wilt aanleggen.
+	 * @param reeksnummer Deze integer geeft weer in de hoeveelste reeks van het GV je wilt aanleggen
+	 * @param positieInReeks De integer bepaalt op welke positie je de reeks wilt uitbreiden. (opm: -1 staat voor vooraan in reeks)
+	 * @throws Exception Indien uit de validatie (nadat steen werd toegevoegd), blijkt dat de rij of de serie niet meer voldoet aan de relevante definitie.
 	 */
 	public void legSteenAan(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks) throws Exception {
 		this.spel.legSteenAan(nummerInInput, positieInInput, reeksnummer, positieInReeks);
 	}
 	
 	//UC3
+	/**
+	 * Vervangt een steen vanuit PV of werkveld met een joker op het gemeenschappelijk veld. </>
+	 * De joker wordt vervolgens naar het werkveld gelegd. 
+	 * @param nummerInInput Deze integer geeft weer van waaruit je een steen wilt aanleggen (0=Pers Stenen en 1=werkveld)
+	 * @param positieInInput Deze integer bepaalt de hoeveelste steen uit PS of werkveld je wilt aanleggen.
+	 * @param reeksnummer Deze integer geeft weer in de hoeveelste reeks van het GV je wilt een joker vervangen
+	 * @param positieInReeks De integer bepaalt op welke positie je de te vervangen joker hebt aangeduid
+	 * @throws Exception wordt opgevangen vanuit gemeenschappelijk veld indien value voor positieInReeks de plaats voor een reeks betekend</br>
+	 * Ofwel indien na het wisselen van de steen niet meer voldaan wordt aan de domeinregels van rij of serie </br>.
+	 * Vanuit klasse Reeks worden ook exceptions opgevangen indien de aangeduide steen geen joker of een leeg veld was in GV.
+	 */
 	public void vervangJoker(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks) throws Exception {
 		this.spel.vervangJoker(nummerInInput, positieInInput, reeksnummer, positieInReeks);
 	}
 	
 	//UC3
+	/**
+	 * Verplaatst aan de hand van parameters een steen uit het gemeenschappelijk veld naar het werkveld.
+	 * @param reeksnummer Deze integer geeft weer in de hoeveelste reeks van het GV je wilt een steen naar werkveld plaatsen
+	 * @param positieInReeks De integer bepaalt op welke positie je de te verwijderen steen hebt aangeduid
+	 * @throws Exception 
+	 */
 	public void steenNaarWerkveld(int reeksnummer, int positieInReeks) throws Exception {
 		this.spel.steenNaarWerkveld(reeksnummer, positieInReeks);
 	}
 	
-	//UC3
+	//UC3/
+	/**
+	 * In spel wordt een methode aangeroepen die een reset doet door de kopie van de persoonlijke en gemeenschappelijke veld stenen terug te zetten.</br>
+	 * Het werkveld wordt terug leeg gemaakt
+	 */
+	
 	public void resetBeurt() {
 		this.spel.resetBeurt();
 	}
 	
 	//presentatie
+	/**
+	 * Dit is een testmethode om de presentatie mogelijks vlotter te laten verlopen. 
+	 */
 	public void fictiefEinde() {
 		this.spel.fictiefEinde();
 	}
 	//extra shortcut voor presentatie
+	/**
+	 * Dit is een testmethode om het spel op te starten in een bepaalde situatie. Dit zonder aanmelden.
+	 */
 	public void startSpel2() {
 		spel.startspel2();
 	}
