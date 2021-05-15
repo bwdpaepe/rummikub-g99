@@ -162,6 +162,8 @@ public class GemeenschappelijkVeld {
 	
 	//UC3
 	public Steen vervangJoker(Steen steen, int reeksnummer, int positieInReeks) throws Exception, SteenIsGeenJokerException {
+		
+		Steen joker;
 		if(positieInReeks == -1) {
 			throw new Exception("De joker op deze positie kan niet vervangen worden");
 		}
@@ -169,7 +171,12 @@ public class GemeenschappelijkVeld {
 		// maak backup
 		Reeks backupReeks = this.getReeksen().get(reeksnummer);
 		// vervang joker
-		Steen joker = this.getReeksen().get(reeksnummer).vervangJoker(steen, positieInReeks);
+		try {
+		joker = this.getReeksen().get(reeksnummer).vervangJoker(steen, positieInReeks);
+		}
+		catch (SteenIsGeenJokerException e) {
+			throw e;
+		}
 		// valideer
 		// Rij
 		if(this.getReeksen().get(reeksnummer) instanceof Rij) {
