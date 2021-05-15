@@ -6,8 +6,12 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
 
+import talen.Language;
+
 //UC3
 public class Serie extends Reeks{
+	//Voor vertaling
+	private Language language = Language.getInstance();
 	
 	//UC3
 	public Serie(int rijnummer, List<Steen> stenen, boolean isNieuw) {
@@ -168,21 +172,24 @@ public class Serie extends Reeks{
 	//UC3
 	public  void valideerLegSteenAan() throws Exception {
 		if(!this.valideerSerie()) {
-			throw new Exception("Je kan de steen hier niet aanleggen, de serie is ongeldig.");
+			throw new Exception(language.getString("validatieLegSteenAanSerie"));
+			//throw new Exception("Je kan de steen hier niet aanleggen, de serie is ongeldig.");
 		}
 	}
 	
 	//UC3
 	public  void valideerVervangJoker() throws Exception {
 		if(!this.valideerSerie()) {
-			throw new Exception("Je kan de joker hier niet vervangen, de serie is ongeldig.");
+			throw new Exception(language.getString("validatieVervangJokerSerie"));
+			//throw new Exception("Je kan de joker hier niet vervangen, de serie is ongeldig.");
 		}
 	}
 	
 	//UC3
 	public  void valideerSteenNaarWerkveld() throws Exception {
 		if(!this.valideerSerie()) {
-			throw new Exception("Je kan deze steen niet naar het werkveld verplaatsen, de serie is ongeldig.");
+			throw new Exception(language.getString("validatieSteenWerkveldSerie"));
+			//throw new Exception("Je kan deze steen niet naar het werkveld verplaatsen, de serie is ongeldig.");
 		}
 	}
 
