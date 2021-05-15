@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import exceptions.SteenIsGeenJokerException;
+import exceptions.VeldIsLeegException;
 import talen.Language;
 
 //UC3
@@ -164,23 +165,18 @@ public class GemeenschappelijkVeld {
 	}
 	
 	//UC3
-	public Steen vervangJoker(Steen steen, int reeksnummer, int positieInReeks) throws Exception, SteenIsGeenJokerException {
+	public Steen vervangJoker(Steen steen, int reeksnummer, int positieInReeks) throws Exception, SteenIsGeenJokerException,VeldIsLeegException {
 		
 		Steen joker;
 		if(positieInReeks == -1) {
-			throw new Exception(language.getString("foutieveLocatieJoker"));
-			//throw new Exception("De joker op deze positie kan niet vervangen worden");
+			throw new VeldIsLeegException(language.getString("foutieveLocatieJoker"));
+
 		}
 		
 		// maak backup
 		Reeks backupReeks = this.getReeksen().get(reeksnummer);
 		// vervang joker
-		try {
 		joker = this.getReeksen().get(reeksnummer).vervangJoker(steen, positieInReeks);
-		}
-		catch (SteenIsGeenJokerException e) {
-			throw e;
-		}
 		// valideer
 		// Rij
 		if(this.getReeksen().get(reeksnummer) instanceof Rij) {

@@ -8,7 +8,6 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import domein.DomeinController;
-import domein.GemeenschappelijkVeld;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -563,7 +562,6 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	private final int PS_AANTAL_RIJEN = 10;
 
 	private DomeinController dc;
-	private GemeenschappelijkVeld gmv;
 	private String[][][] spelsituatie;
 	private List<List<String>> spelsituatieJoost;
 	private List<ImageView> imagePersList;
