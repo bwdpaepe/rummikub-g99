@@ -25,12 +25,36 @@ public class GemeenschappelijkVeld {
 
 	//UC3
 	public void maakDuplicaat() {
-		this.duplicaatGemeenschappelijkVeld = new ArrayList<>(this.reeksen);
+		this.duplicaatGemeenschappelijkVeld = new ArrayList<>();
+		for(Reeks reeks: this.getReeksen()) {
+			List<Steen> stenen = new ArrayList<>(reeks.getStenen());
+			if(reeks instanceof Rij) {
+				this.duplicaatGemeenschappelijkVeld.add(new Rij(reeks.getRijnummer(), stenen, reeks.getIsNieuw()));
+			}
+			else if(reeks instanceof Serie) {
+				this.duplicaatGemeenschappelijkVeld.add(new Serie(reeks.getRijnummer(), stenen, reeks.getIsNieuw()));
+			}
+			else {
+				this.duplicaatGemeenschappelijkVeld.add(new Rij(reeks.getRijnummer(), stenen, reeks.getIsNieuw()));
+			}
+		}
 	}
 	
 	//UC3
 	public void resetGemeenschappelijkVeld() {
-		this.reeksen = new ArrayList<>(this.duplicaatGemeenschappelijkVeld);
+		this.reeksen = new ArrayList<>();
+		for(Reeks reeks: this.duplicaatGemeenschappelijkVeld) {
+			List<Steen> stenen = new ArrayList<>(reeks.getStenen());
+			if(reeks instanceof Rij) {
+				this.reeksen.add(new Rij(reeks.getRijnummer(), stenen, reeks.getIsNieuw()));
+			}
+			else if(reeks instanceof Serie) {
+				this.reeksen.add(new Serie(reeks.getRijnummer(), stenen, reeks.getIsNieuw()));
+			}
+			else {
+				this.reeksen.add(new Rij(reeks.getRijnummer(), stenen, reeks.getIsNieuw()));
+			}
+		}
 	}
 	
 	//UC3
