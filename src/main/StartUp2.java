@@ -54,7 +54,7 @@ import talen.Language;
 					new Steen(1, Kleur.BLAUW, "/images/B1.png"),
 					new Steen(13, Kleur.BLAUW, "/images/B13.png"),
 					new Steen(10, Kleur.BLAUW, "/images/B10.png"),
-					new Steen(12, Kleur.BLAUW, "/images/B11.png"),
+					new Steen(11, Kleur.BLAUW, "/images/B11.png"),
 					new Steen(12, Kleur.BLAUW, "/images/B12.png"),
 					new Steen(12, Kleur.GEEL, "/images/G12.png"),
 					new Steen(12, Kleur.ROOD, "/images/R12.png")
