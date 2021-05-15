@@ -42,8 +42,8 @@ public class DomeinController {
 	/**
 	 * Zoekt een speler met spelersnaam en wachtwoord op in de repository. </br>
 	 * Indien deze aanwezig is, wordt hij aangemeld in het spel
-	 * @param spelersnaam
-	 * @param wachtwoord
+	 * @param spelersnaam string met naam
+	 * @param wachtwoord string met paswoord
 	 * @throws SpelerNietInDBException
 	 * @throws SpelerReedsAangemeldException
 	 * @throws AlleSpelersReedsAangemeldException
@@ -87,7 +87,8 @@ public class DomeinController {
 	
 	//UC2
 	/** Iemand heeft op de knop 'start spel' gedrukt, we vragen de klasse spel om een spel te starten.
-	 * We krijgen naam van de volgende speler terug, of alle spelers met hun score als het spel gedaan is. */
+	/*
+	*/
 	
 	public void startSpel() {
 		this.spel.startSpel();
@@ -191,7 +192,7 @@ public class DomeinController {
 	 * @param reeksnummer Deze integer geeft weer in de hoeveelste reeks van het GV je wilt een joker vervangen
 	 * @param positieInReeks De integer bepaalt op welke positie je de te vervangen joker hebt aangeduid
 	 * @throws Exception wordt opgevangen vanuit gemeenschappelijk veld indien value voor positieInReeks de plaats voor een reeks betekend</br>
-	 * Ofwel indien na het wisselen van de steen niet meer voldaan wordt aan de domeinregels van rij of serie </br>.
+	 * Ofwel indien na het wisselen van de steen niet meer voldaan wordt aan de domeinregels van rij of serie. </br>
 	 * Vanuit klasse Reeks worden ook exceptions opgevangen indien de aangeduide steen geen joker of een leeg veld was in GV.
 	 */
 	public void vervangJoker(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks) throws Exception {
