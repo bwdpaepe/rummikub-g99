@@ -1,8 +1,11 @@
 package main;
 	
 	import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import domein.DomeinController;
 import domein.Kleur;
@@ -14,13 +17,20 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import persistentie.SpelerMapper;
+import talen.Language;
 	
 	public class StartUp2 extends Application{
+		// om meertaligheid te kunnen toepassen
+		private ResourceBundle bundle;
+		private Language language = Language.getInstance();
 	
 		//snelle login + zelf gekozen startsituatie
 		@Override
 		public void start(Stage primaryStage) throws Exception 
 		{
+			ResourceBundle bundle = ResourceBundle.getBundle("talen.ApplicationMessage");
+			this.bundle = bundle;
+			Locale l = new Locale("en","US");
 			Spel spel = new Spel(3);
 			SpelerMapper mapper = new SpelerMapper();
 			Speler speler1 = mapper.zoekSpeler("joost", "wachtwoordjoost");
@@ -105,7 +115,7 @@ import persistentie.SpelerMapper;
 				speler3.voegSteenToe(s);
 			}
 			dc.startSpel2();
-			Scene scene = new Scene(new Spelsituatie2Controller(dc));
+			Scene scene = new Scene(new Spelsituatie2Controller(dc, l));
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Test Scenario");
 	        primaryStage.show();
@@ -115,5 +125,7 @@ import persistentie.SpelerMapper;
 			
 			launch(args);
 		}
+
+		
 	
 	}

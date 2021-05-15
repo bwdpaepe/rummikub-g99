@@ -617,7 +617,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	// Event Listener on Button[#btnSplitsSpeelBeurt].onAction
 	@FXML
 	public void btnSplitsSpeelBeurtOnAction(ActionEvent event) {
-		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopSplitsRijOfSteen"))));
+		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopSplitsRijOfSerie"))));
 		//this.lblinfoLabelSpelSituatie2.setText(String.format("Selecteer rechts in de rij/reeks waar je wilt splitsen."));
 		this.subroutineID=2;
 		// this.lblinfoLabelSpelSituatie2.setStyle("-fx-text-fill: green;");
