@@ -6,13 +6,15 @@ import java.util.Iterator;
 import java.util.List;
 
 import exceptions.SteenIsGeenJokerException;
+import talen.Language;
 
 //UC3
 public class GemeenschappelijkVeld {
 
 	private List<Reeks> duplicaatGemeenschappelijkVeld;
 	private List<Reeks> reeksen;
-	
+	//Voor vertaling
+	private Language language = Language.getInstance();
 	
 	
 	//UC3
@@ -78,7 +80,8 @@ public class GemeenschappelijkVeld {
 	//UC3
 	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) throws Exception {
 		if(positieInReeks == -1) {
-			throw new Exception("De reeks kan niet gesplitst worden op deze positie");
+			throw new Exception(language.getString("foutieveSplitsing"));
+			//throw new Exception("De reeks kan niet gesplitst worden op deze positie");
 		}
 		// het GV wordt 1 index groter
 		// omzetten naar array om dan de staart te kopieren
@@ -165,7 +168,8 @@ public class GemeenschappelijkVeld {
 		
 		Steen joker;
 		if(positieInReeks == -1) {
-			throw new Exception("De joker op deze positie kan niet vervangen worden");
+			throw new Exception(language.getString("foutieveLocatieJoker"));
+			//throw new Exception("De joker op deze positie kan niet vervangen worden");
 		}
 		
 		// maak backup
@@ -209,7 +213,8 @@ public class GemeenschappelijkVeld {
 	//UC3
 	public Steen steenNaarWerkveld(int reeksnummer, int positieInReeks) throws Exception {
 		if(positieInReeks == -1) {
-			throw new Exception("De steen op deze positie kan niet naar het werkveld");
+			throw new Exception(language.getString("foutieveLocatieSteenWerkveld"));
+			//throw new Exception("De steen op deze positie kan niet naar het werkveld");
 		}
 		
 		// maak backup

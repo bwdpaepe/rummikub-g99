@@ -48,6 +48,12 @@ public class Spel {
 	}
 
 	// UC1
+	/**
+	 * Om aan het spel te kunnen meegeven hoeveel spelers er meedoen.
+	 * Extra controle zodat het aantal tussen de twee mogelijke waarden ligt van minimaal en maximaal aantal spelers.
+	 * 
+	 * @param aantalSpelers
+	 */
 	private void setAantalSpelers(int aantalSpelers) {
 		if (aantalSpelers < MINIMUM_SPELERS || aantalSpelers > MAXIMUM_SPELERS) {
 			messageForm.applyPattern(language.getString("aantalBuitenBereik"));
@@ -58,6 +64,13 @@ public class Spel {
 	}
 
 	// UC1
+	/**
+	 * Toevoegen van één speler met controle indien deze niet al reeds is aangemeld in dit specifiek spel.
+	 * 
+	 * @param speler
+	 * @throws SpelerReedsAangemeldException
+	 * @throws AlleSpelersReedsAangemeldException
+	 */
 	public void voegSpelerToe(Speler speler) throws SpelerReedsAangemeldException, AlleSpelersReedsAangemeldException {
 		// if (spelers.size() == aantalSpelers)
 		if (this.bepaalAlleSpelersAangemeld())
@@ -75,18 +88,28 @@ public class Spel {
 	 */
 
 	// UC1
+	/**
+	 * Controle om na te gaan indien deze specifieke speler reeds in aangemeld.
+	 * 
+	 * @param spelersnaam
+	 * @throws SpelerReedsAangemeldException
+	 */
 	private void checkReedsAangemeld(String spelersnaam) throws SpelerReedsAangemeldException {
 		for (Speler speler : spelers) {
 			if (speler.getSpelersnaam().equals(spelersnaam)) {
 				throw new SpelerReedsAangemeldException(
-						// String.format("De Speler/paswoord combinatie is reeds aangemeld in het
-						// spel!")
+						// String.format("De Speler/paswoord combinatie is reeds aangemeld in het spel!")
 						String.format(language.getString("spelerReedsAanwezig")));
 			}
 		}
 	}
 
 	// UC1
+	/**
+	 * Om te kunnen weergeven welke spelers er meedoen in dit spel.
+	 * 
+	 * @return
+	 */
 	public List<String> geefSpelersnamen() {
 		List<String> spelersnamen = new ArrayList<>();
 		for (Speler speler : spelers) {
@@ -203,8 +226,10 @@ public class Spel {
 
 	// UC2
 	/**
-	 * controleer of de speler aan zet geen stenen meer heeft. Ja: dan is er een
+	 * Controleer of de speler aan zet geen stenen meer heeft. Ja: dan is er een
 	 * winnaar en eindigt het spel (return true)
+	 * 
+	 * @return
 	 */
 	private boolean bepaalIsEindeSpel() {
 		return (this.spelers.get(this.spelerAanZet).hoeveelStenenHeeftDeSpeler() == 0);
@@ -231,6 +256,12 @@ public class Spel {
 
 	}
 
+	/**
+	 * Vraagt de score van alle spelers op en plaatst ze in een zin. 
+	 * Hierna kan deze weergeven worden op het einde van het spel.
+	 * 
+	 * @return
+	 */
 	public List<String> geefScores() {
 		List<String> scores = new ArrayList<>();
 		for (Speler spelerMetScore : this.spelers) {
@@ -242,6 +273,14 @@ public class Spel {
 	}
 
 	// UC3
+	/**
+	 * 3-dimensionele String die huidige spelsituatie weergeeft.
+	 * - 1ste dimensie: Over welke locatie het gaat (PS/WV/GV) 
+	 * - 2de dimensie: Bevat een getal dat het maximale aantal weergeeft dat de locatie kan hebben 
+	 * - 3de dimensie: ??
+	 * 
+	 * @return
+	 */
 	public String[][][] geefSpelsituatie() {
 		List<Steen> PS = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
 		List<Steen> WV = this.werkveld.getStenenWerkveld();
@@ -337,6 +376,10 @@ public class Spel {
 	}
 
 	// UC3
+	/**
+	 * Bij begin van de beurt word een duplicaat gemaakt van zowel de persoonlijke stenen van de spelers
+	 * als van de stenen die zich op het gemeenschappelijk veld bevinden.
+	 */
 	public void startBeurt() {
 		this.spelers.get(this.spelerAanZet).maakDuplicaatPersoonlijkeStenen();
 		// initialiseer het werkveld (niets te doen, want is leeg)
@@ -345,6 +388,11 @@ public class Spel {
 	}
 
 	// UC3
+	/**
+	 * Geeft een lijst weer van al de acties die kunnen uitgevoerd worden voor het spel.
+	 * De opsomming van deze acties bevindt zich in een enum.
+	 * @return
+	 */
 	public String[] geefMogelijkeActies() {
 		// Opzoeken hoe ik van enum een arrayList maak of opties weergeef.
 		// p 48, hoofdstuk 6, OOSD1
@@ -358,6 +406,12 @@ public class Spel {
 	}
 
 	// UC3
+	/**
+	 * Er wordt gekeken als de huidige spelsituatie voldoet. 
+	 * - Huidige spelsituatie voldoet niet: er wordt een exception gegooid
+	 * - Huidige spelsituatie voldoet: De functie eindeBeurt kan opgeroepen worden. 
+	 * @throws Exception
+	 */
 	public void beeindigBeurt() throws Exception {
 		if (this.bepaalGeldigeSpelSituatie()) {
 			this.eindeBeurt();
@@ -366,10 +420,11 @@ public class Spel {
 
 	// UC3
 	/**
-	 * Controleren als er nog stenen in werkveld liggen JA: foutmelding NEE:
-	 * controleren als er stenen zijn afgelegd JA: regels nakijken ivm joker,
-	 * waarden en geldige spelsituatie ivm rij en serie NEE: steen bijgeven aan
-	 * speler
+	 * Controleren als er nog stenen in werkveld liggen 
+	 * JA: foutmelding.
+	 * NEE: controleren als er stenen zijn afgelegd.
+	 * 		JA: regels nakijken ivm joker, waarden en geldige spelsituatie ivm rij en serie.
+	 * 		NEE: steen bijgeven aan speler.
 	 * 
 	 * @throws Exception
 	 */
@@ -387,8 +442,8 @@ public class Spel {
 							nieuweReeksCounter++;
 							for (Steen s : actieveReeks.getStenen()) {
 								if (s.getWaarde() == 25) { // joker in nieuwe reeks --> Waar staat joker gedefinieerd??
-									throw new Exception(
-											"Bij de eerste afleg mag er geen gebruik gemaakt worden van\neen Joker.");
+									throw new Exception(language.getString("jokerBijEersteAfleg"));
+									//throw new Exception("Bij de eerste afleg mag er geen gebruik gemaakt worden van een Joker.");
 								} else { // geen joker in nieuwe reeks
 									somStenen += s.getWaarde();
 								}
@@ -401,16 +456,19 @@ public class Spel {
 					}
 					if(actieveSpeler.getEersteUitleg()) {
 						if(nieuweReeksCounter == 0) {
-							throw new Exception("Bij een eerste uitleg moet\nminstens 1 van de reeksen op het GV nieuw zijn.");	
+							throw new Exception(language.getString("eersteUitlegNieuweReeks"));
+							//throw new Exception("Bij een eerste uitleg moet minstens 1 van de reeksen op het GV nieuw zijn.");	
 						}
 						else if (somStenen >= 30) {
 							actieveSpeler.setEersteUitleg(false);
 						} else { // somStenen < 30
-							throw new Exception("Bij een eerste uitleg moet\nde som van de gelegde stenen minimaal 30 zijn.");
+							throw new Exception(language.getString("somEersteUitlegTeLaag"));
+							//throw new Exception("Bij een eerste uitleg moet de som van de gelegde stenen minimaal 30 zijn.");
 						}
 					}
 				} else { // indien geen geldigeSpelsituatie
-					throw new Exception("De stenen op het werkveld voldoen niet aan\nde eisen van een rij of serie.");
+					throw new Exception(language.getString("stenenVoldoetNietAanRijOfSerie"));
+					//throw new Exception("De stenen op het werkveld voldoen niet aan de eisen van een rij of serie.");
 				}
 			} else { // geen stenen afgelegd
 				actieveSpeler.voegSteenToe(this.pot.geefSteen());
@@ -418,17 +476,38 @@ public class Spel {
 			}
 		} else { // Er liggen nog stenen op het werkveld !!
 			isGeldig = false;
-			throw new Exception("Er mogen geen stenen meer in uw werkveld liggen!"); // indien werkveld niet leeg is
+			throw new Exception(language.getString("nogStenenOpWerkVeld"));
+			//throw new Exception("Er mogen geen stenen meer in uw werkveld liggen!"); // indien werkveld niet leeg is
 		}
 		return isGeldig;
 	}
 
 	// UC3
+	/**
+	 * Oproepen van de functie splitsRijOfSerie uit het gemeenschappelijkVeld.
+	 * 
+	 * @param reeksnummer
+	 * @param positieInReeks
+	 * @throws Exception
+	 */
 	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) throws Exception {
 		this.gemeenschappelijkVeld.splitsRijOfSerie(reeksnummer, positieInReeks);
 	}
 
 	// UC3
+	/**
+	 * Oproepen van de functie legSteenAan uit het gemeenschappelijkVeld.
+	 * Extra controle om te kijken van waaruit de steen komt. 
+	 * Deze steen kan uit de persoonlijkeStenen komen of uit het werkVeld.
+	 * Er word een exception gegooid indien de functie legSteenAan uit gemeenschappelijkVeld niet kan worden opgeroepen.
+	 * 
+	 * 
+	 * @param nummerInInput
+	 * @param positieInInput
+	 * @param reeksnummer
+	 * @param positieInReeks
+	 * @throws Exception
+	 */
 	public void legSteenAan(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks)
 			throws Exception {
 		// pak de steen
@@ -466,6 +545,12 @@ public class Spel {
 	
 	
 	// UC3
+	/**
+	 * 
+	 * @param teruglegLijst
+	 * @param positieInInput
+	 * @param steenOmAanTeLeggen
+	 */
 	private void legSteenTerug(List<Steen> teruglegLijst, int positieInInput, Steen steenOmAanTeLeggen) {
 		// de lijst wordt 1 index groter
 		teruglegLijst.add(steenOmAanTeLeggen);
@@ -481,6 +566,19 @@ public class Spel {
 	}
 
 	// UC3
+	/**
+	 * Oproepen van de functie vervangJoker uit het gemeenschappelijkVeld.
+	 * Extra controle om te kijken van waaruit de steen komt. 
+	 * Deze steen kan uit de persoonlijkeStenen komen of uit het werkVeld.
+	 * Er word een exception gegooid indien de functie vervangJoker uit gemeenschappelijkVeld niet kan worden opgeroepen.
+	 * 
+	 * @param nummerInInput
+	 * @param positieInInput
+	 * @param reeksnummer
+	 * @param positieInReeks
+	 * @throws Exception
+	 * @throws SteenIsGeenJokerException
+	 */
 	public void vervangJoker(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks)
 			throws Exception, SteenIsGeenJokerException {
 		// pak de steen
@@ -519,6 +617,14 @@ public class Spel {
 	}
 
 	// UC3
+	/**
+	 * Toevoegen van een steen in het werkveld.
+	 * De steen wordt gehaald uit het gemeenschappelijkVeld.
+	 * 
+	 * @param reeksnummer
+	 * @param positieInReeks
+	 * @throws Exception
+	 */
 	public void steenNaarWerkveld(int reeksnummer, int positieInReeks) throws Exception {
 		// in geval van problemen moeten we hier niets terugleggen, we kunnen de
 		// exception gewoon verder gooien
@@ -526,6 +632,9 @@ public class Spel {
 	}
 	
 	// UC3
+	/**
+	 * Bij elk veld wordt een functie reset of maakLeeg opgeroepen
+	 */
 	public void resetBeurt() {
 		// PS
 		this.spelers.get(this.spelerAanZet).resetPersoonlijkeStenen();

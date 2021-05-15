@@ -3,8 +3,12 @@ package domein;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import talen.Language;
+
 //UC3
 public class Rij extends Reeks{
+	//Voor vertaling
+	private Language language = Language.getInstance();
 	
 	//UC3
 	public Rij(int rijnummer, List<Steen> stenen, boolean isNieuw) {
@@ -81,21 +85,24 @@ public class Rij extends Reeks{
 	//UC3
 	public  void valideerLegSteenAan() throws Exception {
 		if(!this.valideerRij()) {
-			throw new Exception("Je kan de steen hier niet aanleggen, de rij is ongeldig.");
+			throw new Exception(language.getString("validatieLegSteenAanRij"));
+			//throw new Exception("Je kan de steen hier niet aanleggen, de rij is ongeldig.");
 		}
 	}
 	
 	//UC3
 	public  void valideerVervangJoker() throws Exception {
 		if(!this.valideerRij()) {
-			throw new Exception("Je kan de joker hier niet vervangen, de rij is ongeldig.");
+			throw new Exception(language.getString("validatieVervangJokerRij"));
+			//throw new Exception("Je kan de joker hier niet vervangen, de rij is ongeldig.");
 		}
 	}
 	
 	//UC3
 	public  void valideerSteenNaarWerkveld() throws Exception {
 		if(!this.valideerRij()) {
-			throw new Exception("Je kan deze steen niet naar het werkveld verplaatsen, de rij is ongeldig.");
+			throw new Exception(language.getString("validatieSteenWerkveldRij"));
+			//throw new Exception("Je kan deze steen niet naar het werkveld verplaatsen, de rij is ongeldig.");
 		}
 	}
 

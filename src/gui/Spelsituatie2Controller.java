@@ -608,7 +608,6 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	// Event Listener on Button[#btnJokerVervangenSpeelBeurt].onAction
 	@FXML
 	public void btnJokerVervangenSpeelbeurtOnAction(ActionEvent event) {
-		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmSelecteer"))));
 		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopJokerVervangen"))));
 		/*this.lblinfoLabelSpelSituatie2.setText(String.format(
 				"Selecteer een steen in werk- of persoonlijk veld.%nVervolgens een joker gemeenschappelijk veld"));*/
@@ -625,7 +624,6 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	// Event Listener on Button[#btnSteenAanleggenSpeelBeurt].onAction
 	@FXML
 	public void btnSteenAanleggenSpeelBeurtOnAction(ActionEvent event) {
-		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmSelecteer"))));
 		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopSteenAanleggen"))));
 		/*this.lblinfoLabelSpelSituatie2.setText(String.format(
 				"Selecteer een steen in werk- of persoonlijk veld.%nSelecteer vervolgens een locatie in gemeenschappelijk veld"));*/
@@ -820,7 +818,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// String speler = dc.geefNaamSpelerAanBeurt();
-		this.lblSpelerAanZetSpeelbeurt.setText(String.format((language.getString("speler"))+ "%s", dc.geefNaamSpelerAanBeurt()));
+		this.lblSpelerAanZetSpeelbeurt.setText(String.format("%s", dc.geefNaamSpelerAanBeurt()));
 		initializeImagePersList();
 //joost nog code Bart toevoegen om met de 3dim array te werken
 		spelsituatieJoost = dc.geefSpelsituatieJoost();
