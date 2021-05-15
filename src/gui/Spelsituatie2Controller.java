@@ -839,8 +839,10 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 		imagePersList = Arrays.asList(IvImagePers00, IvImagePers01, IvImagePers02, IvImagePers03, IvImagePers04,
 				IvImagePers05, IvImagePers06, IvImagePers07, IvImagePers08, IvImagePers09, IvImagePers10, IvImagePers11,
 				IvImagePers12, IvImagePers13, IvImagePers14, IvImagePers15, IvImagePers16, IvImagePers17, IvImagePers18,
-				IvImagePers19);
+				IvImagePers19,IvImagePers20,IvImagePers21,IvImagePers22,IvImagePers23,IvImagePers24,IvImagePers25,IvImagePers26,
+				IvImagePers27,IvImagePers28,IvImagePers29);
 	}
+	
 	private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
 	    for (Node node : gridPane.getChildren()) {
 	        if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
