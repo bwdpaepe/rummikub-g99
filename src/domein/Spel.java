@@ -177,10 +177,12 @@ public class Spel {
 
 	// UC2
 	/**
-	 * aan het einde van een beurt, het systeem kijkt of er een winnaar is, en
-	 * berekent de scores of bepaalt de naam van de volgende speler aan zet al
-	 * naargelang
+	 * aan het einde van een beurt, het systeem bekijkt of er: </br>
+	 * - een winnaar is en berekent vervolgens de scores </br>
+	 * - ofwel bepaalt systeem de naam van de volgende speler aan zet </br> 
+	 * al naargelang
 	 */
+	
 //Joost Tijdelijk op public staan om te testen. Nog te wijzigen in finale versie!!!
 	public void eindeBeurt() {
 		// bepaalIsEindeSpel

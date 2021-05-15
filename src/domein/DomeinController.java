@@ -125,18 +125,31 @@ public class DomeinController {
 		return this.spel.geefSpelsituatie();
 	}
 	//UC3
-/*Joost*/ //Extra toegevoegd om de alternatieve methode geefspelsituatie op te kunnen roepen
+	/**
+	 * Extra testmethode om op een alternatieve methode geefspelsituatie op te kunnen roepen.
+	 * Momenteel niet in gebruik.
+	 * @return list van lists van strings
+	 */
 	public List<List<String>> geefSpelsituatieJoost() {
 		return spel.geefSpelsituatieJoost();
 	}
 	
 	
 	//UC3
+	/**
+	 * roept methode geefMogelijkeActies() in klasse spel aan. </br>
+	 * Geeft de mogelijke acties tekstueel weer. Teksten worden gebruikt om knoppen te voorzien van tekst
+	 * @return string[] met size=6. Iedere string levert de naam van een actie
+	 */
 	public String[] geefMogelijkActies() {
 		return this.spel.geefMogelijkeActies();
 	}
 	
-	
+	/**
+	 * Methode bekijkt of er een geldige situatie is in GV en WV om de beurt te beëindigen.</br>
+	 * Hij doet dit aan de hand van bepaalGeldigeSpelSituatie() uit spel. 
+	 * @throws Exception Informeert indien er geen geldige spelsituatie is en beëindigt zo de beurt niet
+	 */
 	//UC3
 	public void beeindigBeurt() throws Exception {
 		this.spel.beeindigBeurt();
@@ -144,11 +157,27 @@ public class DomeinController {
 	
 	
 	//UC3
+	/**
+	 * Splits een rij of reeks in het gemeenschappelijk veld. </br>
+	 * De aangeroepen methode in Spel is splitsRijOfSerie(). </br>
+	 * Deze roept op zich de relevante methode in gemeenscahppelijk veld aan.
+	 * @param reeksnummer int die bepaalt de hoeveelste reeks in het gemeenschappelijk veld
+	 * @param positieInReeks int die bepaalt vanaf welke steen in de reeks we willen splitsen in een andere reeks.
+	 * @throws Exception deze exception is afkomstig uit gemeenschappelijk veld en indiceert dat er gepoogd wordt te splitsen op een locatie die geen steenpositie is.
+	 */
 	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) throws Exception {
 		this.spel.splitsRijOfSerie(reeksnummer, positieInReeks);
 	}
 	
 	//UC3
+	/**
+	 * 
+	 * @param nummerInInput
+	 * @param positieInInput
+	 * @param reeksnummer
+	 * @param positieInReeks
+	 * @throws Exception
+	 */
 	public void legSteenAan(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks) throws Exception {
 		this.spel.legSteenAan(nummerInInput, positieInInput, reeksnummer, positieInReeks);
 	}
