@@ -277,7 +277,9 @@ public class Spel {
 	 * 3-dimensionele String die huidige spelsituatie weergeeft.
 	 * - 1ste dimensie: Over welke locatie het gaat (PS/WV/GV) 
 	 * - 2de dimensie: Bevat een getal dat het maximale aantal weergeeft dat de locatie kan hebben 
-	 * - 3de dimensie: ??
+	 * 		in geval van PS en WV gaat dit over het aantal stenen
+	 * 		in geval van GV gaat dit over het aantal reeksen
+	 * - 3de dimensie: enkel voor het GV en geeft de stenen per reeks weer.
 	 * 
 	 * @return
 	 */
@@ -546,6 +548,9 @@ public class Spel {
 	
 	// UC3
 	/**
+	 * Dient als backup functie.
+	 * Indien de steen niet gelegd kan worden in het GV zal het via deze functie opnieuw op zijn vorige locatie komen. 
+	 * Dit kan in PS of WV zijn.
 	 * 
 	 * @param teruglegLijst
 	 * @param positieInInput
