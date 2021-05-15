@@ -231,7 +231,7 @@ public class GemeenschappelijkVeld {
 			}
 		}
 		// Serie
-		else {
+		else if(this.getReeksen().get(reeksnummer) instanceof Serie){
 			Serie valideerSerie = (Serie)this.getReeksen().get(reeksnummer);
 			try {
 				valideerSerie.valideerSteenNaarWerkveld();
@@ -241,6 +241,10 @@ public class GemeenschappelijkVeld {
 				// gooi de error verder (naar Spel)
 				throw e;
 			}
+		}
+		else {
+			// nog niet bepaald rij of serie
+			// niets te doen
 		}
 		// geef de joker aan Spel (moet naar Werkveld)
 		return steenVoorWerkveld;
