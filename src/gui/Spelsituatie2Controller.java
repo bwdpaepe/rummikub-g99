@@ -708,7 +708,7 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 						catch (Exception e) {
 							//this.lblinfoLabelSpelSituatie2.setText(String.format("De joker kan niet vervangen worden."));
 							lblinfoLabelSpelSituatie2.setText(e.getMessage());
-							e.printStackTrace();
+							//e.printStackTrace();
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						}

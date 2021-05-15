@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import exceptions.SteenIsGeenJokerException;
-import exceptions.VeldIsLeegEnGeenJokerException;
+import exceptions.VeldIsLeegException;
 
 //UC3
 public class Reeks {
@@ -14,55 +14,54 @@ public class Reeks {
 	private boolean isNieuw;
 	private List<Steen> stenen;
 	private Steen joker;
-	
-	
-	//UC3
+
+	// UC3
 	public Reeks(int rijnummer, List<Steen> stenen, boolean isNieuw) {
 		this.setRijnummer(rijnummer);
 		this.setIsNieuw(isNieuw);
 		this.setStenen(stenen);
 	}
-	
-	//UC3
+
+	// UC3
 	public int getRijnummer() {
 		return this.rijnummer;
 	}
-	
-	//UC3
+
+	// UC3
 	public void setRijnummer(int rijnummer) {
 		this.rijnummer = rijnummer;
 	}
-	
-	//UC3
+
+	// UC3
 	public boolean getIsNieuw() {
 		return this.isNieuw;
 	}
-	
-	//UC3
+
+	// UC3
 	public void setIsNieuw(boolean isNieuw) {
 		this.isNieuw = isNieuw;
 	}
-	
-	//UC3
+
+	// UC3
 	public List<Steen> getStenen() {
 		return this.stenen;
 	}
 
-	//UC3
+	// UC3
 	public void setStenen(List<Steen> stenen) {
 		this.stenen = stenen;
 	}
 
-	//UC3
+	// UC3
 	protected boolean bepaalIsGeldig() {
 		// minimaal 3 stenen voor zowel Rij als Serie
-		if(this.getStenen().size() < 3) {
+		if (this.getStenen().size() < 3) {
 			return false;
 		}
 		return true;
 	}
-	
-	//UC3
+
+	// UC3
 	public void legSteenAan(Steen steen, int positieInReeks) {
 		// de reeks wordt 1 index groter
 		// omzetten naar array om dan de staart te kopieren
@@ -74,44 +73,43 @@ public class Reeks {
 		// staart terug aan de reeks hangen
 		this.setStenen(new ArrayList<>(Arrays.asList(stenenArray)));
 		IntStream.range(positieInReeks + 1, this.getStenen().size())
-		         .forEach(x -> this.getStenen().set(x, stenenArrayCopyRange[x-positieInReeks-1]));
-		
+				.forEach(x -> this.getStenen().set(x, stenenArrayCopyRange[x - positieInReeks - 1]));
+
 	}
-	
-	//UC3
-	public Steen vervangJoker(Steen steen, int positieInReeks) throws SteenIsGeenJokerException, VeldIsLeegEnGeenJokerException {
+
+	// UC3
+	public Steen vervangJoker(Steen steen, int positieInReeks) throws SteenIsGeenJokerException, VeldIsLeegException {
 		// de reeks blijft even groot
 		// pak de joker
-		
-		try {
-			this.joker = this.getStenen().get(positieInReeks);		
-		} 
-		catch (Exception e) {
-			throw new VeldIsLeegEnGeenJokerException();
+		// Steen joker;
+		if (positieInReeks < 0 || positieInReeks > stenen.size()-1) {
+			throw new VeldIsLeegException();
 		}
-		
-		if ((!(joker.getKleur()==Kleur.JOKER))) {
-			//throw new SteenIsGeenJokerException("Degeselecteerde steen is geen joker!");
+		this.joker = this.getStenen().get(positieInReeks);
+		if (this.joker.getKleur() != Kleur.JOKER) {
 			throw new SteenIsGeenJokerException();
 		}
+		/*
+		 * if ((!(this.joker.getKleur()==Kleur.JOKER))) throw new
+		 * SteenIsGeenJokerException(); //throw new
+		 * SteenIsGeenJokerException("Degeselecteerde steen is geen joker!");
+		 */
 		// voeg de steen in op die positie
 		this.getStenen().set(positieInReeks, steen);
 		// retourneer de joker (moet naar het werkveld)
-		return joker;
+		return this.joker;
 	}
-	
-	//UC3
+
+	// UC3
 	public Steen steenNaarWerkveld(int positieInReeks) {
 		// de reeks wordt 1 index kleiner
 		return this.getStenen().remove(positieInReeks);
 	}
-	
+
 	// UC3
 	/** hoeveel stenen bevat een reeks */
 	public int hoeveelStenenHeeftDeReeks() {
 		return this.getStenen().size();
 	}
-	
-	
 
 }

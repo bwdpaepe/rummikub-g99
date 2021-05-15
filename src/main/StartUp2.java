@@ -78,7 +78,8 @@ import talen.Language;
 					new Steen(13, Kleur.BLAUW, "/images/B13.png"),
 					new Steen(10, Kleur.BLAUW, "/images/B10.png"),
 					new Steen(11, Kleur.BLAUW, "/images/B11.png"),
-					new Steen(12, Kleur.BLAUW, "/images/B12.png")));
+					new Steen(12, Kleur.BLAUW, "/images/B12.png"),
+					new Steen(0, Kleur.JOKER, "/images/J0.png")));
 			
 			
 			if(!startStenen1.isEmpty()) {
