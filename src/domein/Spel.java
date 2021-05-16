@@ -37,9 +37,7 @@ public class Spel {
 	// UC1
 	public Spel(int aantalSpelers) {
 		setAantalSpelers(aantalSpelers);
-//Joost aanmaak werkveld toegevoegd
 		werkveld = new Werkveld();
-//Joost aanmaak instantie toegevoegd
 		gemeenschappelijkVeld = new GemeenschappelijkVeld();
 	}
 
@@ -80,13 +78,6 @@ public class Spel {
 		spelers.add(speler);
 	}
 
-	/*
-	 * oude versie reedsAangemeld private boolean reedsAangemeld(String spelersnaam)
-	 * { for(Speler speler:spelers) { if
-	 * (speler.getSpelersnaam().equals(spelersnaam)) { return true; } } return
-	 * false; }
-	 */
-
 	// UC1
 	/**
 	 * Controle om na te gaan indien deze specifieke speler reeds in aangemeld.
@@ -108,7 +99,7 @@ public class Spel {
 	/**
 	 * Om te kunnen weergeven welke spelers er meedoen in dit spel.
 	 * 
-	 * @return
+	 * @return list<String> waarbij de strings de aangemelde spelersnamen zijn
 	 */
 	public List<String> geefSpelersnamen() {
 		List<String> spelersnamen = new ArrayList<>();
@@ -118,15 +109,19 @@ public class Spel {
 		return spelersnamen;
 	}
 
-	// feedback docent was om hier exception toe te voegen indien alle spelers reeds
-	// aangemeld maar exception werd gedaan in voegspelertoe()
+	/**
+	 * De methode controleert of het aantal aangemelde spelers gelijk is aan het geïnitialiseerde aantal deelnemers.
+	 * 
+	 * @return boolean
+	 */
 	public boolean bepaalAlleSpelersAangemeld() {
 		return (spelers.size() == this.aantalSpelers);
 	}
 
 	// UC2
 	/**
-	 * Iemand heeft op de knop 'start spel' gedrukt, we beginnen het spel.
+	 * Iemand heeft op de knop 'start spel' gedrukt, we beginnen het spel.</br>
+	 * Van pot, werkveld en gemeenschappelijk veld wordt een instantie gemaakt.
 	 */
 	public void startSpel() {
 		// maak de pot
@@ -146,9 +141,6 @@ public class Spel {
 		// initialiseer het werkveld (niets te doen, want is leeg)
 		//initialiseer het GV
 		this.gemeenschappelijkVeld.maakDuplicaat();
-		
-		
-
 	}
 
 	// UC2
@@ -172,7 +164,10 @@ public class Spel {
 																							// dat niet nodig
 		}
 	}
-//joost methode herschreven omdat streams me niet toelieten de code na te zien tijdens debuggen
+	/**
+	 * Geef iedere speler 14 willekeurige stenen uit de pot.
+	 * Alternatieve methode voor bepaalStartStenen() omdat streams me niet toelieten de code na te zien tijdens debuggen.
+	 */
 	private void bepaalStartStenenJoost() {
 		for (Speler s : spelers) {
 			for (int i = 0; i < AANTAL_STENEN_PER_SPELER_BIJ_AANVANG; i++) {
@@ -183,7 +178,10 @@ public class Spel {
 	}
 
 	// UC2
-	/** Het systeem toont de gebruikersnaam van de speler aan de beurt */
+	/**
+	 * Het systeem toont de gebruikersnaam van de speler aan de beurt
+	 * @return String met de naam van de speler aan zet
+	 */
 	public String geefNaamSpelerAanBeurt() {
 		// retourneer string met de naam van de speler aan zet
 		return this.spelers.get(this.spelerAanZet).getSpelersnaam();
@@ -201,9 +199,8 @@ public class Spel {
 	// UC2
 	/**
 	 * aan het einde van een beurt, het systeem bekijkt of er: </br>
-	 * - een winnaar is en berekent vervolgens de scores </br>
-	 * - ofwel bepaalt systeem de naam van de volgende speler aan zet </br> 
-	 * al naargelang
+	 * </t> een winnaar is en berekent vervolgens de scores </br>
+	 * </t> ofwel bepaalt systeem de naam van de volgende speler aan zet </br> 
 	 */
 	
 //Joost Tijdelijk op public staan om te testen. Nog te wijzigen in finale versie!!!
@@ -229,14 +226,16 @@ public class Spel {
 	 * Controleer of de speler aan zet geen stenen meer heeft. Ja: dan is er een
 	 * winnaar en eindigt het spel (return true)
 	 * 
-	 * @return
+	 * @return boolean true betekent einde van het spel is bereikt
 	 */
 	private boolean bepaalIsEindeSpel() {
 		return (this.spelers.get(this.spelerAanZet).hoeveelStenenHeeftDeSpeler() == 0);
 	}
 
 	// UC2
-	/** het spel is ten einde, bereken de scores van alle spelers */
+	/*
+	 * het spel is ten einde, bereken de scores van alle spelers, rangschik de spelers volgens hun punten in de list spelers
+	 */
 	private void berekenScores() {
 		List<Speler> spelersGesorteerd = this.spelers.stream()
 				.sorted(Comparator.comparing(Speler::hoeveelStenenHeeftDeSpeler)).collect(Collectors.toList());
@@ -260,7 +259,7 @@ public class Spel {
 	 * Vraagt de score van alle spelers op en plaatst ze in een zin. 
 	 * Hierna kan deze weergeven worden op het einde van het spel.
 	 * 
-	 * @return
+	 * @return List<String> een zin per speler
 	 */
 	public List<String> geefScores() {
 		List<String> scores = new ArrayList<>();
@@ -274,14 +273,14 @@ public class Spel {
 
 	// UC3
 	/**
-	 * 3-dimensionele String die huidige spelsituatie weergeeft.
-	 * - 1ste dimensie: Over welke locatie het gaat (PS/WV/GV) 
-	 * - 2de dimensie: Bevat een getal dat het maximale aantal weergeeft dat de locatie kan hebben 
-	 * 		in geval van PS en WV gaat dit over het aantal stenen
-	 * 		in geval van GV gaat dit over het aantal reeksen
-	 * - 3de dimensie: enkel voor het GV en geeft de stenen per reeks weer.
+	 * Geeft de spelsituatie weer in een 3-dimensionele String die huidige spelsituatie weergeeft.</br>
+	 * - 1ste dimensie: Over welke locatie het gaat (PS/WV/GV) </br>
+	 * - 2de dimensie: Bevat een getal dat het maximale aantal weergeeft dat de locatie kan hebben</br> 
+	 * 		in geval van PS en WV gaat dit over het aantal stenen</br>
+	 * 		in geval van GV gaat dit over het aantal reeksen</br>
+	 * - 3de dimensie: enkel voor het GV en geeft de stenen per reeks weer.</br>
 	 * 
-	 * @return
+	 * @return String[][][] 
 	 */
 	public String[][][] geefSpelsituatie() {
 		List<Steen> PS = this.spelers.get(this.spelerAanZet).vraagAllePersoonlijkeStenenOp();
@@ -344,10 +343,16 @@ public class Spel {
 		// array teruggeven
 		return spelSituatie;
 	}
-//Joost dit is een alternatieve methode. 
-	// spelsituatie.get(0) bevat stenen van spelers type: List<Steen>
-	// spelsituatie.get(1) bevat stenen op werkveld type: List<Steen>
-	// spelsituatie.get(2) bevat reeksen op gemeenschappelijk veld type: List<Reeks>
+	
+	/**
+	 * Alternatieve methode om de spelsituatie weer te geven dmv een 2 dimensionale List spelsituatie genaamd.</br>
+	 * De return waarde kan men verwerken als:</br>
+	 * spelsituatie.get(0) bevat stenen van spelers type: List<String> met afbeeldinginfo </br>
+	 * spelsituatie.get(1) bevat stenen op werkveld type: List<String> met afbeeldinginfo</br>
+	 * spelsituatie.get(2) bevat reeksen op gemeenschappelijk veld type: List<Reeks> </br>
+	 * Enkel getest om persoonlijke stenen weer te geven!!!!!
+	 * @return List 
+	 */
 	public List<List<String>> geefSpelsituatieJoost() {
 		List<List<String>> spelsituatie = new ArrayList<List<String>>();
 
@@ -391,9 +396,9 @@ public class Spel {
 
 	// UC3
 	/**
-	 * Geeft een lijst weer van al de acties die kunnen uitgevoerd worden voor het spel.
-	 * De opsomming van deze acties bevindt zich in een enum.
-	 * @return
+	 * Geeft een lijst weer van al de acties die kunnen uitgevoerd worden voor het spel.</br>
+	 * De opsomming van deze acties bevindt zich in een enum.</br>
+	 * @return String[6] elk element bevat een string met een naam actie.
 	 */
 	public String[] geefMogelijkeActies() {
 		// Opzoeken hoe ik van enum een arrayList maak of opties weergeef.
@@ -409,8 +414,8 @@ public class Spel {
 
 	// UC3
 	/**
-	 * Er wordt gekeken als de huidige spelsituatie voldoet. 
-	 * - Huidige spelsituatie voldoet niet: er wordt een exception gegooid
+	 * Er wordt gekeken als de huidige spelsituatie voldoet. </br>
+	 * - Huidige spelsituatie voldoet niet: er wordt een exception gegooid</br>
 	 * - Huidige spelsituatie voldoet: De functie eindeBeurt kan opgeroepen worden. 
 	 * @throws Exception
 	 */
@@ -422,11 +427,11 @@ public class Spel {
 
 	// UC3
 	/**
-	 * Controleren als er nog stenen in werkveld liggen 
-	 * JA: foutmelding.
-	 * NEE: controleren als er stenen zijn afgelegd.
-	 * 		JA: regels nakijken ivm joker, waarden en geldige spelsituatie ivm rij en serie.
-	 * 		NEE: steen bijgeven aan speler.
+	 * Controleren als er nog stenen in werkveld liggen </br>
+	 * JA: foutmelding.</br>
+	 * NEE: controleren als er stenen zijn afgelegd. </br>
+	 * 		JA: regels nakijken ivm joker, waarden en geldige spelsituatie ivm rij en serie. </br>
+	 * 		NEE: steen bijgeven aan speler. </br>
 	 * 
 	 * @throws Exception
 	 */
@@ -486,7 +491,7 @@ public class Spel {
 
 	// UC3
 	/**
-	 * Oproepen van de functie splitsRijOfSerie uit het gemeenschappelijkVeld.
+	 * Oproepen van de functie splitsRijOfSerie uit het klasse gemeenschappelijkVeld.
 	 * 
 	 * @param reeksnummer
 	 * @param positieInReeks
@@ -500,14 +505,13 @@ public class Spel {
 	/**
 	 * Oproepen van de functie legSteenAan uit het gemeenschappelijkVeld.
 	 * Extra controle om te kijken van waaruit de steen komt. 
-	 * Deze steen kan uit de persoonlijkeStenen komen of uit het werkVeld.
+	 * Deze steen kan uit de persoonlijkeStenen komen of uit het werkVeld.</br>
 	 * Er word een exception gegooid indien de functie legSteenAan uit gemeenschappelijkVeld niet kan worden opgeroepen.
 	 * 
-	 * 
-	 * @param nummerInInput
-	 * @param positieInInput
-	 * @param reeksnummer
-	 * @param positieInReeks
+	 * @param nummerInInput Deze integer geeft weer van waaruit je een steen wilt aanleggen (0=Pers Stenen en 1=werkveld)
+	 * @param positieInInput Deze integer bepaalt de hoeveelste steen uit PS of werkveld je wilt aanleggen.
+	 * @param reeksnummer Deze integer geeft weer in de hoeveelste reeks van het GV je wilt aanleggen
+	 * @param positieInReeks De integer bepaalt op welke positie je de reeks wilt uitbreiden. (opm: -1 staat voor vooraan in reeks)
 	 * @throws Exception
 	 */
 	public void legSteenAan(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks)
@@ -548,9 +552,9 @@ public class Spel {
 	
 	// UC3
 	/**
-	 * Dient als backup functie.
-	 * Indien de steen niet gelegd kan worden in het GV zal het via deze functie opnieuw op zijn vorige locatie komen. 
-	 * Dit kan in PS of WV zijn.
+	 * Dient als backup functie. </br>
+	 * Indien de steen niet gelegd kan worden in het GV zal het via deze functie opnieuw op zijn vorige locatie komen.  </br>
+	 * Dit kan in PS of WV zijn. </br>
 	 * 
 	 * @param teruglegLijst
 	 * @param positieInInput
@@ -572,18 +576,18 @@ public class Spel {
 
 	// UC3
 	/**
-	 * Oproepen van de functie vervangJoker uit het gemeenschappelijkVeld.
-	 * Extra controle om te kijken van waaruit de steen komt. 
-	 * Deze steen kan uit de persoonlijkeStenen komen of uit het werkVeld.
-	 * Er word een exception gegooid indien de functie vervangJoker uit gemeenschappelijkVeld niet kan worden opgeroepen.
-	 * 
-	 * @param nummerInInput
-	 * @param positieInInput
-	 * @param reeksnummer
-	 * @param positieInReeks
+	 * Oproepen van de functie vervangJoker uit het gemeenschappelijkVeld.</br>
+	 * Extra controle om te kijken van waaruit de steen komt.  </br>
+	 * Deze steen kan uit de persoonlijkeStenen komen of uit het werkVeld. </br>
+	 * Er word een exception gegooid indien de functie vervangJoker uit gemeenschappelijkVeld niet kan worden opgeroepen. </br>
+	 * @param nummerInInput Deze integer geeft weer van waaruit je een steen wilt aanleggen (0=Pers Stenen en 1=werkveld) ipv de joker</br>
+	 * @param positieInInput Deze integer bepaalt de hoeveelste steen uit PS of werkveld je wilt aanleggen.</br>
+	 * @param reeksnummer Deze integer geeft weer in de hoeveelste reeks van het GV je wilt de joker vervangen</br>
+	 * @param positieInReeks De integer bepaalt op welke positie in de reeks je de joker wilt vervangen (opm: -1 staat voor vooraan in reeks)</br>
 	 * @throws Exception
 	 * @throws SteenIsGeenJokerException
 	 */
+	
 	public void vervangJoker(int nummerInInput, int positieInInput, int reeksnummer, int positieInReeks)
 			throws Exception, SteenIsGeenJokerException {
 		// pak de steen
@@ -601,7 +605,7 @@ public class Spel {
 		}
 
 		try {
-/*jcr*/		tijdelijkejoker = this.gemeenschappelijkVeld.vervangJoker(steenOmJokerTeVervangen, reeksnummer, positieInReeks);
+			tijdelijkejoker = this.gemeenschappelijkVeld.vervangJoker(steenOmJokerTeVervangen, reeksnummer, positieInReeks);
 			werkveld.voegSteenToeWerkveld(tijdelijkejoker);
 		} catch (Exception e) {
 			// we kunnen de steen niet aanleggen
@@ -623,11 +627,10 @@ public class Spel {
 
 	// UC3
 	/**
-	 * Toevoegen van een steen in het werkveld.
-	 * De steen wordt gehaald uit het gemeenschappelijkVeld.
-	 * 
-	 * @param reeksnummer
-	 * @param positieInReeks
+	 * Toevoegen van een steen in het werkveld.</br>
+	 * De steen wordt gehaald uit het gemeenschappelijkVeld.</br>
+	 * @param reeksnummer Deze integer geeft weer in de hoeveelste reeks van het GV je wilt een steen verwijderen
+	 * @param positieInReeks De integer bepaalt op welke positie je de steen wilt verplaatsen naar werkveld
 	 * @throws Exception
 	 */
 	public void steenNaarWerkveld(int reeksnummer, int positieInReeks) throws Exception {
@@ -638,7 +641,7 @@ public class Spel {
 	
 	// UC3
 	/**
-	 * Bij elk veld wordt een functie reset of maakLeeg opgeroepen
+	 * Voor elk veld (GV, WV en persoonlijke stenen van de speler aan zet) wordt een functie reset of maakLeeg opgeroepen.
 	 */
 	public void resetBeurt() {
 		// PS
@@ -652,12 +655,18 @@ public class Spel {
 	}
 	
 	// UC3
+	/**
+	 * testmethode 
+	 */
 	public void fictiefEinde() {
 		this.spelers.get(this.spelerAanZet).verwijderAllePersoonlijkeStenen();
 		this.eindeBeurt();
 	}
 
 	// tijdelijk om vlug te testen
+	/**
+	 * testmethode om het inloggen te bypassen en tijd te winnen.</br>
+	 */
 	public void startspel2() {
 		if(pot == null)this.pot = new Pot();
 		this.werkveld = new Werkveld();
@@ -668,7 +677,10 @@ public class Spel {
 		this.gemeenschappelijkVeld.maakDuplicaat();
 	}
 	
-	// tijdelijk om vlug te testen
+	/**
+	 * tijdelijke methode die helpt om vlug te testen
+	 * @param s
+	 */
 	public void normaleStenen(Speler s) {
 		if(pot == null)this.pot = new Pot();
 		for (int i = 0; i < AANTAL_STENEN_PER_SPELER_BIJ_AANVANG; i++) {

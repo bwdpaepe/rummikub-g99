@@ -15,13 +15,18 @@ public class DomeinController {
 		spelerRepo = new SpelerRepository();
 	}
 	
-	//tijdelijke constructor om vlugger een spelsituatie op te zetten (via StartUp2)
+	/**
+	 * tijdelijke constructor om vlugger een spelsituatie op te zetten (via StartUp2)
+	 * @param spel
+	 */
 	public DomeinController(Spel spel) {
 		spelerRepo = new SpelerRepository();
 		this.spel = spel;
 	}
 
-	//tijdelijke methode voor test GUI!!!!
+	/**
+	 * tijdelijke methode voor test GUI! Waarschijnlijk reeds te wissen.
+	 */
 	public void testvolgende()  {
 		spel.eindeBeurt();
 	}
@@ -127,8 +132,8 @@ public class DomeinController {
 	}
 	//UC3
 	/**
-	 * Extra testmethode om op een alternatieve methode geefspelsituatie op te kunnen roepen.
-	 * Momenteel niet in gebruik.
+	 * Alternatieve methode om een geefspelsituatie op te kunnen roepen.
+	 * Momenteel niet in gebruik. 
 	 * @return list van lists van strings
 	 */
 	public List<List<String>> geefSpelsituatieJoost() {
@@ -138,7 +143,7 @@ public class DomeinController {
 	
 	//UC3
 	/**
-	 * roept methode geefMogelijkeActies() in klasse spel aan. </br>
+	 * Roept methode geefMogelijkeActies() in klasse spel aan. </br>
 	 * Geeft de mogelijke acties tekstueel weer. Teksten worden gebruikt om knoppen te voorzien van tekst
 	 * @return string[] met size=6. Iedere string levert de naam van een actie
 	 */

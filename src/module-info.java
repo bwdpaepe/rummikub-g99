@@ -14,7 +14,7 @@ module rummikub_g99 {
 	requires javafx.controls;
 	requires javafx.fxml;
 	requires javafx.graphics;
-	//requires org.junit.jupiter.api;
+	requires org.junit.jupiter.api;
 	
 	opens main to javafx.graphics,javafx.fxml;
 	opens gui to javafx.graphics,javafx.fxml;
