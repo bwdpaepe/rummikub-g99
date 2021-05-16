@@ -106,7 +106,6 @@ public class GemeenschappelijkVeld {
 	public void splitsRijOfSerie(int reeksnummer, int positieInReeks) throws Exception {
 		if(positieInReeks == -1) {
 			throw new Exception(language.getString("foutieveSplitsing"));
-			//throw new Exception("De reeks kan niet gesplitst worden op deze positie");
 		}
 		// het GV wordt 1 index groter
 		// omzetten naar array om dan de staart te kopieren
@@ -234,7 +233,6 @@ public class GemeenschappelijkVeld {
 	public Steen steenNaarWerkveld(int reeksnummer, int positieInReeks) throws Exception {
 		if(positieInReeks == -1) {
 			throw new Exception(language.getString("foutieveLocatieSteenWerkveld"));
-			//throw new Exception("De steen op deze positie kan niet naar het werkveld");
 		}
 		
 		// maak backup

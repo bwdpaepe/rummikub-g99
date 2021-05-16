@@ -86,7 +86,6 @@ public class Rij extends Reeks{
 	public  void valideerLegSteenAan() throws Exception {
 		if(!this.valideerRij()) {
 			throw new Exception(language.getString("validatieLegSteenAanRij"));
-			//throw new Exception("Je kan de steen hier niet aanleggen, de rij is ongeldig.");
 		}
 	}
 	
@@ -94,7 +93,6 @@ public class Rij extends Reeks{
 	public  void valideerVervangJoker() throws Exception {
 		if(!this.valideerRij()) {
 			throw new Exception(language.getString("validatieVervangJokerRij"));
-			//throw new Exception("Je kan de joker hier niet vervangen, de rij is ongeldig.");
 		}
 	}
 	
@@ -102,7 +100,6 @@ public class Rij extends Reeks{
 	public  void valideerSteenNaarWerkveld() throws Exception {
 		if(!this.valideerRij()) {
 			throw new Exception(language.getString("validatieSteenWerkveldRij"));
-			//throw new Exception("Je kan deze steen niet naar het werkveld verplaatsen, de rij is ongeldig.");
 		}
 	}
 

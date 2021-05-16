@@ -181,7 +181,6 @@ public class Serie extends Reeks{
 	public  void valideerLegSteenAan() throws Exception {
 		if(!this.valideerSerie()) {
 			throw new Exception(language.getString("validatieLegSteenAanSerie"));
-			//throw new Exception("Je kan de steen hier niet aanleggen, de serie is ongeldig.");
 		}
 	}
 	
@@ -189,7 +188,6 @@ public class Serie extends Reeks{
 	public  void valideerVervangJoker() throws Exception {
 		if(!this.valideerSerie()) {
 			throw new Exception(language.getString("validatieVervangJokerSerie"));
-			//throw new Exception("Je kan de joker hier niet vervangen, de serie is ongeldig.");
 		}
 	}
 	
@@ -197,7 +195,6 @@ public class Serie extends Reeks{
 	public  void valideerSteenNaarWerkveld() throws Exception {
 		if(!this.valideerSerie()) {
 			throw new Exception(language.getString("validatieSteenWerkveldSerie"));
-			//throw new Exception("Je kan deze steen niet naar het werkveld verplaatsen, de serie is ongeldig.");
 		}
 	}
 

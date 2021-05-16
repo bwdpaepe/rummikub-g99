@@ -93,44 +93,19 @@ public class MeldAanController extends BorderPane implements Initializable {
 		} catch (SpelerNietInDBException e) {
 			// TODO Auto-generated catch block
 			this.exceptionGooien(language.getString("spelerNietInBatabank") + "%n" + language.getString("geefSpelersnaam"));
-			/*int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
-			this.lblMeldAan.setText(String.format("Speler bestaat niet!%nGeef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
-			this.lblMeldAan.setStyle("-fx-text-fill: red;");
-			txfMeldAanSpelersnaam.clear();
-			txfMeldAanWachtwoord.clear();*/
-			
-//			Alert errorAlert = new Alert(AlertType.ERROR);
-//			errorAlert.setHeaderText("Speler bestaat niet!");
-//			errorAlert.setContentText(e.getMessage());
-//			errorAlert.showAndWait();
 		} catch (SpelerReedsAangemeldException e) {
 			// TODO Auto-generated catch block
 			this.exceptionGooien(language.getString("spelerReedsAangemeld") + "%n" + language.getString("geefSpelersnaam"));
-			/*int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
-			this.lblMeldAan.setText(String.format("Speler is reeds aangemeld!%nGeef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
-			this.lblMeldAan.setStyle("-fx-text-fill: red;");
-			txfMeldAanSpelersnaam.clear();
-			txfMeldAanWachtwoord.clear();*/
 		} catch (InputMismatchException e) {
 			this.exceptionGooien(language.getString("ongeldigeInvoerSpelersAangemeld") + "%n" + language.getString("geefSpelersnaam"));
-			/*int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
-			this.lblMeldAan.setText(String.format("Invoer ongeldig!%nGeef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
-			this.lblMeldAan.setStyle("-fx-text-fill: red;");
-			txfMeldAanSpelersnaam.clear();
-			txfMeldAanWachtwoord.clear();*/
 		} catch (AlleSpelersReedsAangemeldException e) {
 			this.exceptionGooien(language.getString("alleSpelersReedsAangemeld") + "%n" + language.getString("geefSpelersnaam"));
-			/*int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
-			this.lblMeldAan.setText(String.format("Alle spelers reeds aangemeld!%nGeef spelersnaam en wachtwoord van speler %d:", aantalSpelersMomenteelAangemeld + 1));
-			this.lblMeldAan.setStyle("-fx-text-fill: red;");
-			txfMeldAanSpelersnaam.clear();
-			txfMeldAanWachtwoord.clear();*/
 		}
 	}
 
 	public void exceptionGooien(String foutmelding) {
 		int aantalSpelersMomenteelAangemeld = this.dc.geefSpelersnamen().size();
-		this.lblMeldAan.setText(String.format(foutmelding +"%d: ", aantalSpelersMomenteelAangemeld));
+		this.lblMeldAan.setText(String.format(foutmelding +" %d: ", aantalSpelersMomenteelAangemeld +1));
 		this.lblMeldAan.setStyle("-fx-text-fill: red;");
 		txfMeldAanSpelersnaam.clear();
 		txfMeldAanWachtwoord.clear();

@@ -609,15 +609,12 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	@FXML
 	public void btnJokerVervangenSpeelbeurtOnAction(ActionEvent event) {
 		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopJokerVervangen"))));
-		/*this.lblinfoLabelSpelSituatie2.setText(String.format(
-				"Selecteer een steen in werk- of persoonlijk veld.%nVervolgens een joker gemeenschappelijk veld"));*/
 		this.subroutineID=1;
 	}
 	// Event Listener on Button[#btnSplitsSpeelBeurt].onAction
 	@FXML
 	public void btnSplitsSpeelBeurtOnAction(ActionEvent event) {
 		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopSplitsRijOfSerie"))));
-		//this.lblinfoLabelSpelSituatie2.setText(String.format("Selecteer rechts in de rij/reeks waar je wilt splitsen."));
 		this.subroutineID=2;
 		// this.lblinfoLabelSpelSituatie2.setStyle("-fx-text-fill: green;");
 	}
@@ -625,17 +622,12 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 	@FXML
 	public void btnSteenAanleggenSpeelBeurtOnAction(ActionEvent event) {
 		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopSteenAanleggen"))));
-		/*this.lblinfoLabelSpelSituatie2.setText(String.format(
-				"Selecteer een steen in werk- of persoonlijk veld.%nSelecteer vervolgens een locatie in gemeenschappelijk veld"));*/
-		
 		this.subroutineID=3;
 	}
 	// Event Listener on Button[#btnSteenNaarWerkveldSpeelBeurt].onAction
 	@FXML
 	public void btnSteenNaarWerkveldSpeelBeurtOnAction(ActionEvent event) {
 		this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopSteenNaarWerkveld"))));
-		//this.lblinfoLabelSpelSituatie2.setText(
-		//		/*joost*/				String.format("Selecteer een steen uit rij.%nOf selecteer een start -of eindsteen uit reeks."));
 		this.subroutineID=4;
 	}
 	// Event Listener on Button[#btnResetBeurtSpeelBeurt].onAction
@@ -742,7 +734,6 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 							this.toonSpelSituatieOpHetScherm();
 						} catch (Exception e) {
 							this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("foutSteenWerkveld"))));
-							//this.lblinfoLabelSpelSituatie2.setText(String.format("Deze steen kan niet naar het werkveld verplaatst worden."));
 							this.verwijderSpelSituatieOpHetScherm();
 							this.toonSpelSituatieOpHetScherm();
 						}
@@ -755,7 +746,6 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 						break;
 					default:
 						this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("foutDefault"))));
-						//this.lblinfoLabelSpelSituatie2.setText(String.format("Er werd een verkeerde actie geregistreerd."));
 					}
 				}
 			}
@@ -802,7 +792,6 @@ public class Spelsituatie2Controller extends BorderPane implements Initializable
 		public void btnFictiefEindeOnAction(ActionEvent event) {
 			this.dc.fictiefEinde();
 			this.lblinfoLabelSpelSituatie2.setText(String.format((language.getString("opmKnopFictiesEinde"))));
-			//this.lblinfoLabelSpelSituatie2.setText(String.format("Spel is ten einde. Je kan de scores bekijken."));
 		}
 		// Event Listener on Button[#btnToonScores].onAction
 		@FXML

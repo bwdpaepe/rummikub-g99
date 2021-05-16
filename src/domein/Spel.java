@@ -89,7 +89,6 @@ public class Spel {
 		for (Speler speler : spelers) {
 			if (speler.getSpelersnaam().equals(spelersnaam)) {
 				throw new SpelerReedsAangemeldException(
-						// String.format("De Speler/paswoord combinatie is reeds aangemeld in het spel!")
 						String.format(language.getString("spelerReedsAanwezig")));
 			}
 		}
@@ -233,8 +232,9 @@ public class Spel {
 	}
 
 	// UC2
-	/*
-	 * het spel is ten einde, bereken de scores van alle spelers, rangschik de spelers volgens hun punten in de list spelers
+	/**
+	 * Het spel is ten einde, bereken de scores van alle spelers.
+	 * Rangschik de spelers volgens hun punten in de list spelers.
 	 */
 	private void berekenScores() {
 		List<Speler> spelersGesorteerd = this.spelers.stream()
@@ -450,7 +450,6 @@ public class Spel {
 							for (Steen s : actieveReeks.getStenen()) {
 								if (s.getWaarde() == 25) { // joker in nieuwe reeks --> Waar staat joker gedefinieerd??
 									throw new Exception(language.getString("jokerBijEersteAfleg"));
-									//throw new Exception("Bij de eerste afleg mag er geen gebruik gemaakt worden van een Joker.");
 								} else { // geen joker in nieuwe reeks
 									somStenen += s.getWaarde();
 								}
@@ -463,19 +462,16 @@ public class Spel {
 					}
 					if(actieveSpeler.getEersteUitleg()) {
 						if(nieuweReeksCounter == 0) {
-							throw new Exception(language.getString("eersteUitlegNieuweReeks"));
-							//throw new Exception("Bij een eerste uitleg moet minstens 1 van de reeksen op het GV nieuw zijn.");	
+							throw new Exception(language.getString("eersteUitlegNieuweReeks"));	
 						}
 						else if (somStenen >= 30) {
 							actieveSpeler.setEersteUitleg(false);
 						} else { // somStenen < 30
 							throw new Exception(language.getString("somEersteUitlegTeLaag"));
-							//throw new Exception("Bij een eerste uitleg moet de som van de gelegde stenen minimaal 30 zijn.");
 						}
 					}
 				} else { // indien geen geldigeSpelsituatie
 					throw new Exception(language.getString("stenenVoldoetNietAanRijOfSerie"));
-					//throw new Exception("De stenen op het werkveld voldoen niet aan de eisen van een rij of serie.");
 				}
 			} else { // geen stenen afgelegd
 				actieveSpeler.voegSteenToe(this.pot.geefSteen());
@@ -483,8 +479,7 @@ public class Spel {
 			}
 		} else { // Er liggen nog stenen op het werkveld !!
 			isGeldig = false;
-			throw new Exception(language.getString("nogStenenOpWerkVeld"));
-			//throw new Exception("Er mogen geen stenen meer in uw werkveld liggen!"); // indien werkveld niet leeg is
+			throw new Exception(language.getString("nogStenenOpWerkVeld")); // indien werkveld niet leeg is
 		}
 		return isGeldig;
 	}
