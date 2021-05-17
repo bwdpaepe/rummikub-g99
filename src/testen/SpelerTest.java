@@ -25,11 +25,11 @@ class SpelerTest {
 	@Test
 	void testSomVanStenen_speler_met_5_stenen_retourneert_som() {
 		// Arrange
-		this.testSpeler.voegSteenToe(new Steen(1, Kleur.ROOD));
-		this.testSpeler.voegSteenToe(new Steen(13, Kleur.ZWART));
-		this.testSpeler.voegSteenToe(new Steen(2, Kleur.ROOD));
-		this.testSpeler.voegSteenToe(new Steen(12, Kleur.GEEL));
-		this.testSpeler.voegSteenToe(new Steen(3, Kleur.BLAUW));
+		this.testSpeler.voegSteenToe(new Steen(1, Kleur.ROOD, "src\\images\\R1.png"));
+		this.testSpeler.voegSteenToe(new Steen(13, Kleur.ZWART, "src\\images\\G13.png"));
+		this.testSpeler.voegSteenToe(new Steen(2, Kleur.ROOD, "src\\images\\R2.png"));
+		this.testSpeler.voegSteenToe(new Steen(12, Kleur.GEEL, "src\\images\\O12.png"));
+		this.testSpeler.voegSteenToe(new Steen(3, Kleur.BLAUW, "src\\images\\B3.png"));
 		
 		// Act
 		int somVanStenen = this.testSpeler.somVanStenen();

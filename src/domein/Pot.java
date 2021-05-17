@@ -1,5 +1,6 @@
 package domein;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumSet;
@@ -45,14 +46,44 @@ public class Pot {
 		EnumSet.range(Kleur.ZWART,Kleur.GEEL)
 		      .forEach(steenKleur->IntStream.rangeClosed(this.MINIMUMNUMMERSTEEN, this.MAXIMUMNUMMERSTEEN)
 		    		                        .forEach(steenWaarde->IntStream.rangeClosed(1,this.AANTALREEKSEN)
-		    		                        		.forEach(steenReeksnummer->this.stenen.add(new Steen(steenWaarde, steenKleur)))));
+		    		                        		.forEach(steenReeksnummer->this.stenen.add(new Steen(steenWaarde, steenKleur, this.bepaalAfbeelding(steenWaarde, steenKleur))))));
 		
 		/* tenslotte voegen we de 2 jokers toe aan onze pot
 		   joker krijgt waarde 25
 		*/
 		IntStream.rangeClosed(1, this.AANTALJOKERS)
-		         .forEach(steenReeksnummer->this.stenen.add(new Steen(this.WAARDEJOKER,Kleur.JOKER)));
+		         .forEach(steenReeksnummer->this.stenen.add(new Steen(this.WAARDEJOKER,Kleur.JOKER, this.bepaalAfbeelding(steenReeksnummer,Kleur.JOKER))));
+
+//joost debugcode te wissen bij indienen		
+//		System.out.println("Begin van pot\n");
+//		for(Steen s:stenen) System.out.println(s.getAfbeelding());
+//		System.out.println("\nEinde van pot");
 		
+	}
+//Joost Hieronder tijdens debuggen de return op alternatieve manier geschreven	
+	//UC3
+	private String bepaalAfbeelding(int steenWaarde, Kleur steenKleur) {
+//		String afbeelding = "";
+		if(steenKleur == Kleur.BLAUW) {
+//			return afbeelding.format("/images/B%d.png",steenWaarde);
+			return String.format("/images/B%d.png",steenWaarde);
+		}
+		else if(steenKleur == Kleur.ZWART) {
+//			return afbeelding.format("/images/G%d.png",steenWaarde);
+			return String.format("/images/G%d.png",steenWaarde);
+		}
+		else if(steenKleur == Kleur.GEEL) {
+//			return afbeelding.format("/images/O%d.png",steenWaarde);
+			return String.format("/images/O%d.png",steenWaarde);
+		}
+		else if(steenKleur == Kleur.ROOD) {
+//			return afbeelding.format("/images/R%d.png",steenWaarde);
+			return String.format("/images/R%d.png",steenWaarde);
+		}
+		else {
+//			return afbeelding.format("/images/J%d.png",steenWaarde - 1);
+			return String.format("/images/J%d.png",steenWaarde -1);
+		}
 	}
 	
 	

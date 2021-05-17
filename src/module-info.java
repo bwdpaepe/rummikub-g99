@@ -8,13 +8,15 @@ module rummikub_g99 {
 	exports testen;
 	exports exceptions;
 
+	requires java.desktop;
 	requires java.sql;
 	requires javafx.base;
 	requires javafx.controls;
 	requires javafx.fxml;
 	requires javafx.graphics;
-	requires org.junit.jupiter.api;
+	//requires org.junit.jupiter.api;
 	
 	opens main to javafx.graphics,javafx.fxml;
 	opens gui to javafx.graphics,javafx.fxml;
+
 }
