@@ -9,11 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="900.0" type="BorderPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
-=======
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
->>>>>>> branch 'main' of git@github.com:HoGentTIProjecten1/rummikub-g99.git
    <top>
       <AnchorPane prefHeight="39.0" prefWidth="900.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
@@ -33,15 +29,9 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.0" minWidth="10.0" prefWidth="75.60000610351562" />
         </columnConstraints>
         <rowConstraints>
-<<<<<<< HEAD
           <RowConstraints maxHeight="104.0" minHeight="10.0" prefHeight="97.60002059936524" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="376.8000061035156" minHeight="10.0" prefHeight="339.1999794006348" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="184.00003662109378" minHeight="10.0" prefHeight="16.79999389648441" vgrow="SOMETIMES" />
-=======
-          <RowConstraints maxHeight="104.0" minHeight="10.0" prefHeight="98.40000457763672" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="354.40001220703124" minHeight="10.0" prefHeight="315.99999542236327" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="182.79996337890628" minHeight="10.0" prefHeight="37.199987792968784" vgrow="SOMETIMES" />
->>>>>>> branch 'main' of git@github.com:HoGentTIProjecten1/rummikub-g99.git
         </rowConstraints>
          <children>
             <Label text="%eindScores" GridPane.columnIndex="1">

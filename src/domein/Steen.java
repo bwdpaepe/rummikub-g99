@@ -13,16 +13,10 @@ import javafx.scene.image.Image;
 public class Steen {
 	private int waarde;
 	private Kleur kleur;
-<<<<<<< HEAD
 	//UC3
 	//ArrayList<Image> images = new ArrayList<>();
 	private String afbeelding;
 
-=======
-	private String afbeelding;
-	
-	
->>>>>>> branch 'main' of git@github.com:HoGentTIProjecten1/rummikub-g99.git
 	//UC2
 	/** Constructor van Steen: argumenten waarde, kleur en reeksnummer */
 	public Steen(int waarde, Kleur kleur, String afbeelding) {
@@ -71,10 +65,5 @@ public class Steen {
 	/*public void setImages(ArrayList<Image> images) {
 		this.images = images;
 	}*/
-	
-	//UC3
-	private void setAfbeelding(String afbeelding){
-		this.afbeelding = afbeelding;
-	}
 	
 }
