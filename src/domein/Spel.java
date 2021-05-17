@@ -26,7 +26,13 @@ public class Spel {
 	private MessageFormat messageForm = new MessageFormat("");
 	// UC2
 	private Pot pot;
+<<<<<<< HEAD
 	private GemeenschappelijkVeld gemeenschappelijkVeld;
+=======
+	// UC2
+	private GemeenschappelijkVeld gemeenschappelijkeVeld;
+	// UC2
+>>>>>>> branch 'main' of git@github.com:HoGentTIProjecten1/rummikub-g99.git
 	private int spelerAanZet;
 	// UC3
 	private Werkveld werkveld;
@@ -128,7 +134,11 @@ public class Spel {
 		// maak het werkveld
 		this.werkveld = new Werkveld();
 		// maak het gemeenschappelijke veld
+<<<<<<< HEAD
 		this.gemeenschappelijkVeld = new GemeenschappelijkVeld();
+=======
+		this.gemeenschappelijkeVeld = new GemeenschappelijkVeld();
+>>>>>>> branch 'main' of git@github.com:HoGentTIProjecten1/rummikub-g99.git
 		// bepaal de volgorde van de spelers
 		this.randomizeVolgordeSpelers();
 		// geef iedere speler 14 willekeurige stenen
